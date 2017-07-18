@@ -6,11 +6,49 @@
 \usepackage{amssymb}
 \usepackage{makeidx}
 \author{Carlos Molina Ordóñez}
+\date{20 de Marzo de 2017}
 \title{Layout de un canal de lectura multi-paralelizado para un sensor de imagen CMOS}
-\begin{document}
-Primera version del documento para probar alguna cosilla
 
-\paragraph{Esto es el primer parrafo}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Introducción}
+
+\paragraph{}
+En este trabajo se va a estudiar todo el proceso de diseño de un bloque fundamental
+en cualquier sensor de imagen CMOS, el canal de lectura, que es el encargado
+de convertir la información física recibida (número de fotones captados por los
+píxeles), a un número digital para posteriormente ser procesado y almacenado digitalmente.
+
+\paragraph{}
+El estudio se va a centrar principalmente en el layout de un canal
+lectura y en todos los aspectos a tener en cuenta a la hora de abordar esta tarea.
+El layout de un sistema microelectrónico consiste en su implementación física
+sobre una oblea de algún material semiconductor, habitualmente silicio. El
+diseño de layout está sujeto a una serie de normas y problemas que iremos abordando
+con mayor detenimiento a lo largo de la exposición.
+
+\paragraph{}
+Para introducir al lector en la materia será necesario describir, aunque sea
+brevemente, conceptos sobre sensores de imágen, tecnología CMOS y explicar de manera
+sencilla la arquitectura de un canal de lectura habitual.
+
+\paragraph{}
+Posteriormente se pasará a analizar en detalle los problemas y cuestiones que se
+plantean a la hora de diseñar el layout de bloques analógicos en general,
+centrandonos en última instancia en los que afectan directamente a un canal de lectura.
+
+\section{seccion 1}
+
+\subsection{subseccion 1}
+
+\paragraph{Esto es el primer párrafo}
+
+Primera version del documento para probar alguna cosa
+
 
 \paragraph*{Esto es el segundo parrafo, con asterisco}
 
