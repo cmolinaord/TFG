@@ -1,0 +1,46 @@
+cap 1: introduccion
+	* que es un canal de lectura de un sensor de imagen.
+	* que es un sensor de imagen (breve), como es el pixel, como se lee.
+	* Subsection 1: como es la arquitectura del canal de imagen que voy a prensentar.
+		* Es un comparador de rampa (explicacion del funcionamiento)
+		* Arquitectura del ADC
+		* Arquitectura de la rampa (muy breve)
+		* Fuente de corriente del pixel (PXCS)
+		* BIAS y bloques adyacentes
+		* Rampa digital y breve explicación de la serialización (PSER)
+cap 2: Tecnología CMOS
+	* Introduccion.
+	* Explicación del proceso de fabricacion
+	* Transistores CMOS (teoría y layout)
+	* Tenología CMOS avanzada (condensadores, diodos y otros dispositivos)
+	* Diseño de layout
+		* Entorno CAD (breve)
+		* Breve repaso de capas (metales, vias, poly, activa, NWell, capas logicas)
+		* Problemas habituales en el diseño de layout: (area, electromigración, caida DC, Latch-up, acoplos)
+cap 3: Diseño del layout de un canal de lectura
+	* Introducción
+	* Jerarquía de bloques
+	* Problemas de layout que afectan al diseño del canal:
+		* Acoplos entre señales criticas
+		* Area de routing
+		* Consumo de alimentaciones
+
+		* Distribución de señales horizontales (rampa, fases)
+		* Layout de condensadores del ADC
+	* Bloques adicionales
+		* Redundancia
+		* Binning
+		* Uso de ROIs
+	* Breve aproximación a canales de lectura más complejos
+		* Mayor multiparalelización
+		* Sistemas de bajo ruido (convertidores de más resolución, 2 etapas)
+		* Arquitecturas innovadoras (lectura en corriente)
+cap 4: Conclusiones.
+	* Dificultad creciente de los canales de lectura
+	* Condicionamiento de la arquitectura y las epecificaciones por el diseño de layout
+	* Necesidad de estudios de viabilidad exhaustivos previos al diseño
+	* Nuevas tecnologías (menor area, menor consumo)
+	* Innovaciones en la tecnología de los pixeles (más rapidos o efectivos)
+cap 5: Referencias
+cap 6: Agradecimientos
+
