@@ -9,7 +9,6 @@
 \date{20 de Marzo de 2017}
 \title{Layout de un canal de lectura multi-paralelizado para un sensor de imagen CMOS}
 
-
 \begin{document}
 
 \maketitle
@@ -41,9 +40,9 @@ Posteriormente se pasará a analizar en detalle los problemas y cuestiones que s
 plantean a la hora de diseñar el layout de bloques analógicos en general,
 centrandonos en última instancia en los que afectan directamente a un canal de lectura.
 
-\section{Sensores de imagen CMOS}
+\section{Sensores de imagen}
 
-\paragraph
+\paragraph{}
 Un sensor de imagen o cámara fotográfica es, originalemente, un sistema que capta
 una imagen instantánea de una escena mediante la luz que emiten los objetos que
 se encuentran en su campo de visión y que llegan a una pantalla donde se almacena
@@ -51,11 +50,69 @@ la información que proyecta ese rayo de luz, ya sea por un proceso químico
 o electrónico, que es el caso que se va a tratar aquí.
 
 \paragraph{}
+En cuanto a los sensores de imágenes electrónicos se pueden distinguir dos tipos
+principalmente, los CCD (\textit{Charge-Coupled Device}) y los CMOS
+(\textit{Complementary Metal-Oxide-Semiconductor}). Las diferencias entre ellos
+se basan en la tecnología empleada y en la forma de leer el array de pixeles.
+
+\subsection{Sensores de imagen CCD}
+
+\paragraph{}
+\textbf{Leer algo en el libro de sensores de imagen!!!!!!!!!}
+
+\subsection{Sensores de imagen CMOS}
+
+\paragraph{}
+
+
+\section{Arquitectura de sensores de imagen CMOS}
+
+\section{Array de píxeles}
+
+\paragraph{}
+El dispositivo principal en un sensor de imagen es el píxel, que es el elemento
+receptor de la luz y el encargado de hacer la primera conversión de fotones a
+electrones. Estos fotones se traducen en electrones por medio del efecto fotoeléctrico
+descrito por Albert Einstein: Cada fotón que incida en la superficie del silicio
+es capáz de dar la energía suficiente a un electrón de la banda de valencia para que
+pase a la banda de conducción y se pueda mover libremente por la red cristalina.
+Si ahora aplicamos un campo eléctrico podemos guiar a todos los electrones
+fotogenerados hacia un pozo de potencial donde almacenarlos temporalmente. Este
+es el llamado proceso de exposición, que tiene una duración definida. En función
+del tiempo de exposición y de la intensidad lumínica recibida por el pixel, este
+se cargará con mayor o menor número de electrones.
+
+\paragraph{}
+Observando el esquemático de un pixel 5T (5 transistores) habitual, podemos entender
+el funcionamiento del mismo. El fotodiodo (PD) representa la zona donde los fotones
+inciden y donde se convierten a electrones durante el tiempo de exposición. Al final
+de éste periodo se abre la compuerta (TX), también llamada \textit{transfer gate},
+y los electrones pasan por difusión hacia un pozo de potencial llamado \textit{floating
+diffusion} (FD), que se representa como un condensador.
+
+\paragraph{}
+Posteriormente, la carga almacenada en la \textit{floating diffusion} se convierte
+en voltaje a través del seguidor por fuente (SF) cuando la fila actual es seleccionada
+para ser leída mediante la activación del transistor de SEL, que carga la columna
+de lectura con la tensión a la salida del \textit{source follower}. Este valor de
+tensión es el que será leído por el Canal de Lectura.
+
+\paragraph{}
+Durante todo el proceso
+se pueden producir dos operaciones de limpieza o puesta a cero. Una la hace el
+transistor de anti-blooming (BMG), que se encarga de limpiar el diodo de posibles
+electrones fotogenerados antes del tiempo de exposición. Este transistor también
+realiza la fucnión de "desagüe" en el caso de que la intensidad lumínica sea tal
+que el número de electrones en el fotodiodo sature, en cuyo caso, este transistor
+drenará la carga sobrante hacia la alimentación. La otra limpieza la
+lleva a cabo el transistor de Reset (RST), que reestableze el valor "cero" en la
+ \textit{floating diffusion} antes de volcar los nuevos electrones generados en
+ la exposición actual.
 
 
 
-\section{Canal de lectura (RO)}
-\paragraph
+
+\paragraph{}
 El canal de lectura de un sensor CMOS, referido habitualmente por sus
 siglas en inglés \textbf{RO} (\textit{Read-Out Channel}), es el bloque que se
 encarga de traducir el voltaje almacenado en cada pixel durante el proceso
@@ -63,5 +120,90 @@ de exposición, en un número digital. Esta descripción concuerda con el concep
 ampliamente utilizado en electrónica de ADC, siglas en inglés de \textit{Analog-to-Digital
 Converter}, (Convertidor Analógico-Digital), que, en general toma una señal
 analógica y la expresa en valores discretizados
+
+\chapter{Tecnología CMOS}
+
+\section{Introducción}
+
+\section{Proceso de fabricación}
+
+\section{Transistores CMOS}
+
+\section{Técnicas avanzadas en tecnología CMOS}
+
+\section{Diseño de layout}
+
+\subsection{Herramientas de CAD}
+
+\subsection{Capas de layout}
+
+\subsection{Problemas habituales en el diseño de layout}
+
+\chapter{Diseño electrónico de un canal de lectura}
+
+\section{Estructura general}
+
+\section{Arquitectura del comparador de rampa}
+
+\section{ADC}
+
+\section{Rampa analógica}
+
+\section{Fuente de corriente}
+
+\section{Bloques de polarización}
+
+\section{Rampa digital y serialización}
+
+\chapter{Diseño del layout de un canal de lectura}
+
+\section{Introducción}
+
+\section{Jerarquización}
+
+\section{Aproximación al layout de una columna del canal}
+
+\section{Problemas de layout que afectan al diseño del canal de lectura}
+
+\subsection{Acoplos}
+
+\subsection{Concentración de routing}
+
+\subsection{Consumo}
+
+\subsection{Distribución de señales horizontalmente}
+
+\subsection{Condensadores del ADC}
+
+\section{Bloques adicionales}
+
+\subsection{Redundancia}
+
+\subsection{Binning}
+
+\subsection{Implementación de ROIs}
+
+\section{Aproximación a arquitecturas de canales de lectura más complejas}
+
+\subsection{Aumento de la multiparalelización}
+
+\subsection{Sistemas de bajo ruido}
+
+\subsection{Arquitecturas innovadoras}
+Modo corriente
+
+\chapter{Conclusiones}
+
+\section{Dificultad creciente de los canales de lectura}
+
+\section{Condicionamiento del diseño del canal por aspectos de layout}
+
+\section{Estudios de viabilidad adecuados}
+
+\section{Uso de nuevas tecnologías}
+
+\section{Innovaciones en las tecnologías de los píxeles}
+
+\chapter{Referencias}
 
 \end{document}
