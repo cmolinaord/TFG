@@ -8,6 +8,7 @@
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{setspace}
 \spacing{1.5}
+%\usepackage[version=4]{mhchem}
 
 \author{Carlos Molina Ordóñez}
 \date{20 de Marzo de 2017}
@@ -62,7 +63,7 @@ se basan en la tecnología empleada y en la forma de leer el array de pixeles.
 \subsection{Sensores de imagen CCD}
 
 \paragraph{}
-\textbf{Leer algo en el libro de sensores de imagen!!!!!!!!!}
+\huge{\textbf{Leer algo en el libro de sensores de imagen!!!!!!!!!}}
 
 \subsection{Sensores de imagen CMOS}
 
@@ -130,7 +131,7 @@ analógica y la expresa en valores discretizados
 \section{Introducción}
 
 \paragraph{}
-La tecnología CMOS que es ampliamente utilizada en el diseño de circuitos integrados
+La tecnología CMOS, que es ampliamente utilizada en el diseño de circuitos integrados
 en la actualidad, se basa en la posibilidad de integrar en un mismo substrato
 semiconductores con ambos dopados (N y P). Con ello podemos implementar transistores
 MOSFET tanto PMOS como NMOS en un mismo diseño.
@@ -154,9 +155,17 @@ aunque en muchos casos se sigue usando tecnología bipolar.
 % Mirar un poco más esto (Historia y actual uso de las tecnologías del silicio)
 
 
-
-
 \section{Proceso de fabricación}
+
+La gran mayoría de los circuitos integrados CMOS estan construidos sobre silicio.
+El silicio (Si), elemento de número atómico 14, es muy abundante en la Tierra, aunque
+no se encuentra de forma pura, sino como óxidos de silicio o silicatos. Entre los
+óxidos de silicio, basados fundamentalmente en la sílice o dióxido de silicio
+(SiO\textsubscript{2}), se encuentran el cuarzo y el sílex, ambos ampliamente extendidos
+en la corteza terrestre. Los silicatos son sales basadas en el ión silicato (SiO\textsubscript{4}),
+y forman parte de minereales como los feldespatos, micas, berilio
+
+\huge{\textbf{Leer algo en el libro de minerales y rocas en casa!!!!!!!!!}}
 
 \section{Transistores CMOS}
 
@@ -164,9 +173,24 @@ aunque en muchos casos se sigue usando tecnología bipolar.
 
 \section{Diseño de layout}
 
-\subsection{Herramientas de CAD}
+\paragraph{}
+El término \textit{layout} hace referencia a la implementación física del circuito
+electrónico que se quiere fabricar. El layout consiste en un dibujo con toda
+la información que necesita la empresa fabricante para implementar el circuito
+sobre una oblea de silicio. Dicha información se representa por medio de "capas"
+que se distribuyen en un espacio bidimensional. Cada capa tiene un significado y
+unas normas que cumplir. El trabajo del diseñador de layout es definir, dibujar y
+verificar el layout de los diferentes bloques que componen el chip siguiendo
+unas normas dadas por el fabricante.
 
 \subsection{Capas de layout}
+
+\paragraph{}
+Todo diseño de layout está compuesto de una cierta cantidad de capas, de las cuales
+algunas tienen significado físico directo y otras son capas que usa el software de
+diseño para verificaciones.
+
+\subsection{Herramientas de CAD}
 
 \subsection{Problemas habituales en el diseño de layout}
 
