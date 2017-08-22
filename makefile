@@ -4,13 +4,13 @@ TEX = pdflatex -output-dir=$(OUTPUT_DIR)
 
 .PHONY: all
 
-all: memoria.pdf
+all: main.pdf
 
 preview:
-	evince $(OUTPUT_DIR)/memoria.pdf
+	evince $(OUTPUT_DIR)/main.pdf
 
-memoria.pdf: $(SRC_DIR)/memoria.tex
-	$(TEX) $(SRC_DIR)/memoria.tex
+main.pdf: $(SRC_DIR)/main.tex
+	$(TEX) $(SRC_DIR)/main.tex
 
 clean:
 	rm $(OUTPUT_DIR)/*{aux,log,toc}

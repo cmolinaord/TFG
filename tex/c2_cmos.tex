@@ -1,0 +1,90 @@
+\chapter{Tecnología CMOS}
+
+\section{Introducción}
+
+\paragraph{}
+La tecnología CMOS, que es ampliamente utilizada en el diseño de circuitos integrados
+en la actualidad, se basa en la posibilidad de integrar en un mismo substrato
+semiconductores con ambos dopados (N y P). Con ello podemos implementar transistores
+MOSFET tanto PMOS como NMOS en un mismo diseño.
+
+\paragraph{}
+Es una tecnología que cumple ya los
+50 años, debido a que empezó a ponerse en práctica a mediados de los años 1960.
+Inicialmente se usó principalmente en circuitos digitales, debido a que los
+transistores CMOS solo consumen potencia cuando conmutan, a diferencia de los
+transistores de unión bipolar. Por otra parte, es más sencillo disminuir su tamaño
+y tienen un menor coste de fabricación.
+
+\paragraph{}
+Poco a poco se fue introduciendo la tecnología CMOS en el diseño de circuitos
+analógicos. Los bajos costes y la posibilidad de crear circuitos digitales y
+analógicos en el mismo chip hacían esta opción muy interesante. Pero aún así, los
+transistores bipolares eran mucho menos ruidosos y más rápidos que los MOSFET, por
+lo que la trancisión fue lenta. Con el desarrollo de la tecnología CMOS, la velocidad
+y el ruido de éstos, se ha visto muy mejorada, y actualmente domina el mercado,
+aunque en muchos casos se sigue usando tecnología bipolar.
+% Mirar un poco más esto (Historia y actual uso de las tecnologías del silicio)
+
+
+\section{Proceso de fabricación}
+
+La gran mayoría de los circuitos integrados CMOS estan construidos sobre silicio.
+El silicio (Si), elemento de número atómico 14, es muy abundante en la Tierra, aunque
+no se encuentra de forma pura, sino como óxidos de silicio o silicatos. Entre los
+óxidos de silicio, basados fundamentalmente en la sílice o dióxido de silicio
+(SiO\textsubscript{2}), se encuentran el cuarzo y el sílex, ambos ampliamente extendidos
+en la corteza terrestre. Los silicatos son sales basadas en el ión silicato (SiO\textsubscript{4}),
+y forman parte de minereales como los feldespatos, micas, berilio.
+
+{\huge\textbf{Leer algo en el libro de minerales y rocas en casa!!!!!!!!!}}
+
+A pesar de estar en tan alta abundancia en la Tierra, como se dijo antes, el silicio
+puro no se dá naturalmente, debe ser refinado y cristalizado. El proceso consiste,
+tratado de manera sencilla, en extraer el óxigeno de los compuestos mencionados arriba
+a base de añadir carbono y fundir la mezcla en un horno. Tras éste y otros porcesos
+obtendríamos silicio relativamente puro, pero en forma policristalina (habitualmente
+nos referiremos a éste como polisilicio). Esta forma contiene silicio puro, pero
+cristalizado en pequeños cristales independientes con diferentes planos cristalinos
+creando efectos de borde en el interior del conglomerado, que anulan los efectos
+semiconductores del silicio.
+
+Para construir un único monocristal de silicio se suele usar el llamado proceso
+de Czochralski, en el cual, una varilla de silicio usada como semilla se va
+rotando en un baño de silicio puro fundido a unos 1400ºC de manera que va creciendo
+en diámetro a medida que los átomos se silicio se van depositando en la capa externa.
+
+Lo que queda es un lingote de aproximadamente un metro de largo y pocas decenas
+de centímetro de diámetro de silicio monocristalino siguiendo la esctructura cristalina del
+diamante.
+
+Para ser usado en la industria de semiconductores, estos lingotes se deben laminar
+en obleas de pocos milímetros de espesor sobre las que se impmlementarán los
+circuitos integrados.
+
+\section{Transistores CMOS}
+
+\section{Técnicas avanzadas en tecnología CMOS}
+
+\section{Diseño de layout}
+
+\paragraph{}
+El término \textit{layout} hace referencia a la implementación física del circuito
+electrónico que se quiere fabricar. El layout consiste en un dibujo con toda
+la información que necesita la empresa fabricante para implementar el circuito
+sobre una oblea de silicio. Dicha información se representa por medio de "capas"
+que se distribuyen en un espacio bidimensional. Cada capa tiene un significado y
+unas normas que cumplir. El trabajo del diseñador de layout es definir, dibujar y
+verificar el layout de los diferentes bloques que componen el chip siguiendo
+unas normas dadas por el fabricante.
+
+\subsection{Capas de layout}
+
+\paragraph{}
+Todo diseño de layout está compuesto de una cierta cantidad de capas, de las cuales
+algunas tienen significado físico directo y otras son capas que usa el software de
+diseño para verificaciones.
+
+\subsection{Herramientas de CAD}
+
+\subsection{Problemas habituales en el diseño de layout}
