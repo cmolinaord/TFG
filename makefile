@@ -17,3 +17,6 @@ clean:
 
 clean_all:
 	rm $(OUTPUT_DIR)/*
+
+count_words:
+	pdftotext $(OUTPUT_DIR)/main.pdf - |grep -v "^[0-9]"| grep -v '^$' | wc -w
