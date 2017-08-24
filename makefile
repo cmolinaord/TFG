@@ -2,7 +2,7 @@ OUTPUT_DIR = pdf
 SRC_DIR = tex
 TEX = pdflatex -output-dir=$(OUTPUT_DIR)
 
-.PHONY: all
+.PHONY: all preview clean clean_all count_words
 
 all: main.pdf
 
@@ -19,4 +19,4 @@ clean_all:
 	rm $(OUTPUT_DIR)/*
 
 count_words:
-	pdftotext $(OUTPUT_DIR)/main.pdf - |grep -v "^[0-9]"| grep -v '^$' | wc -w
+	pdftotext "$(OUTPUT_DIR)/main.pdf" - |grep -v "^[0-9]" | wc -w
