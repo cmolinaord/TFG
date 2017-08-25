@@ -17,7 +17,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="nmos.svg">
+   sodipodi:docname="nmos.svg"
+   inkscape:export-filename="/home/cmolina/Documents/TFG/img/nmos.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <title
      id="title7909">Estructura PMOS</title>
   <defs
@@ -343,7 +346,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="413.087"
+     inkscape:cx="324.44611"
      inkscape:cy="758.22604"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
