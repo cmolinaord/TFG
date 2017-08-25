@@ -105,20 +105,14 @@ substrato semicondutor se asienta una capa de Óxido aislante y sobre ella un
 material metálico, que en las tecnologías actuales suele tratarse del polisilicio
 que se mencionó anteriormente.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{img/mosfet.png}
-	\caption{Estructura física de un transistor MOSFET}
-	\label{fig:mosfet}
-\end{figure}
-
 \paragraph{}
 Usando la estructura vertical \textbf{M}etal-\textbf{Ó}xido-\textbf{S}emiconductor,
 se puede construir un transistor creando a ambos lados de ella, zonas de silicio
-altamente dopado donde contactaremos dos terminales, que llamaremos fuente o \textbf{S}
-(\textit{Source}), y "drenador" o \textbf{D} (\textit{Drain}). En la capa superior
-del polisilicio colocaremos el terminal llamado "puerta" o \textbf{G} (\textit{Gate}).
-En la figura \ref{fig:mosfet} podemos ver la estructura física de este dispositivo.
+altamente dopado donde contactaremos dos terminales, que llamaremos \textit{fuente} o \textbf{S}
+(\textit{source}), y \textit{drenador} o \textbf{D} (\textit{drain}). En la capa superior
+del polisilicio colocaremos el terminal llamado \textit{puerta} o \textbf{G} (\textit{gate}).
+En la figura \ref{fig:nmos} podemos ver la estructura física de este dispositivo.
+
 
 \paragraph{}
 Cuando se aplica un voltage en puerta, el óxido crea un
@@ -134,8 +128,53 @@ La dimensión de la puerta en la dirección que une drenador y fuente se llama
 "longitud", notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a ésta
 se llama "anchura", abreviada como \textbf{W}
 
+\paragraph{}
+Como mencionamos al principio, también podemos crear transistores PMOS en estas
+tecnologías. Esto se hace fabricándolos dentro de un pozo N, esto es, una zona
+donde el substrato tipo-p original, se ha dopado de forma que se consigue un substrato
+tipo-n. El transistor embebido en este pozo tiene, entonces, la misma estructura,
+salvo que las difusiones para drenador y fuente son con dopado positivo \textbf{P+}.
+Una representación de este tipo de transistor puede verse en la figura \ref{fig:pmos}.
 
-\section{Técnicas avanzadas en tecnología CMOS}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{img/nmos.png}
+		\caption{NMOS}
+		\label{fig:nmos}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{img/pmos.png}
+		\caption{PMOS}
+		\label{fig:pmos}
+	\end{subfigure}
+	\caption{Representación física de transistores MOS en tecnología CMOS}
+	\label{fig:cmos_transistors}
+\end{figure}
+
+\section{Otros dispositivos en tecnología CMOS}
+
+\paragraph{}
+Usando la misma tecnología es posible disponer en el mismo diseño otros dispositivos
+además de los mencionados transistores.
+
+\subsection{Diodos}
+\paragraph{}
+Una forma de crear diodos en esta tecnología es crear una zona de dopado N (difusión N+)
+junto a una zona con dopado P (difusión P+).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/diodo.png}
+	\caption{Estructura física de un diodo de unión PN}
+	\label{fig:diodo}
+\end{figure}
+
+\subsection{Transistores bipolares}
+\paragraph{}
+También se pueden crear transistores de unión bipolar
 
 \section{Diseño de layout}
 
