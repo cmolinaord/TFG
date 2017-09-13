@@ -1,6 +1,6 @@
 *.log
 *.aux
 *.gz
-*.pdf
+pdf/
 *.toc
 documentacion/
