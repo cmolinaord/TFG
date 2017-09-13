@@ -20,3 +20,7 @@ clean_all:
 
 count_words:
 	pdftotext "$(OUTPUT_DIR)/main.pdf" - |grep -v "^[0-9]" | wc -w
+
+debug_label_chapters:
+	echo "Mostrando capitulos que no tienen ningun /label"
+	cat $(SRC_DIR)/*.tex | grep -E '(\\chapter|\\section)' | grep -v -E '\\label'
