@@ -1,6 +1,6 @@
-\chapter{Tecnología CMOS}
+\chapter{Tecnología CMOS}\label{cap:tecnologia_cmos}
 
-\section{Introducción}
+\section{Introducción}\label{cap:intro_cmos}
 
 \paragraph{}
 La tecnología CMOS, que es ampliamente utilizada en el diseño de circuitos integrados
@@ -27,7 +27,7 @@ aunque en muchos casos se sigue usando tecnología bipolar.
 % Mirar un poco más esto (Historia y actual uso de las tecnologías del silicio)
 
 
-\section{Proceso de fabricación}
+\section{Proceso de fabricación}\label{cap:fabricacion}
 
 \paragraph{}
 La gran mayoría de los circuitos integrados CMOS estan construidos sobre silicio.
@@ -90,7 +90,7 @@ Tras las creación de cada capa, en la mayoría de los casos se realiza un pulid
 fino de la superficie para que la siguiente capa asiente correctamente sobre una
 superficie plana.
 
-\section{Transistores CMOS}
+\section{Transistores CMOS}\label{cap:transistor_cmos}
 \paragraph{}
 El dispositivo fundamental que usa en cualquier circuito integrado CMOS es el
 transistor CMOS, ya que es la base de funcionamiento de circuitos tanto digitales
@@ -154,13 +154,13 @@ Una representación de este tipo de transistor puede verse en la figura \ref{fig
 	\label{fig:cmos_transistors}
 \end{figure}
 
-\section{Otros dispositivos en tecnología CMOS}
+\section{Otros dispositivos en tecnología CMOS}\label{cap:otros_dispositivos}
 
 \paragraph{}
 Usando la misma tecnología es posible disponer en el mismo diseño otros dispositivos
 además de los mencionados transistores.
 
-\subsection{Diodos}
+\subsection{Diodos}\label{cap:diodos}
 \paragraph{}
 Una forma de crear diodos en esta tecnología es crear una zona de dopado N (difusión N+)
 junto a una zona con dopado P (difusión P+).
@@ -172,9 +172,44 @@ junto a una zona con dopado P (difusión P+).
 	\label{fig:diodo}
 \end{figure}
 
-\subsection{Transistores bipolares}
+\subsection{Transistores bipolares}\label{cap:bipolares}
 \paragraph{}
-También se pueden crear transistores de unión bipolar
+También se pueden crear transistores de unión bipolar a partir de la creación
+de dos uniones PN enfrentadas. En el caso de tener substrato P podemos conseguir
+de forma sencilla un transistor tipo \textbf{PNP}, creando un contacto al susbtrato
+P para el Colector (C), un pozo N dónde se crea un contacto a N+ para la base (B), y
+una difusión positiva P+ dentro del pozo N, que funcionará como emisor (E).
+Vease la siguiente imágen:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/pnp.png}
+	\caption{Estructura física de un transistor de unión bipolar PNP}
+	\label{fig:pnp}
+\end{figure}
+
+\paragraph{}
+Crear un transistor NPN en una tecnología de susbtrato P es algo más complicado,
+pero afortunadamente, existe la posibilidad de crear una estructura especial, que
+va a ser muy usada en algunos casos con diferentes finalidades. Se trata del
+llamado \textit{pozo N profundo} (\textit{Deep-N-Well} en inglés), que no
+es más que un pozo N enterrado baja una capa de substrato P, que queda aislada del
+substrato P del resto del chip si las uniones PN que forma con ambos substratos P,
+están polarizadas inversamente.
+
+\paragraph{}
+De ésta forma podemos crear un transistor NPN entre el substrato profundo N,
+colector (C), el substrato P encerrado por el anterior, base (B), y una difusión
+N+ en el centro de este substrato P, que funcionará como emisor (E). Vease la
+siguiente figura:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/npn.png}
+	\caption{Estructura física de un transistor de unión bipolar NPN}
+	\label{fig:npn}
+\end{figure}
+
 
 \section{Diseño de layout}
 
@@ -182,18 +217,78 @@ También se pueden crear transistores de unión bipolar
 El término \textit{layout} hace referencia a la implementación física del circuito
 electrónico que se quiere fabricar. El layout consiste en un dibujo con toda
 la información que necesita la empresa fabricante para implementar el circuito
-sobre una oblea de silicio. Dicha información se representa por medio de "capas"
+sobre la oblea de silicio. Dicha información se representa por medio de "capas"
 que se distribuyen en un espacio bidimensional. Cada capa tiene un significado y
 unas normas que cumplir. El trabajo del diseñador de layout es definir, dibujar y
 verificar el layout de los diferentes bloques que componen el chip siguiendo
-unas normas dadas por el fabricante.
+las normas dadas por el fabricante, y procurando el mejor funcionamiento posible
+del circuito en el menor area que le sea posible.
+
+Como veremos más adelante, el diseño del layout de un circuito afecta o puede afectar
+mucho al funcionamiento final del mismo.
 
 \subsection{Capas de layout}
 
 \paragraph{}
 Todo diseño de layout está compuesto de una cierta cantidad de capas, de las cuales
 algunas tienen significado físico directo y otras son capas que usa el software de
-diseño para verificaciones.
+diseño para verificaciones o para cambiar propiedades de otras capas.
+
+\paragraph{NWELL}
+Esta capa define el pozo N en una tecnología de substrato P. En ella se deben
+situar los transistores PMOS y normalmente se polariza mediante difusiones \textbf{P+}
+a la tensión más alta del circuito (VDD o similar).
+
+\paragraph{WB}
+Esta capa define el pozo enterrado (del inglés \textit{Well Buried}), o también
+llamado pozo profundo (\textit{Deep-N-Well}), y como se introdujo en el capítulo
+\vref{cap:bipolares}
+
+\paragraph{XN}
+Zona de difusión con dopado negativo N+, estará en las difusiones de drenador/fuente
+de los transistores NMOS y en los contactos a substrato de los pozos N.
+
+\paragraph{XP}
+Zona de difusión con dopado positivo P+, de manera complementaria a la XN,
+se usará para las difusiones de drenador/fuente
+de los transistores PMOS y para los contactos al substrato P.
+
+\paragraph{ACTIVE}
+Zona activa
+
+\paragraph{GC}
+Zona donde se creará una capa de polisilicio (\textit{poly}). Si coincide con capa activa,
+este posilicio creará puertas de transistores sobre una fina capa de óxido de silicio.
+En los lugares donde no coincida con area activa se construirá sobre oxido grueso
+de espesor no tan controlado y se usará para rutar líneas o para crear resistencias
+de polisilicio por ejemplo.
+
+\paragraph{CS}
+Contacto. Normalmente son cuadrados que definen contactos entre el Metal 1 y el
+polisilicio (si están sobre capa GC), o al substrato, si están sobre el substrato.
+
+\paragraph{M1} Metal 1. Es el primero de los metales y se suele usar para contactar
+transistores entre sí y con otros dispositivos, o para crear anillos de contactos
+a substrato
+
+\paragraph{M2-M3-...-(M5)} Otros metales. En función de la tecnología, pueden ser
+más o menos capas de metal, por ejemplo 4 ó 6. La última capa de metal puede ser
+diferente, ser más gruesa y menos resistiva. Habitualmente, para seguir un órden
+y ayudar al rutado del circuito, se suele definir un criterio de direcciones
+en función de si la capa de metal es par o impar se dispondrán horizontales o
+verticales
+
+\paragraph{V2-V3-...-(V5)} Vias. Crean conexiones verticales entre un metal y el
+siguiente superior. Se suelen usar varios para cada conexión por evitar una
+posible rotura y para disminuir la resistencia.
+
+
+
+
+
+
+
+
 
 \subsection{Herramientas de CAD}
 
