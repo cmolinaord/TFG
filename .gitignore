@@ -1,6 +1,7 @@
 *.log
 *.aux
 *.gz
-pdf/
+pdf/*.*
+!pdf/*.pdf
 *.toc
 documentacion/
