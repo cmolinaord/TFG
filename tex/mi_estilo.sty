@@ -8,19 +8,20 @@
 \usepackage{setspace}
 \spacing{1.5}
 %\usepackage{hyperref}
-\usepackage{varioref}
 %\usepackage[nokeyprefix]{refstyle}
 \newcommand{\grad}{$^{\circ}$}
 
-\DeclareOption{spanish}
-	{\vref@addto\extrasspanish{%
-		\def\reftextfaceafter {en la página siguiente}%
-		\def\reftextfacebefore{en la página anterior}%
-		\let\reftextafter \reftextfaceafter
-		\let\reftextbefore \reftextfacebefore
-		\def\reftextcurrent {en esta página}%
-		\def\reftextfaraway#1{(pág.~\pageref{#1})}%
-		\def\reftextpagerange#1#2{en las páginas ~\pageref{#1}--\pageref{#2}}%
-		\def\reftextlabelrange#1#2{\ref{#1} to~\ref{#2}}%
-	}}
-\ExecuteOptions{spanish}
+%\usepackage{varioref}
+%\DeclareOption{spanish}
+%	{\vref@addto\extrasspanish{%
+%		\def\reftextfaceafter {en la página siguiente}%
+%		\def\reftextfacebefore{en la página anterior}%
+%		\let\reftextafter \reftextfaceafter
+%		\let\reftextbefore \reftextfacebefore
+%		\def\reftextcurrent {en esta página}%
+%		\def\reftextfaraway#1{(pág.~\pageref{#1})}%
+%		\def\reftextpagerange#1#2{en las páginas ~\pageref{#1}--\pageref{#2}}%
+%		\def\reftextlabelrange#1#2{\ref{#1} to~\ref{#2}}%
+%	}}
+%\ExecuteOptions{spanish}
+%}
