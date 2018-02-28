@@ -1,0 +1,162 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="-1 -2 200 850">
+ <title>Simplified process of fabrication of a CMOS inverter</title>
+ <desc>Simplified process of fabrication of a CMOS inverter on p-type substrate in semiconductor microfabrication, drawn by CMG Lee. Note: Gate, source and drain contacts are not normally in the same plane in real devices, and the diagram is not to scale.</desc>
+ <defs>
+  <g id="substrate">
+   <path d="M 0 0 H 200 V 30 H 0" stroke="#000000" fill="#ffff66"/>
+   <text x="1" y="25" font-weight="bold" font-size="10">p-type substrate</text>
+  </g>
+  <g id="nwell">
+   <path d="M 110 0 Q 110 20 120 20 H 180 Q 190 20 190 0 Z" stroke="#000000" fill="#66ffff"/>
+   <text x="115" y="18" font-weight="bold" font-size="10">n-well</text>
+  </g>
+  <g id="nplus" text-anchor="middle">
+   <path d="M 15 0 Q 15 10 20 10 H 40 Q 45 10 45 0 M 55 0 Q 55 10 60 10 H 80 Q 85 10 85 0" stroke="#000000" fill="#0066ff"/>
+   <text x="30" y="7" font-weight="bold" font-size="10">n+</text>
+   <text x="70" y="7" font-weight="bold" font-size="10">n+</text>
+  </g>
+  <g id="pplus" text-anchor="middle">
+   <path d="M 115 0 Q 115 10 120 10 H 140 Q 145 10 145 0 M 155 0 Q 155 10 160 10 H 180 Q 185 10 185 0" stroke="#000000" fill="#ff6600"/>
+   <text x="130" y="7" font-weight="bold" font-size="10">p+</text>
+   <text x="170" y="7" font-weight="bold" font-size="10">p+</text>
+  </g>
+  <text id="oxide_label" x="1" y="-3" font-weight="bold" font-size="10">ox.</text>
+  <g id="oxide_0">
+   <path d="M 0 -10 H 200 V 0 H 0" stroke="#000000" fill="#cccccc"/>
+   <use xlink:href="#oxide_label"/>
+  </g>
+  <g id="oxide_1">
+   <path d="M 0 -10 H 115 V 0 H 185 V -10 H 200 V 0 H 0" stroke="#000000" fill="#cccccc"/>
+   <use xlink:href="#oxide_label"/>
+  </g>
+  <g id="oxide_2">
+   <path d="M 0 -10 H 15 V 0 H 85 V -10 H 115 V 0 H 185 V -10 H 200 V 0 H 0" stroke="#000000" fill="#cccccc"/>
+   <use xlink:href="#oxide_label"/>
+  </g>
+  <g id="oxide_3">
+   <path d="M 0 -15 H 20 V -5 H 80 V -15 H 120 V -5 H 180 V -15 H 200 V 0 H 0" stroke="#000000" fill="#cccccc"/>
+   <use xlink:href="#oxide_label"/>
+  </g>
+  <g id="oxide_4">
+   <path d="M 0 -15 H 20 V 0 H 40 V -5 H 60 V 0 H 80 V -15 H 120 V 0 H 140 V -5 H 160 V 0 H 180 V -15 H 200 V 0 H 0" stroke="#000000" fill="#cccccc"/>
+   <use xlink:href="#oxide_label"/>
+  </g>
+  <path id="polysi_0" d="M 0 -20 H 25 V -10 H 75 V -20 H 125 V -10 H 175 V -20 H 200 V 0 H 0" stroke="#000000" fill="#00ff00"/>
+  <path id="polysi_1" d="M 40 -5 V -10 H 60 V -5 M 140 -5 V -10 H 160 V -5" stroke="#000000" fill="#00ff00"/>
+  <path id="nitride_0" d="M 0 -20 H 25 V -15 H 75 V -20 H 125 V -15 H 175 V -20 H 200 V 0 H 0" stroke="#000000" fill="#999999"/>
+  <path id="nitride_1" d="M 0 -20 H 25 V 0 H 35 V -15 H 45 V -10 H 55 V -15 H 65 V 0 H 75 V -20 H 125 V 0 H 135 V -15 H 145 V -10 H 155 V -15 H 165 V 0 H 175 V -20 H 200 V 0 H 0" stroke="#000000" fill="#999999"/>
+  <path id="metal_0" d="M 0 -25 H 35 V -20 H 65 V -25 H 135 V -20 H 165 V -25 H 200 V 0 H 0" stroke="#000000" fill="#333333"/>
+  <path id="metal_1" d="M 0 -25 H 35 V 0 H 45 V -20 H 55 V 0 H 65 V -25 H 135 V 0 H 145 V -20 H 155 V 0 H 165 V -25 H 200 V 0 H 0" stroke="#000000" fill="#333333"/>
+
+  <g id="frame01">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#oxide_0"/>
+   <text x="0" y="-15">1. Grow field oxide</text>
+  </g>
+  <g id="frame02">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#oxide_1"/>
+   <text x="0" y="-15">2. Etch oxide for pMOSFET</text>
+  </g>
+  <g id="frame03">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#oxide_1"/>
+   <text x="0" y="-15">3. Diffuse n-well</text>
+  </g>
+  <g id="frame04">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#oxide_2"/>
+   <text x="0" y="-15">4. Etch oxide for nMOSFET</text>
+  </g>
+  <g id="frame05">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#oxide_3"/>
+   <text x="0" y="-20">5. Grow gate oxide</text>
+  </g>
+  <g id="frame06">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#polysi_0"/>
+   <use xlink:href="#oxide_3"/>
+   <text x="0" y="-25">6. Deposit polysilicon</text>
+  </g>
+  <g id="frame07">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#polysi_1"/>
+   <use xlink:href="#oxide_4"/>
+   <text x="0" y="-20">7. Etch polysilicon and oxide</text>
+  </g>
+  <g id="frame08">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#nplus"/>
+   <use xlink:href="#pplus"/>
+   <use xlink:href="#polysi_1"/>
+   <use xlink:href="#oxide_4"/>
+   <text x="0" y="-20">8. Implant sources and drains</text>
+  </g>
+  <g id="frame09">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#nplus"/>
+   <use xlink:href="#pplus"/>
+   <use xlink:href="#nitride_0"/>
+   <use xlink:href="#polysi_1"/>
+   <use xlink:href="#oxide_4"/>
+   <text x="0" y="-25">9. Grow nitride</text>
+  </g>
+  <g id="frame10">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#nplus"/>
+   <use xlink:href="#pplus"/>
+   <use xlink:href="#nitride_1"/>
+   <use xlink:href="#polysi_1"/>
+   <use xlink:href="#oxide_4"/>
+   <text x="0" y="-25">10. Etch nitride</text>
+  </g>
+  <g id="frame11">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#nplus"/>
+   <use xlink:href="#pplus"/>
+   <use xlink:href="#metal_0"/>
+   <use xlink:href="#nitride_1"/>
+   <use xlink:href="#polysi_1"/>
+   <use xlink:href="#oxide_4"/>
+   <text x="0" y="-30">11. Deposit metal</text>
+  </g>
+  <g id="frame12">
+   <use xlink:href="#substrate"/>
+   <use xlink:href="#nwell"/>
+   <use xlink:href="#nplus"/>
+   <use xlink:href="#pplus"/>
+   <use xlink:href="#metal_1"/>
+   <use xlink:href="#nitride_1"/>
+   <use xlink:href="#polysi_1"/>
+   <use xlink:href="#oxide_4"/>
+   <text x="0" y="-30">12. Etch metal</text>
+  </g>
+
+  <clipPath id="clip"><rect x="0" y="0" width="199" height="999"/></clipPath>
+ </defs>
+ <g id="main" font-family="sans-serif" font-size="14" letter-spacing="-1" text-anchor="start" clip-path="url(#clip)">
+  <use xlink:href="#frame01" transform="translate(0,25)"/>
+  <use xlink:href="#frame02" transform="translate(0,90)"/>
+  <use xlink:href="#frame03" transform="translate(0,155)"/>
+  <use xlink:href="#frame04" transform="translate(0,220)"/>
+  <use xlink:href="#frame05" transform="translate(0,290)"/>
+  <use xlink:href="#frame06" transform="translate(0,365)"/>
+  <use xlink:href="#frame07" transform="translate(0,435)"/>
+  <use xlink:href="#frame08" transform="translate(0,505)"/>
+  <use xlink:href="#frame09" transform="translate(0,580)"/>
+  <use xlink:href="#frame10" transform="translate(0,655)"/>
+  <use xlink:href="#frame11" transform="translate(0,735)"/>
+  <use xlink:href="#frame12" transform="translate(0,815)"/>
+ </g>
+</svg>
