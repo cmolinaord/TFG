@@ -3,3 +3,4 @@
 *.gz
 *.toc
 pdf/
+*.tex.bak
