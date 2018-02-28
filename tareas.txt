@@ -1,0 +1,3 @@
+- pasar a color los svg de los dispositivos CMOS
+
+- Definir bien la capa ACTIVE (c2_cmos/capas de layout)
