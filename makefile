@@ -10,6 +10,7 @@ preview:
 	evince $(OUTPUT_DIR)/main.pdf
 
 main.pdf: $(SRC_DIR)/main.tex
+	mkdir -p $(OUTPUT_DIR)
 	$(TEX) $(SRC_DIR)/main.tex
 
 clean:
