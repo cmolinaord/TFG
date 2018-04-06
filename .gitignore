@@ -2,6 +2,5 @@
 *.aux
 *.gz
 *.toc
-pdf/*
-!pdf/tfg.pdf
+pdf/
 *.tex.bak
