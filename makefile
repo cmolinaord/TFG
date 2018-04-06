@@ -1,6 +1,6 @@
 OUTPUT_DIR = pdf
 SRC_DIR = tex
-TEX = pdflatex -output-directory=$(OUTPUT_DIR)
+TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR)
 
 .PHONY: all tfg tfg_prev clean clean_all count_words
 .SILENT: all tfg_prev count_words debug_label_chapters
@@ -17,10 +17,10 @@ tfg: $(OUTPUT_DIR)/tfg.pdf
 
 $(OUTPUT_DIR)/tfg.pdf: $(SRC_DIR)/tfg.tex
 	mkdir -p $(OUTPUT_DIR)
-	latexmk -cd- -pdf -outdir=$(OUTPUT_DIR) $(SRC_DIR)/tfg.tex
+	$(TEX) $(SRC_DIR)/tfg.tex
 
 tfg_prev: tfg
-	evince $(OUTPUT_DIR)/tfg.pdf &
+	$(TEX) $(SRC_DIR)/tfg.tex -pv
 
 # Miscelaneous
 ##############################
