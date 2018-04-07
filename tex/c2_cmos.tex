@@ -291,14 +291,126 @@ complejidad de los diseños son de uso prácticamente obligado.
 \paragraph{} En el caso que nos ocupa, el diseño de circuitos microelectrónicos,
 tiene gran importancia el buen uso y conocimiento de las herramientas por parte de
 diseñadores. En nuestro caso, estas técnicas tienen dos finalidades fundamentales:
-el diseño y la simulación electrica y la implementación física. Entre ellas
-hay muchas diferencias, pero también existe una inevitable relación de dependencia
-entre ellas.
+el diseño y simulación electrica y, por otro lado, la implementación física. Entre ellas
+hay muchas diferencias, pero también existe una inevitable relación de dependencia.
+La implementación física viene definida por el diseño eléctrico, pero a su vez, como
+veremos en muchos casos, éste último condiciona el diseño eléctrico.
 
 \paragraph{} Por otra parte, en microelectronica, debemos tener presente que
 hay una división importante entre dos ámbitos que son bastante diferentes en cuanto
 al flujo de diseño, simulación e implementación física, aunque ambos se basan sobre
 la misma tecnología. Me refiero a la separación entre el ámbito \textbf{analógico}
-y el \textbf{digital}.
+y el \textbf{digital}. En éste trabajo nos centraremos en la parte analógica
+puesto que el canal de lectura es un bloque fundamentalmente analógico.
+
+\paragraph{} Considerando únicamente el layout, estos dos ámbitos, analógico y
+digital son también bastante diferentes. En el caso del layout digital, el flujo
+de trabajo, debido a la gran cantidad de dispositivos que habitulamente son necesarios
+para diseñar cualquier bloque digital, está altamente automatizado por algoritmos
+de distribución y rutado automático (\textit{place and route}). Mediante estas
+herramientas, el diseñador digital de back-end implementa el layout de un bloque
+digital que el diseñador de front-end ha diseñado para que tenga un funcionamiento
+definido.
+
+\paragraph{} Las herramientas de \textit{place and route} consisten en algorítmos
+de posicionamiento de los subbloques digitales que conforman un macrobloque:
+inversores, buffers, puertas lógicas, flip-flops... La herramienta, considerano el
+rutado entre cada bloque, los posiciona y los interconecta de forma que los tiempos
+de propagación de las señales entre ellos estén dentro de unos márgenes aceptables.
+En ocasiones, esta implementación física da problemas por cuestiones de congestión
+de rutado, o por problemas de \textit{timing}, las señales no se propagan con la
+suficiente velocidad y ésto genera fallos en el funcionamiento general de bloque.
+Por todo esto, es muy imporante la simulación post-layout de los bloques digitales.
+Éstas tienen en cuenta los tiempos de respuesta de los sub-bloques digitales, los cuales
+han sido obtenidos previamente mediante simulaciones analógicas, o vienen dados por
+el fabricante de la tecnología en unos ficheros que incluyen tiempos y capacidades de
+sus nodos. Posteriormente la herramienta considera las capacidades de las líneas de
+rutado entre los sub-bloques, mediante un extraído de parásitos. Con todo ésto
+se obtiene una simulación bastante cercana al comportamiento real del bloque una vez
+fabricado, aunque nunca se puede asegurar al cien por cien el correcto funcionamiento
+de todo el chip, lo que genera chips defectuosos en cada oblea fabricada.
+
+
+\paragraph{} Para el caso analógico, el editor de layout consiste en un software
+de diseño gráfico en 2 dimensiones, dónde el diseñador de layout va dibujando los
+dispositivos, y los va interconectando mediante líneas de rutado en los diferentes
+metales que tiene a su disposición. El proceso es mucho más manual que en el caso
+digital, dada la relativa simplicidad de los circuitos analógicos, frente a los
+digitales. Un bloque analógico es abordable por una presona en unos pocos días o
+semanas, ayudándose obviamente, de herramientas de replicación, jerarquizado, celdas
+prediseñadas o parametrizadas. El caso analógico también se realiza de forma más
+manual debido a la naturaleza de las señales analógicas, al ser éstas, en algunos casos,
+más susceptibles a ruidos ,interferencias o acoplos con otras señales.
+
+\paragraph{} En los circuitos puramente digitales, las señales cambian de un
+valor alto (1) a un valor bajo (0), siendo menos importante el valor exácto
+mientras éste se encuentre dentro de los márgenes definidos. Por el contrario,
+en un circuito analógico, hay que tomar cuidado en diseñar un layout que preserve
+los valores de las señales anlógicas y tenga un impacto mínimo en los tiempos de
+propagación o asegurar que dos dispositivos o bloques que deban comportarse idénticamente
+así lo hagan.
 
 \subsection{Problemas habituales en el diseño de layout}
+
+\paragraph{} A continuación se van a exponer y explicar algunos de los problemas habituales que
+afectan a cualquier diseño de layout y que el diseñador debe hacer frente para
+resolver o minimizar mediante su experiencia y la ayuda de las herramientas, de CAD,
+la simulación post-layout y los consejos del diseñador analógico del bloque en cuestión.
+
+\subsubsection{Area}
+
+\paragraph{} La superficie sobre la que se diseña un chip es limitada, y además es
+un factor en contra del beneficio económico que tendrá la fabricación y venta del
+chip. A menor sea el area usada por el chip, más chips caben en cada oblea, que tiene
+un precio constante, definido por el fabricante en función de la tecnología y otros
+parámetros. Por lo tanto, como punto de partida, podemos concluir que \textbf{el área
+es siempre un parámetro a minimizar}, a cualquier nivel de jerarquía.
+
+\paragraph{} Si bien esto es la idea general, también es verdad que no siempre es
+la prioridad, o bien el área no supone un problema porque, por ejemplo, debido a la
+distribución de los bloques, un bloque resulte disponer de area más que suficiente.
+Puede darse el caso incluso de que se prefiera distribuir un circuito de manera más
+holgada pero más uniforme, antes que arrinconar todo el circuito en una zona y dejar
+espacio libre en otras zonas. Ésto, por ejemplo, podría ayudar a mejorar la correlación
+entre dispositivos, o \textit{matching}.
+
+\subsubsection{Mismatch}
+
+\paragraph{} El mismatch es un problema generalizado en muchos campos de
+la ingeniería donde se requiere la construcción de dispositivos que se comporten
+igual, y por problemas de fabricación u otros agentes externos se comportan ligeramente
+diferentes.
+
+\paragraph{} En el caso del layout el mismatch puede deberse al proceso de fabricación,
+que puede crear dispositivos de \textbf{dimensiones ligeramente mayores o menores},
+o otorgar al silicio propiedades ligeramente diferentes, como la \textbf{concentración de
+dopado}, lo que puede hacer que unas zonas sean mas o menos conductivas o que varíen
+parmámetros como la tensión umbral.
+
+\paragraph{} Otra forma de que se creen diferencias entre unos dispositivos y otros
+independientemente de la fabricación, es por ejemplo por la \textbf{distribución irregular
+de la temperatura} cuando el chip esté funcionando. Debido a la ley de Joule, cualquier
+corriente circulando por un material, lo calentará en función de la densidad de corriente
+que lo atraviese. Si en una zona del chip tenemos un bus de alimentación, o un circuito
+que consuma mucha corriente, calentará la zona cercana, creando gradientes de temperatura.
+Si tenemos dos circuitos o dispositivos, uno de ellos cerca y otro lejos de esta zona,
+posiblemente no se comporten igual.
+
+\paragraph{} Para minimizar los efectos de los gradientes, se suelen usar estructuras
+de centroide común, que en teoría, para gradientes lineales, logran el emparejamiento
+perfecto. Por ejemplo, si tenemos un array lineal de dos tipos de dispositivos diferentes,
+cada uno con una multiplicidad de 4, deberíamos usar una estructura ABBA|ABBA, en vez
+de AAAA|BBBB, dónde A y B representan instancias del mismo dispositivo. En el primero
+de los casos, si existe un gradiente lineal en la dirección del array, el efecto de éste
+actuará en positivo en unos y en negativo en otros, de forma que el efecto en A se compensa
+al efecto en B. En cambio en el segundo caso, como promedio, los A sufrirán el efecto
+más o menos, que los B.
+
+\paragraph{} Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
+de forma que se pueden usar estructuras del tipo:
+
+
+
+\paragraph{} Según cada tipo de dispositivo se aplican unas normas recomendadas para
+evitar o minimizar el mismatch, pero en términos generales, se puede decir que la
+siguiente recopilación constituyen buenas prácticas para casi todos los casos:
