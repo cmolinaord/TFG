@@ -9,7 +9,7 @@ cap 2: Tecnología CMOS
 	* Diseño de layout
 		* Entorno CAD (breve)
 		* Breve repaso de capas (metales, vias, poly, activa, NWell, capas logicas)
-		* Problemas habituales en el diseño de layout: (area, electromigración, caida DC, Latch-up, acoplos)
+		* Problemas habituales en el diseño de layout: (area, electromigración, caida DC, Latch-up, acoplos, mismatch)
 cap 3: Diseño electrónico del canal de lectura.
 	* Comparador de rampa (explicacion del funcionamiento)
 	* Arquitectura del ADC

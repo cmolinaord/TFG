@@ -1,17 +1,29 @@
 OUTPUT_DIR = pdf
 SRC_DIR = tex
-TEX = pdflatex -output-dir=$(OUTPUT_DIR)
+TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR)
 
-.PHONY: all preview clean clean_all count_words
+.PHONY: all tfg tfg_prev clean clean_all count_words
+.SILENT: all tfg_prev count_words debug_label_chapters
 
-all: main.pdf
+all:
+	echo "make tfg:                          Compile the TFG from latex to pdf into pdf/ dir"
+	echo "make tfg_prev:                     Show the TFG pdf result"
+	echo "make clean:                        Remove the auxiliary files and logs in the output dir"
+	echo "make clean_all:                    Remove all files in output dir, incluiding .pdf"
 
-preview:
-	evince $(OUTPUT_DIR)/main.pdf
+#tfg
+##############################
+tfg: $(OUTPUT_DIR)/tfg.pdf
 
-main.pdf: $(SRC_DIR)/main.tex
+$(OUTPUT_DIR)/tfg.pdf: $(SRC_DIR)/tfg.tex
 	mkdir -p $(OUTPUT_DIR)
-	$(TEX) $(SRC_DIR)/main.tex
+	$(TEX) $(SRC_DIR)/tfg.tex
+
+tfg_prev: tfg
+	$(TEX) $(SRC_DIR)/tfg.tex -pv
+
+# Miscelaneous
+##############################
 
 clean:
 	rm $(OUTPUT_DIR)/*{aux,log,toc}
@@ -20,7 +32,7 @@ clean_all:
 	rm $(OUTPUT_DIR)/*
 
 count_words:
-	pdftotext "$(OUTPUT_DIR)/main.pdf" - |grep -v "^[0-9]" | wc -w
+	pdftotext "$(OUTPUT_DIR)/tfg.pdf" - |grep -v "^[0-9]" | wc -w
 
 debug_label_chapters:
 	echo "Mostrando capitulos que no tienen ningun /label"

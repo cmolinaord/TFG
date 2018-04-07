@@ -1,0 +1,31 @@
+\documentclass[12pt,a4paper,oneside,titlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{tex/mi_estilo}
+%\usepackage[version=4]{mhchem}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+    linktocpage
+}
+
+\author{Carlos Molina Ordóñez}
+\date{20 de Marzo de 2017}
+\title{Layout de un canal de lectura multi-paralelizado para un sensor de imagen CMOS}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\listoffigures
+
+\input{tex/c1_intro}
+\input{tex/c2_cmos}
+\input{tex/c3_ro_sch}
+\input{tex/c4_ro_layout}
+\input{tex/c5_conclusiones}
+\input{tex/c6_ref}
+
+\end{document}
