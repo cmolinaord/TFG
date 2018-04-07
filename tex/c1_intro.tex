@@ -1,17 +1,18 @@
 \chapter{Introdución}
 
 \paragraph{}
-En este trabajo se va a estudiar todo el proceso de diseño de un bloque fundamental
+En este trabajo se va a estudiar el proceso de diseño de un bloque fundamental
 en cualquier sensor de imagen CMOS, el canal de lectura, que es el encargado
-de convertir la información física recibida (número de fotones captados por los
-píxeles), a un número digital para posteriormente ser procesado y almacenado digitalmente.
+de convertir la información física recibida, que en esencia es el número de fotones
+captados cada pixel, a una señal electrónica analógica que posteriormente será digitalizada,
+procesada y, eventualmente, almacenada.
 
 \paragraph{}
-El estudio se va a centrar principalmente en el layout de un canal
+El estudio se va a centrar principalmente en el layout de este canal de
 lectura y en todos los aspectos a tener en cuenta a la hora de abordar esta tarea.
 El layout de un sistema microelectrónico consiste en su implementación física
-sobre una oblea de algún material semiconductor, habitualmente silicio. El
-diseño de layout está sujeto a una serie de normas y problemas que iremos abordando
+sobre una oblea de algún material semiconductor, típicamente silicio cristalino. El
+diseño de layout está sujeto a una serie de normas y problemas que iremos tratando
 con mayor detenimiento a lo largo de la exposición.
 
 \paragraph{}
@@ -27,7 +28,7 @@ centrandonos en última instancia en los que afectan directamente a un canal de 
 \section{Sensores de imagen}
 
 \paragraph{}
-Un sensor de imagen o cámara fotográfica es, originalemente, un sistema que capta
+Un sensor de imagen o cámara fotográfica es, en esencia, un sistema que capta
 una imagen instantánea de una escena mediante la luz que emiten los objetos que
 se encuentran en su campo de visión y que llegan a una pantalla donde se almacena
 la información que proyecta ese rayo de luz, ya sea por un proceso químico
