@@ -2,8 +2,8 @@ OUTPUT_DIR = pdf
 SRC_DIR = tex
 TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR)
 
-.PHONY: all tfg tfg_prev clean clean_all count_words
-.SILENT: all tfg_prev count_words debug_label_chapters
+.PHONY: all tfg tfg_prev clean clean_all count_words debug_label_chapters debug_warnings
+.SILENT: all tfg_prev count_words debug_label_chapters debug_warnings
 
 all:
 	echo "make tfg:                          Compile the TFG from latex to pdf into pdf/ dir"
@@ -37,3 +37,8 @@ count_words:
 debug_label_chapters:
 	echo "Mostrando capitulos que no tienen ningun /label"
 	cat $(SRC_DIR)/*.tex | grep -E '(\\chapter|\\section)' | grep -v -E '\\label'
+
+debug_warnings:
+	echo "Mostrando lineas con WARNINGS:"
+	grep -n -A1 "^%WARNING" tex/* | grep -v "WARNING" | sed 's/-%/: /'
+	echo " "
