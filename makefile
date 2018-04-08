@@ -36,9 +36,9 @@ count_words:
 
 debug_label_chapters:
 	echo "Mostrando capitulos que no tienen ningun /label"
-	cat $(SRC_DIR)/*.tex | grep -E '(\\chapter|\\section)' | grep -v -E '\\label'
+	grep -n -E '(\\chapter|\\(sub)*section)' $(SRC_DIR)/*.tex | grep -v -E '\\label' | sed 's/:/:\t/g'
 
 debug_warnings:
 	echo "Mostrando lineas con WARNINGS:"
-	grep -n -A1 "^%WARNING" tex/* | grep -v "WARNING" | sed 's/-%/: /'
+	grep -n -A1 "^%WARNING" $(SRC_DIR)/*.tex | grep -v "WARNING" | sed 's/-%/: /'
 	echo " "
