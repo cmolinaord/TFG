@@ -38,7 +38,8 @@ no se encuentra de forma pura, sino como óxidos de silicio o silicatos. Entre l
 en la corteza terrestre. Los silicatos son sales basadas en el ión silicato (SiO\textsubscript{4}),
 y forman parte de minereales como los feldespatos, micas, berilio.
 
-{\huge\textbf{Leer algo en el libro de minerales y rocas en casa!!!!!!!!!}}
+%WARNING
+%Leer algo en el libro de minerales y rocas en casa
 
 \paragraph{}
 A pesar de estar en tan alta abundancia en la Tierra, como se dijo antes, el silicio
@@ -160,10 +161,21 @@ Una representación de este tipo de transistor puede verse en la figura \ref{fig
 Usando la misma tecnología es posible disponer en el mismo diseño otros dispositivos
 además de los mencionados transistores.
 
+\subsection{Resistencias}
+\paragraph{}
+%WARNING
+%Completar breve descripcion resistencias (poly, metal, well)
+
+\subsection{Condensadores}
+\paragraph{}
+%WARNING
+%Completar breve descripcion condensadores (poly, metal, MOS)
+
 \subsection{Diodos}\label{cap:diodos}
 \paragraph{}
 Una forma de crear diodos en esta tecnología es crear una zona de dopado N (difusión N+)
-junto a una zona con dopado P (difusión P+).
+junto a una zona con dopado P (difusión P+). Es habitual dibujar uno de los dos terminales
+en forma de anillo rodeando al otro terminal. Fig \ref{fig:diodo}:
 
 \begin{figure}[h]
 	\centering
@@ -179,7 +191,7 @@ de dos uniones PN enfrentadas. En el caso de tener substrato P podemos conseguir
 de forma sencilla un transistor tipo \textbf{PNP}, creando un contacto al susbtrato
 P para el Colector (C), un pozo N dónde se crea un contacto a N+ para la base (B), y
 una difusión positiva P+ dentro del pozo N, que funcionará como emisor (E).
-Vease la siguiente imágen:
+Vease la figura \ref{fig:pnp}:
 
 \begin{figure}[h]
 	\centering
@@ -201,7 +213,7 @@ están polarizadas inversamente.
 De ésta forma podemos crear un transistor NPN entre el substrato profundo N,
 colector (C), el substrato P encerrado por el anterior, base (B), y una difusión
 N+ en el centro de este substrato P, que funcionará como emisor (E). Vease la
-siguiente figura:
+figura \ref{fig:npn}:
 
 \begin{figure}[h]
 	\centering
@@ -210,8 +222,10 @@ siguiente figura:
 	\label{fig:npn}
 \end{figure}
 
+%WARNING
+%Aniadir si es posible algun otro dispositivo en tecnologia CMOS
 
-\section{Diseño de layout}
+\section{Diseño de layout}\label{cap:}
 
 \paragraph{}
 El término \textit{layout} hace referencia a la implementación física del circuito
@@ -255,6 +269,8 @@ de los transistores PMOS y para los contactos al substrato P.
 
 \paragraph{ACTIVE}
 Zona activa
+%WARNING
+%Completar (capa activa abre el oxido de campo)
 
 \paragraph{GC}
 Zona donde se creará una capa de polisilicio (\textit{poly}). Si coincide con capa activa,
