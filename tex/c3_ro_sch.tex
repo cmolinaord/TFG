@@ -1,10 +1,73 @@
-\chapter{Diseño electrónico de un canal de lectura}
+\chapter{Diseño electrónico de un canal de lectura}\label{cap:ro_sch}
 
-\section{Estructura general}
+\paragraph{}
+El canal de lectura es el circuito que lee la información almacenada en los píxeles
+tras el tiempo de exposición.
+En la arquitectura más habitual, y la que vamos a tratar en este estudio, los
+píxeles se leen por columnas, entendiéndose que el chip tiene una dirección
+\textit{vertical} y otra \textit{horizontal}. Siguiendo ese criterio, el canal de lectura se
+sitúa debajo del array de píxeles de forma que cada columna del canal quede alineada
+con cada columna del canal.
+
+\paragraph{}
+Idealmente podríamos un canal por columna, y meter en ese espacio todo el circuito
+para la columna. Pero, en algunos casos, debido al pequeño tamaño de los píxeles
+--- unos 5, 8 ó 10\(\mu m\) --- resulta complicado o incluso imposible diseñar el
+layout de dicha circuitería en ese reducido espacio horizontal. De ahora en adelante
+usaremos la palabra inglesa ''\textit{pitch}'' para referirnos al espaciado con el
+que se repite una estructura periódica como el canal de lectura o el array.
+
+\paragraph{}
+Por esta razón, es una práctica común usar el \textit{pitch} de varios píxeles, por
+ejemplo 2 ó 4, y así tener más espacio para diseñar el layout del circuito. Por contra,
+debemos apilar estos 2 ó 4 canales en filas, lo que veremos que nos trae algunos
+problemas a la hora de diseñar el layout.
+
+\section{Estructura general}\label{cap:ro_sch_estructura}
+
+\paragraph{}
+El canal de lectura es un circuito analógico que va a convertir el voltage
+dado por el pixel tras haber sido expuesto a la luz durante un tiempo y
+convertirlo en un valor analógico bien definido entre unos límites que van a
+significar \textit{blanco} y \textit{negro}, con una resolución definida.
+
+\paragraph{}
+Por tanto, el canal de lectura es principalmente un ADC (en inglés, \textbf{A}nalog
+to \textbf{D}igital \textbf{C}onverter, o conversor analógico-digital).
+Una arquitectura usada habitualmente es el convertidor de rampa.
+%WARNING
+%Ver ventajas del convertidor  de rampa
+Éste, para la conversión usa un generador de una rampa de voltage que se usa para
+comparar contra el valor dado por el píxel. Ćuando ambos valores coinciden,
+la salida del comparador cambia de estado mediante un flanco de subida o bajada.
+De ésta forma la conversión de un valor de tensión se traduce en la detección temporal
+de un flanco.
+
+\paragraph{}
+De manera simultánea a la rampa analógica se lanza una rampa digital que va contando
+valores desde 0 hasta un número que viene determinado por la resolución, y que va a
+evolcionar a la misma velocidad que la analógica. Posteriormente, un circuito digital
+detectará el flanco y parará el reloj de la cuenta digital, obteniéndose de esta forma
+un valor digital para el valor analógico leído.
+
+\section{Operación de lectura}\label{cap:ro_sch_operacion}
+
+\paragraph{}
+Para abordar el diseño de un canal de lectura debemos entender como se realiza la
+operación de lectura de los píxeles.
+%WARNING
+%Meter el equematico de un pixel 5T estandar
+
+%WARNING
+%Meter el diagrama de tiempo de una operación de lectura
+
+
 
 \section{Arquitectura del comparador de rampa}
 
 \section{ADC}
+
+
 
 \section{Rampa analógica}
 
