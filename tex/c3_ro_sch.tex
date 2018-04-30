@@ -26,7 +26,7 @@ problemas a la hora de diseñar el layout.
 \section{Estructura general}\label{cap:ro_sch_estructura}
 
 \paragraph{}
-El canal de lectura es un circuito analógico que va a convertir el voltage
+El canal de lectura es un circuito analógico que va a convertir el voltaje
 dado por el pixel tras haber sido expuesto a la luz durante un tiempo y
 convertirlo en un valor analógico bien definido entre unos límites que van a
 significar \textit{blanco} y \textit{negro}, con una resolución definida.
@@ -37,7 +37,7 @@ to \textbf{D}igital \textbf{C}onverter, o conversor analógico-digital).
 Una arquitectura usada habitualmente es el convertidor de rampa.
 %WARNING
 %Ver ventajas del convertidor  de rampa
-Éste, para la conversión usa un generador de una rampa de voltage que se usa para
+Éste, para la conversión usa un generador de una rampa de voltaje que se usa para
 comparar contra el valor dado por el píxel. Ćuando ambos valores coinciden,
 la salida del comparador cambia de estado mediante un flanco de subida o bajada.
 De ésta forma la conversión de un valor de tensión se traduce en la detección temporal
@@ -46,7 +46,7 @@ de un flanco.
 \paragraph{}
 De manera simultánea a la rampa analógica se lanza una rampa digital que va contando
 valores desde 0 hasta un número que viene determinado por la resolución, y que va a
-evolcionar a la misma velocidad que la analógica. Posteriormente, un circuito digital
+evolucionar a la misma velocidad que la analógica. Posteriormente, un circuito digital
 detectará el flanco y parará el reloj de la cuenta digital, obteniéndose de esta forma
 un valor digital para el valor analógico leído.
 
