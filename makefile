@@ -34,6 +34,9 @@ clean_all:
 count_words:
 	pdftotext "$(OUTPUT_DIR)/tfg.pdf" - |grep -v "^[0-9]" | wc -w
 
+update_bibtex:
+	cp ~/.mendeley/TFG.bib doc/
+
 debug_label_chapters:
 	echo "Mostrando capitulos que no tienen ningun /label"
 	grep -n -E '(\\chapter|\\(sub)*section)' $(SRC_DIR)/*.tex | grep -v -E '\\label' | sed 's/:/:\t/g'
