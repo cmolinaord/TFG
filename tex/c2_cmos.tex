@@ -30,7 +30,7 @@ aunque en muchos casos se sigue usando tecnología bipolar.
 \section{Proceso de fabricación}\label{cap:fabricacion}
 
 \paragraph{}
-La gran mayoría de los circuitos integrados CMOS estan construidos sobre silicio.
+La gran mayoría de los circuitos integrados CMOS están construidos sobre silicio.
 El silicio (Si), elemento de número atómico 14, es muy abundante en la Tierra, aunque
 no se encuentra de forma pura, sino como óxidos de silicio o silicatos. Entre los
 óxidos de silicio, basados fundamentalmente en la sílice o dióxido de silicio
@@ -47,16 +47,20 @@ puro no se dá naturalmente, debe ser refinado y cristalizado. El proceso consis
 tratado de manera sencilla, en extraer el óxigeno de los compuestos mencionados arriba
 a base de añadir carbono y fundir la mezcla en un horno. Tras éste y otros procesos
 obtendríamos silicio relativamente puro, pero en forma policristalina (habitualmente
-nos referiremos a éste como polisilicio). Esta forma contiene silicio puro, pero
+nos referiremos a éste como polisilicio o \textit{poly} por su abreviatura inglesa).
+Esta forma contiene silicio puro, pero
 cristalizado en pequeños cristales independientes con diferentes planos cristalinos
-creando efectos de borde en el interior del conglomerado, que anulan los efectos
-semiconductores del silicio.
+creando efectos de borde en el interior del conglomerado, que anulan las cualidades
+semiconductoras del silicio.
 
 \paragraph{}
 Para construir un único monocristal de silicio se suele usar el llamado proceso
 de Czochralski, en el cual, una varilla de silicio usada como semilla se va
 rotando en un baño de silicio puro fundido a unos 1400\grad C de manera que va creciendo
 en diámetro a medida que los átomos se silicio se van depositando en la capa externa.
+Esta técnica fue introducida por Jan Czochralski en 1915
+%WARNING
+%Decir algo mas
 
 \paragraph{}
 Lo que queda es un lingote de aproximadamente un metro de largo y pocas decenas
@@ -90,6 +94,10 @@ aluminio o cobre, o algún tipo de dopado para crear las difusiones por ejemplo.
 Tras las creación de cada capa, en la mayoría de los casos se realiza un pulido
 fino de la superficie para que la siguiente capa asiente correctamente sobre una
 superficie plana.
+
+\paragraph{}
+Todo el proceso de fabricación se puede consultar con más detalle en la bibliografía,
+en el libro de Hastings \cite{Hastings2001:fabrication}.
 
 \section{Transistores CMOS}\label{cap:transistor_cmos}
 \paragraph{}
@@ -163,8 +171,25 @@ además de los mencionados transistores.
 
 \subsection{Resistencias}
 \paragraph{}
-%WARNING
-%Completar breve descripcion resistencias (poly, metal, well)
+En todo diseño microelectrónico resulta prácticamente indispensable en algún
+momento el uso de algún elemento resistor pasivo. Estos dispositivos podemos
+crearlos usando la resistividad que ofrecen algunos de los materiales que se emplean
+en el diseño. En ocasiones puede usarse el sustrato de silicio, o un pozo NWELL, pero
+una de las técnicas más habituales es usar el silicio policristalino o \textbf{polisilicio}.
+
+\begin{figure}[h]
+	\centering
+	\includesvg[width=0.6\textwidth]{svg/poly_res.svg}
+	\caption{Estructura física de una resistencia de polisilicio}
+	\label{fig:diodo}
+\end{figure}
+
+\paragraph{}
+Para construir una resistencia de polisilicio se crea una tira de polisilicio
+que se deposita sobre una capa de oxido de campo, conectando sus dos extremos con
+un contacto a la primera capa de metal. Cómo vemos, esto se parece a la capa de
+polisilicio que se usa para construir un transistor CMOS. Pero existe una diferencia
+fundamental. El óxido sobre el que se deposita el poly.
 
 \subsection{Condensadores}
 \paragraph{}
@@ -175,7 +200,7 @@ además de los mencionados transistores.
 \paragraph{}
 Una forma de crear diodos en esta tecnología es crear una zona de dopado N (difusión N+)
 junto a una zona con dopado P (difusión P+). Es habitual dibujar uno de los dos terminales
-en forma de anillo rodeando al otro terminal. Fig \ref{fig:diodo}:
+			en forma de anillo rodeando al otro terminal. Fig \ref{fig:diodo}:
 
 \begin{figure}[h]
 	\centering
@@ -274,7 +299,7 @@ Zona activa
 
 \paragraph{GC}
 Zona donde se creará una capa de polisilicio (\textit{poly}). Si coincide con capa activa,
-este posilicio creará puertas de transistores sobre una fina capa de óxido de silicio.
+este polisilicio creará puertas de transistores sobre una fina capa de óxido de silicio.
 En los lugares donde no coincida con area activa se construirá sobre oxido grueso
 de espesor no tan controlado y se usará para rutar líneas o para crear resistencias
 de polisilicio por ejemplo.
@@ -283,28 +308,33 @@ de polisilicio por ejemplo.
 Contacto. Normalmente son cuadrados que definen contactos entre el Metal 1 y el
 polisilicio (si están sobre capa GC), o al substrato, si están sobre el substrato.
 
-\paragraph{M1} Metal 1. Es el primero de los metales y se suele usar para contactar
+\paragraph{M1}
+Metal 1. Es el primero de los metales y se suele usar para contactar
 transistores entre sí y con otros dispositivos, o para crear anillos de contactos
 a substrato
 
-\paragraph{M2-M3-...-(M5)} Otros metales. En función de la tecnología, pueden ser
+\paragraph{M2-M3-...-(M5)}
+Otros metales. En función de la tecnología, pueden ser
 más o menos capas de metal, por ejemplo 4 ó 6. La última capa de metal puede ser
 diferente, ser más gruesa y menos resistiva. Habitualmente, para seguir un órden
 y ayudar al rutado del circuito, se suele definir un criterio de direcciones
 en función de si la capa de metal es par o impar se dispondrán horizontales o
 verticales
 
-\paragraph{V2-V3-...-(V5)} Vias. Crean conexiones verticales entre un metal y el
+\paragraph{V2-V3-...-(V5)}
+Vias. Crean conexiones verticales entre un metal y el
 siguiente superior. Se suelen usar varios para cada conexión por evitar una
 posible rotura y para disminuir la resistencia.
 
 \subsection{Herramientas de CAD}
 
-\paragraph{} Las herramientas de CAD (\textit{Computer Asisted Design}) se usan
+\paragraph{}
+Las herramientas de CAD (\textit{Computer Asisted Design}) se usan
 en muchos campos de la ingeniería o la arquitectura, y actualmente, debido a la alta
 complejidad de los diseños son de uso prácticamente obligado.
 
-\paragraph{} En el caso que nos ocupa, el diseño de circuitos microelectrónicos,
+\paragraph{}
+En el caso que nos ocupa, el diseño de circuitos microelectrónicos,
 tiene gran importancia el buen uso y conocimiento de las herramientas por parte de
 diseñadores. En nuestro caso, estas técnicas tienen dos finalidades fundamentales:
 el diseño y simulación electrica y, por otro lado, la implementación física. Entre ellas
@@ -312,14 +342,16 @@ hay muchas diferencias, pero también existe una inevitable relación de depende
 La implementación física viene definida por el diseño eléctrico, pero a su vez, como
 veremos en muchos casos, éste último condiciona el diseño eléctrico.
 
-\paragraph{} Por otra parte, en microelectronica, debemos tener presente que
+\paragraph{}
+Por otra parte, en microelectronica, debemos tener presente que
 hay una división importante entre dos ámbitos que son bastante diferentes en cuanto
 al flujo de diseño, simulación e implementación física, aunque ambos se basan sobre
 la misma tecnología. Me refiero a la separación entre el ámbito \textbf{analógico}
 y el \textbf{digital}. En éste trabajo nos centraremos en la parte analógica
 puesto que el canal de lectura es un bloque fundamentalmente analógico.
 
-\paragraph{} Considerando únicamente el layout, estos dos ámbitos, analógico y
+\paragraph{}
+Considerando únicamente el layout, estos dos ámbitos, analógico y
 digital son también bastante diferentes. En el caso del layout digital, el flujo
 de trabajo, debido a la gran cantidad de dispositivos que habitulamente son necesarios
 para diseñar cualquier bloque digital, está altamente automatizado por algoritmos
@@ -328,7 +360,8 @@ herramientas, el diseñador digital de back-end implementa el layout de un bloqu
 digital que el diseñador de front-end ha diseñado para que tenga un funcionamiento
 definido.
 
-\paragraph{} Las herramientas de \textit{place and route} consisten en algorítmos
+\paragraph{}
+Las herramientas de \textit{place and route} consisten en algorítmos
 de posicionamiento de los subbloques digitales que conforman un macrobloque:
 inversores, buffers, puertas lógicas, flip-flops... La herramienta, considerano el
 rutado entre cada bloque, los posiciona y los interconecta de forma que los tiempos
@@ -347,7 +380,8 @@ fabricado, aunque nunca se puede asegurar al cien por cien el correcto funcionam
 de todo el chip, lo que genera chips defectuosos en cada oblea fabricada.
 
 
-\paragraph{} Para el caso analógico, el editor de layout consiste en un software
+\paragraph{}
+Para el caso analógico, el editor de layout consiste en un software
 de diseño gráfico en 2 dimensiones, dónde el diseñador de layout va dibujando los
 dispositivos, y los va interconectando mediante líneas de rutado en los diferentes
 metales que tiene a su disposición. El proceso es mucho más manual que en el caso
@@ -358,7 +392,8 @@ prediseñadas o parametrizadas. El caso analógico también se realiza de forma 
 manual debido a la naturaleza de las señales analógicas, al ser éstas, en algunos casos,
 más susceptibles a ruidos ,interferencias o acoplos con otras señales.
 
-\paragraph{} En los circuitos puramente digitales, las señales cambian de un
+\paragraph{}
+En los circuitos puramente digitales, las señales cambian de un
 valor alto (1) a un valor bajo (0), siendo menos importante el valor exácto
 mientras éste se encuentre dentro de los márgenes definidos. Por el contrario,
 en un circuito analógico, hay que tomar cuidado en diseñar un layout que preserve
@@ -368,21 +403,24 @@ así lo hagan.
 
 \subsection{Problemas habituales en el diseño de layout}
 
-\paragraph{} A continuación se van a exponer y explicar algunos de los problemas habituales que
+\paragraph{}
+A continuación se van a exponer y explicar algunos de los problemas habituales que
 afectan a cualquier diseño de layout y que el diseñador debe hacer frente para
 resolver o minimizar mediante su experiencia y la ayuda de las herramientas, de CAD,
 la simulación post-layout y los consejos del diseñador analógico del bloque en cuestión.
 
 \subsubsection{Area}
 
-\paragraph{} La superficie sobre la que se diseña un chip es limitada, y además es
+\paragraph{}
+La superficie sobre la que se diseña un chip es limitada, y además es
 un factor en contra del beneficio económico que tendrá la fabricación y venta del
 chip. A menor sea el area usada por el chip, más chips caben en cada oblea, que tiene
 un precio constante, definido por el fabricante en función de la tecnología y otros
 parámetros. Por lo tanto, como punto de partida, podemos concluir que \textbf{el área
 es siempre un parámetro a minimizar}, a cualquier nivel de jerarquía.
 
-\paragraph{} Si bien esto es la idea general, también es verdad que no siempre es
+\paragraph{}
+Si bien esto es la idea general, también es verdad que no siempre es
 la prioridad, o bien el área no supone un problema porque, por ejemplo, debido a la
 distribución de los bloques, un bloque resulte disponer de area más que suficiente.
 Puede darse el caso incluso de que se prefiera distribuir un circuito de manera más
@@ -392,18 +430,21 @@ entre dispositivos, o \textit{matching}.
 
 \subsubsection{Mismatch}
 
-\paragraph{} El mismatch es un problema generalizado en muchos campos de
+\paragraph{}
+El mismatch es un problema generalizado en muchos campos de
 la ingeniería donde se requiere la construcción de dispositivos que se comporten
 igual, y por problemas de fabricación u otros agentes externos se comportan ligeramente
 diferentes.
 
-\paragraph{} En el caso del layout el mismatch puede deberse al proceso de fabricación,
+\paragraph{}
+En el caso del layout el mismatch puede deberse al proceso de fabricación,
 que puede crear dispositivos de \textbf{dimensiones ligeramente mayores o menores},
 o otorgar al silicio propiedades ligeramente diferentes, como la \textbf{concentración de
 dopado}, lo que puede hacer que unas zonas sean mas o menos conductivas o que varíen
 parmámetros como la tensión umbral.
 
-\paragraph{} Otra forma de que se creen diferencias entre unos dispositivos y otros
+\paragraph{}
+Otra forma de que se creen diferencias entre unos dispositivos y otros
 independientemente de la fabricación, es por ejemplo por la \textbf{distribución irregular
 de la temperatura} cuando el chip esté funcionando. Debido a la ley de Joule, cualquier
 corriente circulando por un material, lo calentará en función de la densidad de corriente
@@ -412,7 +453,8 @@ que consuma mucha corriente, calentará la zona cercana, creando gradientes de t
 Si tenemos dos circuitos o dispositivos, uno de ellos cerca y otro lejos de esta zona,
 posiblemente no se comporten igual.
 
-\paragraph{} Para minimizar los efectos de los gradientes, se suelen usar estructuras
+\paragraph{}
+Para minimizar los efectos de los gradientes, se suelen usar estructuras
 de centroide común, que en teoría, para gradientes lineales, logran el emparejamiento
 perfecto. Por ejemplo, si tenemos un array lineal de dos tipos de dispositivos diferentes,
 cada uno con una multiplicidad de 4, deberíamos usar una estructura ABBA|ABBA, en vez
@@ -422,11 +464,18 @@ actuará en positivo en unos y en negativo en otros, de forma que el efecto en A
 al efecto en B. En cambio en el segundo caso, como promedio, los A sufrirán el efecto
 más o menos, que los B.
 
-\paragraph{} Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
+\paragraph{}
+Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
 de forma que se pueden usar estructuras del tipo:
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/npn.png}
+	\caption{Estructura física de un transistor de unión bipolar NPN}
+	\label{fig:npn}
+\end{figure}
 
-
-\paragraph{} Según cada tipo de dispositivo se aplican unas normas recomendadas para
+\paragraph{}
+Según cada tipo de dispositivo se aplican unas normas recomendadas para
 evitar o minimizar el mismatch, pero en términos generales, se puede decir que la
 siguiente recopilación constituyen buenas prácticas para casi todos los casos:
