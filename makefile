@@ -1,6 +1,6 @@
 OUTPUT_DIR = pdf
 SRC_DIR = tex
-TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR)
+TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR) --shell-escape
 
 .PHONY: all tfg tfg_prev clean clean_all count_words debug_label_chapters debug_warnings
 .SILENT: all tfg_prev count_words debug_label_chapters debug_warnings
