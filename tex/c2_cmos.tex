@@ -24,6 +24,7 @@ transistores bipolares eran mucho menos ruidosos y más rápidos que los MOSFET,
 lo que la trancisión fue lenta. Con el desarrollo de la tecnología CMOS, la velocidad
 y el ruido de éstos, se ha visto muy mejorada, y actualmente domina el mercado,
 aunque en muchos casos se sigue usando tecnología bipolar.
+%WARNING
 % Mirar un poco más esto (Historia y actual uso de las tecnologías del silicio)
 
 
@@ -76,9 +77,9 @@ superficie de la oblea que luego será cortada para separar cada "dado".
 \paragraph{}
 Con estos procesos tendríamos tan solo el substrato de silicio sobre el que
 se debe construir el circuito, los transistores y otros dispositivos que se
-necesiten. Esto se hace mediante fotolitografía, una técnica que crea permite
-construir cada capa mediante la projección de una luz ultravioleta a través de
-una máscara que permite o no pasar la luz según el layout diseñado.
+necesiten. Esto se hace mediante fotolitografía, una técnica que permite
+construir cada capa mediante la projección de luz ultravioleta a través de
+unas máscaras que permiten o no pasar la luz según el layout diseñado.
 
 \paragraph{}
 Para empezar se recubre toda la oblea con un material fotosensible a la luz UV,
@@ -110,9 +111,11 @@ referencias de tensión, bandgap).
 \paragraph{}
 El transistor CMOS es un dispositivo electrónico de 3 terminales que se basa
 en una estructura MOS (Metal-Óxido-Semiconductor). En esta estructura, sobre un
-substrato semiconductor se asienta una capa de Óxido aislante y sobre ella un
+substrato semiconductor se asienta una capa de \textit{óxido} aislante y sobre ella un
 material metálico, que en las tecnologías actuales suele tratarse del polisilicio
-que se mencionó anteriormente.
+que se mencionó anteriormente. La capa de óxido fino, tiene un espesor muy pequeño,
+y debe controlarse mucho en la fabricación, ya que variaciones en su grosor, daría
+lugar a modificaciones de la capacidad de puerta.
 
 \paragraph{}
 Usando la estructura vertical \textbf{M}etal-\textbf{Ó}xido-\textbf{S}emiconductor,
@@ -122,9 +125,8 @@ altamente dopado donde contactaremos dos terminales, que llamaremos \textit{fuen
 del polisilicio colocaremos el terminal llamado \textit{puerta} o \textbf{G} (\textit{gate}).
 En la figura \ref{fig:nmos} podemos ver la estructura física de este dispositivo.
 
-
 \paragraph{}
-Cuando se aplica un voltage en puerta, el óxido crea un
+Cuando se aplica un voltage en puerta, el óxido fino crea un
 condensador entre el polisilicio y el substrato semiconductor. De esta forma,
 electrones presentes en substrato son atraídos hacia la superficie del substrato,
 lo que facilita la creación de un canal, que permitirá la circulación de una
@@ -134,12 +136,12 @@ quedan eléctricamente aislados.
 
 \paragraph{}
 La dimensión de la puerta en la dirección que une drenador y fuente se llama
-"longitud", notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a ésta
-se llama "anchura", abreviada como \textbf{W}
+''longitud'', notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a ésta
+se llama ''anchura'', abreviada como \textbf{W}
 
 \paragraph{}
 Como mencionamos al principio, también podemos crear transistores PMOS en estas
-tecnologías. Esto se hace fabricándolos dentro de un pozo N, esto es, una zona
+tecnologías. Se hace fabricándolos dentro de un pozo N, esto es, una zona
 donde el substrato tipo-p original, se ha dopado de forma que se consigue un substrato
 tipo-n. El transistor embebido en este pozo tiene, entonces, la misma estructura,
 salvo que las difusiones para drenador y fuente son con dopado positivo \textbf{P+}.
@@ -148,14 +150,14 @@ Una representación de este tipo de transistor puede verse en la figura \ref{fig
 \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
-		\includegraphics[width=\textwidth]{img/nmos.png}
+		\includesvg[width=\textwidth]{svg/nmos.svg}
 		\caption{NMOS}
 		\label{fig:nmos}
 	\end{subfigure}
 	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
 	%(or a blank line to force the subfigure onto a new line)
 	\begin{subfigure}[b]{0.45\textwidth}
-		\includegraphics[width=\textwidth]{img/pmos.png}
+		\includesvg[width=\textwidth]{svg/pmos.svg}
 		\caption{PMOS}
 		\label{fig:pmos}
 	\end{subfigure}
@@ -189,12 +191,39 @@ Para construir una resistencia de polisilicio se crea una tira de polisilicio
 que se deposita sobre una capa de oxido de campo, conectando sus dos extremos con
 un contacto a la primera capa de metal. Cómo vemos, esto se parece a la capa de
 polisilicio que se usa para construir un transistor CMOS. Pero existe una diferencia
-fundamental. El óxido sobre el que se deposita el poly.
+fundamental. El óxido sobre el que se deposita el poly, en este caso, es \textit{oxido de
+campo}, más grueso y menos preciso que el \textit{óxido fino} de los transistores.
 
-\subsection{Condensadores}
+\subsection{Condensadores}\label{cap:condensadores}
 \paragraph{}
+Los condensadores son otro elemento fundamental en muchos diseños analógicos. Un
+condensador, como sabemos, consiste en dos placas conductoras separadas por una pequeña
+distancia, que almacena carga eléctrica en cada terminal.
+
+\paragraph{}
+En el contexto que nos ocupa, tenemos varias opciones para fabricar un condensador:
+
+\paragraph{poly}
+Llamaremos así al condensador que creamos con una lámina de polisilicio sobre una
+capa de óxido fino, que en función de la tecnología, puede tener varios espesores
+definidos por el fabricante. Un terminal sería el poly, y el otro el substrato.
+
+\paragraph{metal-metal}
+Entre las diferentes capas de metal tenemos varias posibilidades de crear un condensador
+también. Normalmente los fabricantes definen unos cuantos tipos. Pueden tratarse de
+dos láminas rectangulares a diferentes alturas, o, por ejemplo, dos peines que
+entrelacen sus dedos de forma alternativa.
+
+\paragraph{mos}
+Por último, podemos usar la capacidad de puerta que siempre tiene un transistor MOS
+para crear un condensador. Un terminal sería la puerta, y el otro sería el cortocircuito
+de drenador, fuente y sustrato. La principal ventaja de éstos es que su capacidad por
+unidad de área suele ser elevada debido al pequeño espesor del óxido de puerta. Por contra,
+tienen la desventaja de presentar un comportamiento no lineal, ya la que la capacidad
+depende del punto de operación del transistor.
+
 %WARNING
-%Completar breve descripcion condensadores (poly, metal, MOS)
+%Algo más? (grafico capacidad-Vg?)
 
 \subsection{Diodos}\label{cap:diodos}
 \paragraph{}
@@ -434,7 +463,7 @@ entre dispositivos, o \textit{matching}.
 El mismatch es un problema generalizado en muchos campos de
 la ingeniería donde se requiere la construcción de dispositivos que se comporten
 igual, y por problemas de fabricación u otros agentes externos se comportan ligeramente
-diferentes.
+diferente.
 
 \paragraph{}
 En el caso del layout el mismatch puede deberse al proceso de fabricación,
@@ -470,12 +499,12 @@ de forma que se pueden usar estructuras del tipo:
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{img/npn.png}
-	\caption{Estructura física de un transistor de unión bipolar NPN}
+	\includesvg[width=0.7\textwidth]{svg/common_centroid.svg}
+	\caption{Estructura de centroide común}
 	\label{fig:npn}
 \end{figure}
 
 \paragraph{}
-Según cada tipo de dispositivo se aplican unas normas recomendadas para
+Según cada tipo de dispositivo se recomienda una serie de normas para
 evitar o minimizar el mismatch, pero en términos generales, se puede decir que la
 siguiente recopilación constituyen buenas prácticas para casi todos los casos:
