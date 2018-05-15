@@ -223,7 +223,7 @@ tienen la desventaja de presentar un comportamiento no lineal, ya la que la capa
 depende del punto de operación del transistor.
 
 %WARNING
-%Algo más? (grafico capacidad-Vg?)
+%Algo más? (gráfico capacidad-Vg?)
 
 \subsection{Diodos}\label{cap:diodos}
 \paragraph{}
@@ -242,10 +242,10 @@ junto a una zona con dopado P (difusión P+). Es habitual dibujar uno de los dos
 \paragraph{}
 También se pueden crear transistores de unión bipolar a partir de la creación
 de dos uniones PN enfrentadas. En el caso de tener substrato P podemos conseguir
-de forma sencilla un transistor tipo \textbf{PNP}, creando un contacto al susbtrato
+de forma sencilla un transistor tipo \textbf{PNP}, creando un contacto al substrato
 P para el Colector (C), un pozo N dónde se crea un contacto a N+ para la base (B), y
 una difusión positiva P+ dentro del pozo N, que funcionará como emisor (E).
-Vease la figura \ref{fig:pnp}:
+Véase la figura \ref{fig:pnp}:
 
 \begin{figure}[h]
 	\centering
@@ -255,7 +255,7 @@ Vease la figura \ref{fig:pnp}:
 \end{figure}
 
 \paragraph{}
-Crear un transistor NPN en una tecnología de susbtrato P es algo más complicado,
+Crear un transistor NPN en una tecnología de substrato P es algo más complicado,
 pero afortunadamente, existe la posibilidad de crear una estructura especial, que
 va a ser muy usada en algunos casos con diferentes finalidades. Se trata del
 llamado \textit{pozo N profundo} (\textit{Deep-N-Well} en inglés), que no
@@ -266,7 +266,7 @@ están polarizadas inversamente.
 \paragraph{}
 De ésta forma podemos crear un transistor NPN entre el substrato profundo N,
 colector (C), el substrato P encerrado por el anterior, base (B), y una difusión
-N+ en el centro de este substrato P, que funcionará como emisor (E). Vease la
+N+ en el centro de este substrato P, que funcionará como emisor (E). Véase la
 figura \ref{fig:npn}:
 
 \begin{figure}[h]
@@ -302,6 +302,11 @@ Todo diseño de layout está compuesto de una cierta cantidad de capas, de las c
 algunas tienen significado físico directo y otras son capas que usa el software de
 diseño para verificaciones o para cambiar propiedades de otras capas.
 
+\paragraph{}
+Naturalmente, los nombres de estas capas están asignados por cada fabricante en
+concreto, pero los nombres que presento aquí para describirlas son los que usaré
+para identificarlas durante el resto del documento.
+
 \paragraph{NWELL}
 Esta capa define el pozo N en una tecnología de substrato P. En ella se deben
 situar los transistores PMOS y normalmente se polariza mediante difusiones \textbf{P+}
@@ -310,7 +315,11 @@ a la tensión más alta del circuito (VDD o similar).
 \paragraph{WB}
 Esta capa define el pozo enterrado (del inglés \textit{Well Buried}), o también
 llamado pozo profundo (\textit{Deep-N-Well}), y como se introdujo en el capítulo
-\ref{cap:bipolares}
+\ref{cap:bipolares}, donde se usaba para crear transistores bipolares. Esta
+estructura también puede ser usada para crear zonas de substrato P aisladas del substrato
+P del resto del chip. Dentro de esta zona se pueden disponer, por ejemplo, circuitos
+CMOS digitales, con objeto de aislar el ruido que puedan generar a circuitos analógicos
+cercanos.
 
 \paragraph{XN}
 Zona de difusión con dopado negativo N+, estará en las difusiones de drenador/fuente
@@ -322,43 +331,62 @@ se usará para las difusiones de drenador/fuente
 de los transistores PMOS y para los contactos al substrato P.
 
 \paragraph{ACTIVE}
-Zona activa
-%WARNING
-%Completar (capa activa abre el oxido de campo)
+La capa activa indica al fabricante las zonas en las que se debe eliminar el óxido grueso (óxido
+de campo). Ésto lo haremos siempre que haya que contactar una zona de difusión N o P,
+o queramos crear la puerta de un transistor como se explica en el siguiente párrafo.
 
 \paragraph{GC}
-Zona donde se creará una capa de polisilicio (\textit{poly}). Si coincide con capa activa,
-este polisilicio creará puertas de transistores sobre una fina capa de óxido de silicio.
-En los lugares donde no coincida con area activa se construirá sobre oxido grueso
-de espesor no tan controlado y se usará para rutar líneas o para crear resistencias
-de polisilicio por ejemplo.
+Zona donde se creará una capa de polisilicio o (\textit{poly}). Si coincide con capa activa,
+se crearán puertas de transistores sobre una fina capa de óxido de silicio,
+al cual llamaremos \textit{óxido de puerta}.
+En los lugares donde no coincida con area activa se construirá sobre oxido grueso,
+de espesor no tan controlado, y se usará para rutar líneas o para crear resistencias
+de poly.
 
 \paragraph{CS}
 Contacto. Normalmente son cuadrados que definen contactos entre el Metal 1 y el
-polisilicio (si están sobre capa GC), o al substrato, si están sobre el substrato.
+polisilicio (si están, respectivamente, sobre M1 ó GC), o al substrato, teniendo que
+usar la capa ACTIVE para poder bajar al substrato.
 
 \paragraph{M1}
 Metal 1. Es el primero de los metales y se suele usar para contactar
 transistores entre sí y con otros dispositivos, o para crear anillos de contactos
-a substrato
+a substrato.
 
 \paragraph{M2-M3-...-(M5)}
 Otros metales. En función de la tecnología, pueden ser
 más o menos capas de metal, por ejemplo 4 ó 6. La última capa de metal puede ser
-diferente, ser más gruesa y menos resistiva. Habitualmente, para seguir un órden
+diferente, ser más gruesa y menos resistiva, con objeto de usarse como caminos de
+alimentación, que deben soportar corrientes mayores. Habitualmente, para seguir un órden
 y ayudar al rutado del circuito, se suele definir un criterio de direcciones
-en función de si la capa de metal es par o impar se dispondrán horizontales o
-verticales
+en función de si la capa de metal es par o impar se dispondrán verticales u
+horizontales. Mientras no se diga lo contrario, en el texto se usará el criterio
+horizontal = impar, vertical = par.
 
 \paragraph{V2-V3-...-(V5)}
-Vias. Crean conexiones verticales entre un metal y el
-siguiente superior. Se suelen usar varios para cada conexión por evitar una
-posible rotura y para disminuir la resistencia.
+Vías. Crean conexiones verticales entre un metal y el
+inmediato superior. Se suelen usar varios para cada conexión por evitar una
+posible rotura y para disminuir la resistencia total.
+
+\paragraph{SA}
+Del vocablo inglés \textbf{Salicide}, que es una contracción de \textbf{s}elf-\textbf{a}ligned si\textbf{licide},
+ésto es, siliciuro auto-alineado. Siliciuro es cualquier compuesto binario de
+Silicio con otro elemento, generalmente metal; por ejemplo: CoSi\textsubscript{2}
+ó TiSi\textsubscript{2}. Éste siliciuro se dice auto-alineado porque el metal que
+se deposita sobre el chip durante el proceso de fabricación se adhiere sólo sobre
+dónde hay silicio (o poly), y no donde ya se ha hecho crecer la capa de óxido.
+La reacción del silicio con el metal crea el siliciuro, lo que crea una capa más
+conductiva que el silicio puro \cite{Maex:silicides}.
+
+\paragraph{}
+Por defecto todos el poly y las difusiones van silicidadas, pero usando la capa \textbf{SA},
+podemos indicar que no se deposite siliciuro sobre algunas zonas, para, por ejemplo,
+permitir que las resistencias de poly sean más resistivas.
 
 \subsection{Herramientas de CAD}
 
 \paragraph{}
-Las herramientas de CAD (\textit{Computer Asisted Design}) se usan
+Las herramientas de CAD (\textit{Computer Assisted Design}) se usan
 en muchos campos de la ingeniería o la arquitectura, y actualmente, debido a la alta
 complejidad de los diseños son de uso prácticamente obligado.
 
@@ -366,13 +394,13 @@ complejidad de los diseños son de uso prácticamente obligado.
 En el caso que nos ocupa, el diseño de circuitos microelectrónicos,
 tiene gran importancia el buen uso y conocimiento de las herramientas por parte de
 diseñadores. En nuestro caso, estas técnicas tienen dos finalidades fundamentales:
-el diseño y simulación electrica y, por otro lado, la implementación física. Entre ellas
+el diseño y simulación eléctrica y, por otro lado, la implementación física. Entre ellas
 hay muchas diferencias, pero también existe una inevitable relación de dependencia.
 La implementación física viene definida por el diseño eléctrico, pero a su vez, como
 veremos en muchos casos, éste último condiciona el diseño eléctrico.
 
 \paragraph{}
-Por otra parte, en microelectronica, debemos tener presente que
+Por otra parte, en microelectrónica, debemos tener presente que
 hay una división importante entre dos ámbitos que son bastante diferentes en cuanto
 al flujo de diseño, simulación e implementación física, aunque ambos se basan sobre
 la misma tecnología. Me refiero a la separación entre el ámbito \textbf{analógico}
@@ -382,7 +410,7 @@ puesto que el canal de lectura es un bloque fundamentalmente analógico.
 \paragraph{}
 Considerando únicamente el layout, estos dos ámbitos, analógico y
 digital son también bastante diferentes. En el caso del layout digital, el flujo
-de trabajo, debido a la gran cantidad de dispositivos que habitulamente son necesarios
+de trabajo, debido a la gran cantidad de dispositivos que habitualmente son necesarios
 para diseñar cualquier bloque digital, está altamente automatizado por algoritmos
 de distribución y rutado automático (\textit{place and route}). Mediante estas
 herramientas, el diseñador digital de back-end implementa el layout de un bloque
@@ -391,14 +419,14 @@ definido.
 
 \paragraph{}
 Las herramientas de \textit{place and route} consisten en algorítmos
-de posicionamiento de los subbloques digitales que conforman un macrobloque:
-inversores, buffers, puertas lógicas, flip-flops... La herramienta, considerano el
+de posicionamiento de los sub-bloques digitales que conforman un macro-bloque:
+inversores, buffers, puertas lógicas, flip-flops... La herramienta, considerando el
 rutado entre cada bloque, los posiciona y los interconecta de forma que los tiempos
 de propagación de las señales entre ellos estén dentro de unos márgenes aceptables.
 En ocasiones, esta implementación física da problemas por cuestiones de congestión
 de rutado, o por problemas de \textit{timing}, las señales no se propagan con la
 suficiente velocidad y ésto genera fallos en el funcionamiento general de bloque.
-Por todo esto, es muy imporante la simulación post-layout de los bloques digitales.
+Por todo esto, es muy importante la simulación post-layout de los bloques digitales.
 Éstas tienen en cuenta los tiempos de respuesta de los sub-bloques digitales, los cuales
 han sido obtenidos previamente mediante simulaciones analógicas, o vienen dados por
 el fabricante de la tecnología en unos ficheros que incluyen tiempos y capacidades de
@@ -415,7 +443,7 @@ de diseño gráfico en 2 dimensiones, dónde el diseñador de layout va dibujand
 dispositivos, y los va interconectando mediante líneas de rutado en los diferentes
 metales que tiene a su disposición. El proceso es mucho más manual que en el caso
 digital, dada la relativa simplicidad de los circuitos analógicos, frente a los
-digitales. Un bloque analógico es abordable por una presona en unos pocos días o
+digitales. Un bloque analógico es abordable por una persona en unos pocos días o
 semanas, ayudándose obviamente, de herramientas de replicación, jerarquizado, celdas
 prediseñadas o parametrizadas. El caso analógico también se realiza de forma más
 manual debido a la naturaleza de las señales analógicas, al ser éstas, en algunos casos,
