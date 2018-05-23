@@ -1,17 +1,17 @@
-cap 1: introduccion
+cap 1: introducción
 	* que es un canal de lectura de un sensor de imagen.
 	* que es un sensor de imagen (breve), como es el pixel, como se lee.
 cap 2: Tecnología CMOS
-	* Introduccion.
-	* Explicación del proceso de fabricacion
+	* Introducción.
+	* Explicación del proceso de fabricación
 	* Transistores CMOS (teoría y layout)
 	* Tenología CMOS avanzada (condensadores, diodos y otros dispositivos)
 	* Diseño de layout
 		* Entorno CAD (breve)
-		* Breve repaso de capas (metales, vias, poly, activa, NWell, capas logicas)
-		* Problemas habituales en el diseño de layout: (area, electromigración, caida DC, Latch-up, acoplos, mismatch)
+		* Breve repaso de capas (metales, vías, poly, activa, NWell, capas lógicas)
+		* Problemas habituales en el diseño de layout: (area, electromigración, caída DC, Latch-up, acoplos, mismatch)
 cap 3: Diseño electrónico del canal de lectura.
-	* Comparador de rampa (explicacion del funcionamiento)
+	* Comparador de rampa (explicación del funcionamiento)
 	* Arquitectura del ADC
 	* Arquitectura de la rampa (muy breve)
 	* Fuente de corriente del pixel (PXCS)
@@ -34,11 +34,15 @@ cap 4: Diseño del layout de un canal de lectura
 		* Mayor multiparalelización
 		* Sistemas de bajo ruido (convertidores de más resolución, 2 etapas)
 		* Arquitecturas innovadoras (lectura en corriente)
+cap 6: Extracción y simulación
+	(Importancia de la extracción y simulación con gran exactitud)
+	* Extracción. Parásitos. Capacidades y resistencias.
+	* Simulación post-layout.
 cap 5: Conclusiones.
 	* Dificultad creciente de los canales de lectura
-	* Condicionamiento de la arquitectura y las epecificaciones por el diseño de layout
+	* Condicionamiento de la arquitectura y las especificaciones por el diseño de layout
 	* Necesidad de estudios de viabilidad exhaustivos previos al diseño
 	* Nuevas tecnologías (menor area, menor consumo)
-	* Innovaciones en la tecnología de los pixeles (más rapidos o efectivos)
+	* Innovaciones en la tecnología de los pixeles (más rápidos o efectivos)
 cap 6: Referencias
 cap 7: Agradecimientos

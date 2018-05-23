@@ -1,3 +1,10 @@
 - pasar a color los svg de los dispositivos CMOS
 
 - Definir bien la capa ACTIVE (c2_cmos/capas de layout)
+
+- Revisión 1 con Belén (22-Mayo):
+	* Ampliar la zona central del trabajo en contra de la introducción
+	* Poner referencias más actualizadas, (trabajo de investigación)
+	* Aportar cosas "nuevas"
+	* Hablar sobre las técnicas de extracción y simulación.
+	* 
