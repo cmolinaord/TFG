@@ -34,15 +34,15 @@ cap 4: Diseño del layout de un canal de lectura
 		* Mayor multiparalelización
 		* Sistemas de bajo ruido (convertidores de más resolución, 2 etapas)
 		* Arquitecturas innovadoras (lectura en corriente)
-cap 6: Extracción y simulación
+cap 5: Extracción y simulación
 	(Importancia de la extracción y simulación con gran exactitud)
 	* Extracción. Parásitos. Capacidades y resistencias.
 	* Simulación post-layout.
-cap 5: Conclusiones.
+cap 6: Conclusiones.
 	* Dificultad creciente de los canales de lectura
 	* Condicionamiento de la arquitectura y las especificaciones por el diseño de layout
 	* Necesidad de estudios de viabilidad exhaustivos previos al diseño
 	* Nuevas tecnologías (menor area, menor consumo)
 	* Innovaciones en la tecnología de los pixeles (más rápidos o efectivos)
-cap 6: Referencias
-cap 7: Agradecimientos
+cap 7: Referencias
+cap 8: Agradecimientos
