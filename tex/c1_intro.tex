@@ -62,9 +62,10 @@ de unos a otros, hasta que al final todo el array es leído.
 
 \section{Arquitectura de sensores de imagen CMOS}
 
-\section{Array de píxeles}
+\subsection{Array de píxeles}
 
 \paragraph{}
+
 El dispositivo principal en un sensor de imagen es el píxel, que es el elemento
 receptor de la luz y el encargado de hacer la primera conversión de fotones a
 electrones. Estos fotones se traducen en electrones por medio del efecto fotoeléctrico
@@ -77,36 +78,15 @@ es el llamado proceso de exposición, que tiene una duración definida. En funci
 del tiempo de exposición y de la intensidad lumínica recibida por el pixel, este
 se cargará con mayor o menor número de electrones.
 
-%WARNING
-%Poner esquemático de pixel 5T
-
 \paragraph{}
-Observando el esquemático de un pixel 5T (5 transistores) habitual, podemos entender
-el funcionamiento del mismo. El fotodiodo (PD) representa la zona donde los fotones
-inciden y donde se convierten a electrones durante el tiempo de exposición. Al final
-de éste periodo se abre la compuerta (TX), también llamada \textit{transfer gate},
-y los electrones pasan por difusión hacia un pozo de potencial llamado \textit{floating
-diffusion} (FD), que se representa como un condensador.
+El array de píxeles es la matriz compuesta de todos los píxeles organizados en filas
+y columnas dónde la imagen formada por el sistema de lentes focalizará la imagen.
+Habitualmente, los píxeles son cuadrados con un lado de unas 5 a 10 $\mu$m, y el
+array puede tener resoluciones de miles de píxeles en ambas dimensiones, lo que
+significa que el array puede unos ocupar pocos centímetros, lo que lo convierte
+habitualmente en el bloque más grande de todo el diseño.
 
-\paragraph{}
-Posteriormente, la carga almacenada en la \textit{floating diffusion} se convierte
-en voltaje a través del seguidor por fuente (SF) cuando la fila actual es seleccionada
-para ser leída mediante la activación del transistor de SEL, que carga la columna
-de lectura con la tensión a la salida del \textit{source follower}. Este valor de
-tensión es el que será leído por el Canal de Lectura.
-
-\paragraph{}
-Durante todo el proceso
-se pueden producir dos operaciones de limpieza o puesta a cero. Una la hace el
-transistor de anti-blooming (BMG), que se encarga de limpiar el diodo de posibles
-electrones fotogenerados antes del tiempo de exposición. Este transistor también
-realiza la fucnión de "desagüe" en el caso de que la intensidad lumínica sea tal
-que el número de electrones en el fotodiodo sature, en cuyo caso, este transistor
-drenará la carga sobrante hacia la alimentación. La otra limpieza la
-lleva a cabo el transistor de Reset (RST), que restablece el valor "cero" en la
- \textit{floating diffusion} antes de volcar los nuevos electrones generados en
- la exposición actual.
-
+\subsection{Canal de lectura}
 \paragraph{}
 El canal de lectura de un sensor CMOS, referido habitualmente por sus
 siglas en inglés \textbf{RO} (\textit{Read-Out Channel}), es el bloque que se
@@ -114,4 +94,25 @@ encarga de traducir el voltaje almacenado en cada pixel durante el proceso
 de exposición, en un número digital. Esta descripción concuerda con el concepto
 ampliamente utilizado en electrónica de ADC, siglas en inglés de \textit{Analog-to-Digital
 Converter}, (Convertidor Analógico-Digital), que, en general toma una señal
-analógica y la expresa en valores discretizados
+analógica y la expresa en valores discretizados.
+
+\subsection{Otros bloques}
+\paragraph{Ana ctrl row}. Este bloque se encarga del control analógico de las
+señales que excitan en array por filas. Se sitúa a la izquierda y/o derecha del
+array.
+
+\paragraph{Pixel supply}. Es el bloque anaólgico que se sitúa en la parte superior
+del array de píxeles y que provee la alimentación del array
+y en ocasiones también provee señales que se distribuyan de forma vertical.
+
+\paragraph{Referencias}. Es un bloque que se encarga de generar tensiones y corrientes
+de polarización para el resto de bloque de forma que sean independientes de la
+temperatura, fuente de alimentación y otros ruidos.
+
+\paragraph{Serializador}. En el bloque digital que se encarga de ordenar y serializar
+los datos de salida del canal de lectura para que puedan ser enviados al exterior del
+chip por los puertos de salida serie.
+
+\paragraph{Control Main}. Es el bloque digital encargado del control de todas las
+señales y procedimientos que el sensor debe realizar para tomar una imágen, digitalizarla,
+y enviarla al exterior.

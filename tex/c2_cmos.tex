@@ -369,10 +369,10 @@ inmediato superior. Se suelen usar varios para cada conexión por evitar una
 posible rotura y para disminuir la resistencia total.
 
 \paragraph{SA}
-Del vocablo inglés \textbf{Salicide}, que es una contracción de \textbf{s}elf-\textbf{a}ligned si\textbf{licide},
+Del vocablo inglés \textbf{salicide}, que es una contracción de "\textbf{s}elf-\textbf{a}ligned si\textbf{licide}",
 ésto es, siliciuro auto-alineado. Siliciuro es cualquier compuesto binario de
 Silicio con otro elemento, generalmente metal; por ejemplo: CoSi\textsubscript{2}
-ó TiSi\textsubscript{2}. Éste siliciuro se dice auto-alineado porque el metal que
+ó TiSi\textsubscript{2}. Este siliciuro se dice auto-alineado porque el metal que
 se deposita sobre el chip durante el proceso de fabricación se adhiere sólo sobre
 dónde hay silicio (o poly), y no donde ya se ha hecho crecer la capa de óxido.
 La reacción del silicio con el metal crea el siliciuro, lo que crea una capa más
@@ -514,25 +514,53 @@ posiblemente no se comporten igual.
 Para minimizar los efectos de los gradientes, se suelen usar estructuras
 de centroide común, que en teoría, para gradientes lineales, logran el emparejamiento
 perfecto. Por ejemplo, si tenemos un array lineal de dos tipos de dispositivos diferentes,
-cada uno con una multiplicidad de 4, deberíamos usar una estructura ABBA|ABBA, en vez
-de AAAA|BBBB, dónde A y B representan instancias del mismo dispositivo. En el primero
+cada uno con una multiplicidad de 4, deberíamos usar una estructura ABBA$\vert $ABBA, en vez
+de AAAA$\vert $BBBB, dónde A y B representan instancias del mismo dispositivo. En el primero
 de los casos, si existe un gradiente lineal en la dirección del array, el efecto de éste
 actuará en positivo en unos y en negativo en otros, de forma que el efecto en A se compensa
 al efecto en B. En cambio en el segundo caso, como promedio, los A sufrirán el efecto
-más o menos, que los B.
+más o menos que los B.
 
 \paragraph{}
 Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
-de forma que se pueden usar estructuras del tipo:
+de forma que se pueden usar estructuras como la que se muestra en la figura \ref{fig:centroide_comun}:
 
 \begin{figure}[h]
 	\centering
 	\includesvg[width=0.7\textwidth]{svg/common_centroid.svg}
 	\caption{Estructura de centroide común}
-	\label{fig:npn}
+	\label{fig:centroide_comun}
 \end{figure}
 
 \paragraph{}
-Según cada tipo de dispositivo se recomienda una serie de normas para
-evitar o minimizar el mismatch, pero en términos generales, se puede decir que la
-siguiente recopilación constituyen buenas prácticas para casi todos los casos:
+Algunas de las reglas que se recomienda seguir para un buen matching entre transistores
+serían \cite{Hastings2001:mos_matching}:
+
+\begin{enumerate}
+	\item Usar dimensiones idénticas para los \textit{fingers} del transistor,
+	esto es, cada uno de los transistores unitarios dispuestos en paralelo,
+	que forman uno mayor.
+	\item Maximizar el área ($L \times W$) de los transistores, ya que las
+	variaciones relativas en tamaños son menores.
+	\item Orientar los transistores en la misma dirección, ya que el silicio
+	puede presentar alguna anisotropía inherente a la fabricación.
+	\item Situar los transistores lo más cerca posible entre ellos. A mayores
+	distancias, mayores pueden ser las diferencias de temperatura, dopado, ruido...
+	\item Uso de estructuras de centroide común.
+	\item A ser posible, uso \textit{dummies} en los contornos del
+	array de transistores. Un transistor, o en general, dispositivo \textit{dummy},
+	es idéntico a uno activo en cuanto a construcción física, pero conectado de
+	forma que no actúa eléctricamente, por ejemplo, un transistor CMOS podría
+	conectarse a tierra todos sus terminales.
+	Con esto evitamos los posibles efectos de borde que afectan un dispositivo
+	que no tiene menos vecinos que los del interior del array.
+	\item Colocar los dispositivos lejos de dispositivos de potencia o lineas
+	de alimentación que pueden generar fuertes gradientes de temperatura.
+	\item Intentar no rutar metal sobre la zona activa de los transistores,
+	aunque esto es en muchos casos inviable. En caso de tener que hacerlo, tratar
+	distribuir el metal de la forma más simétrica posible, afectando a todos
+	los dispositivos por igual.
+\end{enumerate}
+
+%WARNING
+%Detallar estas buenas prácticas
