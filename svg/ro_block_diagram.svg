@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="30cm" height="33cm" viewBox="224 -120 592 659" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="667" y="332" width="107" height="73"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="667" y="332" width="107" height="73"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="720.5" y="372.4">
+      <tspan x="720.5" y="372.4">PXCS</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="641.5" y="38.9" width="159.5" height="154"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="641.5" y="38.9" width="159.5" height="154"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="721.25" y="119.8">
+      <tspan x="721.25" y="119.8">PÍXEL</tspan>
+    </text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="721.25,193.897 721.25,262.955 720.5,262.955 720.5,332 "/>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="797" y="332">
+    <tspan x="797" y="332"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="640.6" y="-119" width="159.5" height="154"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="640.6" y="-119" width="159.5" height="154"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="720.35" y="-38.1">
+      <tspan x="720.35" y="-38.1">PÍXEL</tspan>
+    </text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="722,272.25 798,272.25 798,463.25 808,463.25 "/>
+  <g>
+    <rect style="fill: #ffffff" x="655.6" y="457.75" width="159.4" height="73"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="655.6" y="457.75" width="159.4" height="73"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="735.3" y="490.15">
+      <tspan x="735.3" y="490.15">Comparador</tspan>
+      <tspan x="735.3" y="506.15">ADC</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="225.6" y="359.25" width="159.4" height="178.5"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="225.6" y="359.25" width="159.4" height="178.5"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="305.3" y="436.4">
+      <tspan x="305.3" y="436.4">Generador</tspan>
+      <tspan x="305.3" y="452.4">Rampa</tspan>
+      <tspan x="305.3" y="468.4">Analógica</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="385" y1="493.125" x2="654.599" y2="493.991"/>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="727" y="266.25">
+    <tspan x="727" y="266.25">px_out</tspan>
+  </text>
+</svg>
