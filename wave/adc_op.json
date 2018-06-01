@@ -1,0 +1,14 @@
+{signal: [
+  {name: 'state', 		wave: 'x.4|...3...x', data: ['exposition','lecture']},
+  {name: 'sel',   		wave: '0.10.10.....'},
+  {name: 'adc_sa',   	wave: '01.01.0.....'},
+  {name: 'adc_vcmi_sa', wave: '01.01.0.....'},
+  {name: 'discharge_N', wave: '010.10......'},
+  {name: 'discharge_NS',wave: '01.010....0.'},
+  {name: 'sa_N',		wave: '0...10..1.0.'},
+
+
+  {name: 'sa_NS',		wave: '0....10.....'},
+  {name: 'comp', 		wave: '0......20.20', data: ['SN','N']},
+  {name: 'adc_sa',		wave: '0...10..1.0.'}
+]}

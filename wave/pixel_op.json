@@ -1,0 +1,7 @@
+{signal: [
+  {name: 'state', wave: 'x.4|...x|3...x', data: ['exposition','lecture']},
+  {name: 'bmg',   wave: '010|....|.....'},
+  {name: 'rst',   wave: '0..|.10.|.1.0.'},
+  {name: 'TX',    wave: '0..|..10|.....'},
+  {name: 'sel',   wave: '0..|....|20.20', data: ['SN','N']}
+]}
