@@ -1,27 +1,27 @@
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{makeidx}
+% AMS Packages
+\usepackage{amsmath,amssymb}
+
+
+% Page settings
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{setspace}
 \spacing{1.5}
-%\usepackage{hyperref}
-%\usepackage[nokeyprefix]{refstyle}
-\newcommand{\grad}{$^{\circ}$}
+\usepackage{makeidx}
+\newcommand*\emptyPage{\newpage\null\thispagestyle{empty}\newpage}
 
-%\usepackage{varioref}
-%\DeclareOption{spanish}
-%	{\vref@addto\extrasspanish{%
-%		\def\reftextfaceafter {en la página siguiente}%
-%		\def\reftextfacebefore{en la página anterior}%
-%		\let\reftextafter \reftextfaceafter
-%		\let\reftextbefore \reftextfacebefore
-%		\def\reftextcurrent {en esta página}%
-%		\def\reftextfaraway#1{(pág.~\pageref{#1})}%
-%		\def\reftextpagerange#1#2{en las páginas ~\pageref{#1}--\pageref{#2}}%
-%		\def\reftextlabelrange#1#2{\ref{#1} to~\ref{#2}}%
-%	}}
-%\ExecuteOptions{spanish}
-%}
+% Graphics
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{svg}
+
+% Hyperref
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true, %set true if you want colored links
+	linktoc=all,     %set to all if you want both sections and subsections linked
+	linkcolor=blue,  %choose some color if you want links to stand out
+	linktocpage
+}
+
+% Useful personal commands
+\newcommand{\centigrade}{$^{\circ}$}

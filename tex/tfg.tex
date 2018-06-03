@@ -1,24 +1,22 @@
-\documentclass[12pt,a4paper,oneside,titlepage]{report}
+\documentclass[12pt,a4paper,twoside,openright,titlepage]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{tex/mi_estilo}
-\usepackage{svg}
 
+% Hyperref
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true, %set true if you want colored links
-    linktoc=all,     %set to all if you want both sections and subsections linked
-    linkcolor=blue,  %choose some color if you want links to stand out
-    linktocpage
+	colorlinks=true, %set true if you want colored links
+	linktoc=all,     %set to all if you want both sections and subsections linked
+	linkcolor=blue,  %choose some color if you want links to stand out
+	linktocpage
 }
 
 \begin{document}
 
 \input{tex/c0_cover_page}
-
 \tableofcontents
 \listoffigures
-
 \input{tex/c1_intro}
 \input{tex/c2_cmos}
 \input{tex/c3_ro_sch}
