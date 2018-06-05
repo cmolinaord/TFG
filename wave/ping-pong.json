@@ -1,0 +1,7 @@
+{signal: [
+  {name: 'Array Operation', wave: 'z3.5..|3x3.5.....|..3xz....', data: ['CLEAN','EXPOSITION 1','TX','CLEAN','EXPOSITION 2','TX']},
+  {name: 'Canal A',   		wave: 'z.......4.5.4.5.4|5.z4.5.4.', data: ['READ','CONV','READ','CONV','','CONV','READ','CONV']},
+  {name: 'Canal B',   		wave: 'z.........4.5.4.5|4.5.z4.5.', data: ['READ','CONV','READ','','READ','CONV','READ']},
+  {name: 'Serializador', 	wave: 'z...........3.3.3|3.3.3.z3.', data: ['SPS','SPS','','SPS','SPS','SPS']},
+]
+}

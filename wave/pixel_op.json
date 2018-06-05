@@ -1,0 +1,9 @@
+{signal: [
+  {name: 'State', 	wave: 'x5.3|....x|4...x', data: ['CLEAN','EXPOSITION','READ']},
+  {name: 'Bmg', 	wave: '01.0|.....|.....', node: '...a' },
+  {name: 'Rst', 	wave: '0...|.1.0.|.1.0.'},
+  {name: 'TX',		wave: '0...|...10|.....', node: '.........b' },
+  {name: 'Sel', 	wave: '0...|.....|20.20', data: ['SN','N']},
+],
+  edge: ['a~>b T_exp']
+  }
