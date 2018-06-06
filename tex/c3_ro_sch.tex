@@ -58,7 +58,7 @@ operación de lectura de los píxeles.
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.7\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{img/pixel_5T.png}
 		\caption{}
 		\label{fig:pixel}
@@ -67,12 +67,11 @@ operación de lectura de los píxeles.
 	 %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
 	%(or a blank line to force the subfigure onto a new line)
 	\begin{subfigure}[b]{\textwidth}
-		\includegraphics[width=\textwidth]{img/pixel_op.png}
+		\includegraphics[width=\textwidth]{img/pixel_wave.png}
 		\caption{}
 		\label{fig:pixel_op}
 	\end{subfigure}
 	\caption{Esquemático y modo operación de un pixel 5T habitual}
-	\label{fig:cmos_transistors}
 \end{figure}
 
 En la figura \ref{fig:pixel} podemos ver el esquemático de el pixel 5T
@@ -115,18 +114,160 @@ se van leyendo los valores almacenados en las "\textit{floating diffusions}". En
 el segundo caso, la exposición se hace secuencialmente, fila por fila, antes de cada
 lectura.
 
-\section{Arquitectura del comparador de rampa}
+\section{Fuente de corriente}\label{cap:ro_sch_pxcs}
+\paragraph{}
+La fuente de corriente, normalmente abreviada como PXCS (del inglés,
+\textbf{P}i\textbf{x}el \textbf{C}urrent \textbf{S}ource),
+es el primer bloque que se sitúa en
+en el canal de lectura y es común a todas las filas de píxeles. Básicamente
+es un transistor polarizado en saturación, de modo que drena una corriente
+constante que copia de otro transistor con el que forma un espejo de corrientes.
 
+\paragraph{}
+Normalmente, la corriente es configurable, para permitir tiempos de lectura menores
+incrementando su  valor, o por el contrario, disminuir el consumo si no necesitamos tanta
+velocidad.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{svg/pxcs_sch.pdf}
+	\caption{Esquemático de la fuente de corriente del pixel}
+	\label{fig:pxcs_sch}
+\end{figure}
+
+
+\section{Convertidor de rampa}\
+
+\paragraph{}
+Como ya hemos comentado, la conversión del valor analógico del pixel, a un número
+digital se realiza mediante un convertidor de rampa. Para conseguir esto,
+en cada canal de lectura se implementa un sencillo ADC comparador y unos condensadores
+dónde almacenar temporalmente las señales.
+
+\paragraph{}
+La señal de la rampa analógica se va a distribuir horizontalmente entre todas las
+columnas del canal de lectura, y está generada por un bloque externo al RO, situado
+a uno de los lados del mismo, con lo que evitamos incluirlo en area del canal.
 
 
 \section{ADC}
 
+\paragraph{}
+El ADC es el bloque que muestrea y compara la señal analógica del píxel con la de la
+rampa analógica. El esquemático del circuito se muestra en la figura \ref{fig:adc_sch}.
+La operación del ADC se realiza en 2 fases, lectura (\textit{read}) y comparación
+(\textit{comp}), y se puede seguir mediante las formas de onda mostradas en \ref{fig:adc_wave}.
 
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{svg/adc_sch.pdf}
+	\caption{Esquemático del ADC}
+	\label{fig:adc_sch}
+\end{figure}
+
+%WARNING
+%Terminar e incluir el diagrama de fases del canal con WaveDrom
+
+\paragraph{}
+Durante la primera de ellas, el comparador está operando en lazo cerrado, por lo
+los nodos de entrada $vp$ y $vn$ se establecen a la tensión de modo
+común, $vs\_adc\_cmi$. Al final del periodo de muestreo, las señales
+"señal + ruido" (NS) y "ruido" (N), quedan almacenadas en los condensadores $C_2$
+y $C_1$, respectivamente.
+
+\paragraph{}
+En la segunda fase, el comparador se establece en lazo abierto, por lo que la carga
+almacenada en los condensadores se mantiene. En ese momento se conecta la
+rampa diferencial ($ramp_P$ y $ramp_N$), y aplicando la conservación de carga en los
+nudos $vp$ y $vn$, se puede deducir que el voltage será:
+
+\begin{align}
+	v_n &= \dfrac{v_{cmi} + v_{off}}{1+\frac{1}{A_0}} + \alpha_1 (v_{ramp_p}-v_{pixN})\\
+	v_p &= v_{cmi} + \alpha_2 (v_{ramp_n}-v_{pixNS})
+\end{align}
+, dónde los coeficientes $\alpha_1$ y $\alpha_2$ son:
+
+\begin{equation}
+	\alpha_1 = \dfrac{C_1}{C_1+C_p},~
+	\alpha_2 = \dfrac{C_2}{C_2+C_p}
+\end{equation}
+
+\paragraph{}
+Asumiendo un comparador ideal, el voltage diferencial a la entrada de este, se
+puede expresar como:
+
+\begin{equation}
+	\Delta V= v_p - v_n = (v_{pixNS}-v_{pixNS}) - (v_{ramp_p}-v_{ramp_n})
+\end{equation}
+
+, dónde la diferencia $(v_{pixNS}-v_{pixNS})$ es siempre positiva y se relaciona
+con la información almacenada en el píxel, y la señal $(v_{ramp_p}-v_{ramp_n})$ es
+linealmente creciente. Por tanto, la salida del comparador debe ser inicialmente
+un valor alto y cambiar a valor bajo en el instante en que ambas señales sea crucen.
+Por lo que la información en el píxel puede codificarse con el tiempo registrado
+por un contador digital, siendo mayor el número digital a mayor la luz recibida
+por el pixel leído.
+
+\paragraph{}
+La salida del comparador se hace pasar por una puerta NOR para evitar que pueda
+registrarse una transición sin estar activa la señal de $adc\_start$
+
+\subsection{OTA}
+
+\paragraph{}
+El OTA (\textit{Operational Transconductance Amplifier}) es el bloque que actúa
+cómo comparador y tiene la estructura de un amplificador diferencial simple, que
+se muestra en el esquemático de la figura \ref{fig:ota_sch}.
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{svg/ota_sch.pdf}
+	\caption{Esquemático del OTA comparador}
+	\label{fig:ota_sch}
+\end{figure}
+
+\paragraph{}
+Los transistores $M_1$ y $M_2$ forman el par diferencial, con sus correspondiente
+espejo de corrientes en $M_3$ y $M_4$, y la fuente de corriente $M_5$, el resto de
+transistores sirven para deshabilitar el OTA cuando no se esté usando.
 
 \section{Rampa analógica}
 
-\section{Fuente de corriente}
+\paragraph{}
+El bloque generador de la rampa analógica se encuentra situado fuera del Canal de
+Lectura. Se encarga de generar una señal linealmente creciente y su correspondiente
+decreciente. El rango en el que la rampa varía debe ajustarse en fucnión del rango
+de entrada del OTA del comparador y teniendo en cuenta el rango en el que varía
+la salida del píxel, para obtener una resolución deseada y aprovechar al máximo
+la sensibilidad del sensor.
+
+\paragraph{}
+La señal generada debe propagarse a lo largo de lo todos los canales de lectura,
+desde la izquierda hacia la derecha, o al contrario, en su caso. Para conseguir
+una rápida y efectiva propagación de esta señal sin distorsión y en tiempo, ha
+de hacerse un cuidadoso estudio de layout, calculando las anchuras y separaciones
+entre las líneas metálicas que distribuirán la señal y posteriormente, realizando
+una precisa extracción y simulación del circuito.
+
+%WARNING
+%Comprobar con Anafocus como se hace el estudio de la propagación de fases.
+%Y que importancia tiene.
+
+\paragraph{}
+Por otro lado, se debe asegurar que las \textit{fases} se propaguen a una velocidad
+controlada e igual al resto de señales
 
 \section{Bloques de polarización}
+
+\paragraph{}
+Los bloques del canal descritos anteriormente, la fuente de corriente y el ADC
+requieren de varias señales de polarización, que habitualmente, además, suelen
+ser programables, esto es, que permiten diferentes valores de configuración
+establecidos por el usuario del dispositivo sobre pr ejemplo, la velocidad de
+lectura, la resolución deseada, el consumo.
+
+\paragraph{}
+
+
+\paragraph{}
+
 
 \section{Rampa digital y serialización}
