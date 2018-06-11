@@ -10,3 +10,7 @@ de blanco/negro o es dar el valor digital.
 - Tecnica de Ping-Pong
 -- Si hay varios canales en paralelo, por ejemplo 3, Cómo es?
 3 canales leen a la vez 3 filas de pixeles a la vez que los siguientes 3 hacen la comparación.
+
+- Propagacion de las fases
+-- Como se hace la stimacion de las anchuras y espaciados entre las lineas de
+distribucion de rampa y fases analógicas. (Tienen que viajar a la misma velocidad?)
