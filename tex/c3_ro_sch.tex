@@ -14,7 +14,7 @@ Idealmente podríamos un canal por columna, y meter en ese espacio todo el circu
 para la columna. Pero, en algunos casos, debido al pequeño tamaño de los píxeles
 --- suelen tener unos 5, 8, 10\(\mu m\)... --- resulta complicado o incluso imposible diseñar el
 layout de dicha circuitería en ese reducido espacio horizontal. De ahora en adelante
-usaremos la palabra inglesa \textit{"pitch''} para referirnos al espaciado con el
+usaremos la palabra inglesa \textit{"pitch"} para referirnos al espaciado con el
 que se repite una estructura periódica como el canal de lectura o el array.
 
 \paragraph{}
@@ -22,6 +22,12 @@ Por esta razón, es una práctica común usar el \textit{pitch} de varios píxel
 ejemplo 2 ó 4, y así tener más espacio para diseñar el layout del circuito. Por contra,
 debemos apilar estos 2 ó 4 canales en filas, lo que veremos que nos trae algunos
 problemas a la hora de diseñar el layout.
+
+\paragraph{}
+De ahora en adelante nos centraremos en el caso de un sensor cuyos píxeles tengan
+un área de $5\mu m \times 5\mu m$, y en el que se apilan 2 canales para leer 2
+columnas de píxeles. Por tanto, el ancho de un canal será de $10\mu m$, encajando
+exáctamente en la anchura de 2 columnas de píxeles.
 
 \section{Estructura general}\label{cap:ro_sch_estructura}
 
@@ -136,7 +142,7 @@ velocidad.
 \end{figure}
 
 
-\section{Convertidor de rampa}\
+\section{Convertidor de rampa}\label{cap:ro_sch_conv}
 
 \paragraph{}
 Como ya hemos comentado, la conversión del valor analógico del pixel, a un número
@@ -150,7 +156,7 @@ columnas del canal de lectura, y está generada por un bloque externo al RO, sit
 a uno de los lados del mismo, con lo que evitamos incluirlo en area del canal.
 
 
-\section{ADC}
+\section{ADC}\label{cap:ro_sch_adc}
 
 \paragraph{}
 El ADC es el bloque que muestrea y compara la señal analógica del píxel con la de la
@@ -164,8 +170,11 @@ La operación del ADC se realiza en 2 fases, lectura (\textit{read}) y comparaci
 	\label{fig:adc_sch}
 \end{figure}
 
-%WARNING
-%Terminar e incluir el diagrama de fases del canal con WaveDrom
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{img/adc_wave.png}
+	\caption{Señales de onda del comparador de rampa}
+	\label{fig:adc_wave}
+\end{figure}
 
 \paragraph{}
 Durante la primera de ellas, el comparador está operando en lazo cerrado, por lo
@@ -211,7 +220,7 @@ por el pixel leído.
 La salida del comparador se hace pasar por una puerta NOR para evitar que pueda
 registrarse una transición sin estar activa la señal de $adc\_start$
 
-\subsection{OTA}
+\subsection{OTA}\label{cap:ro_sch_ota}
 
 \paragraph{}
 El OTA (\textit{Operational Transconductance Amplifier}) es el bloque que actúa
@@ -229,7 +238,7 @@ Los transistores $M_1$ y $M_2$ forman el par diferencial, con sus correspondient
 espejo de corrientes en $M_3$ y $M_4$, y la fuente de corriente $M_5$, el resto de
 transistores sirven para deshabilitar el OTA cuando no se esté usando.
 
-\section{Rampa analógica}
+\section{Rampa analógica}\label{cap:ro_sch_armp}
 
 \paragraph{}
 El bloque generador de la rampa analógica se encuentra situado fuera del Canal de
@@ -255,7 +264,7 @@ una precisa extracción y simulación del circuito.
 Por otro lado, se debe asegurar que las \textit{fases} se propaguen a una velocidad
 controlada e igual al resto de señales
 
-\section{Bloques de polarización}
+\section{Bloques de polarización}\label{cap:ro_sch_bias}
 
 \paragraph{}
 Los bloques del canal descritos anteriormente, la fuente de corriente y el ADC
@@ -265,9 +274,67 @@ establecidos por el usuario del dispositivo sobre pr ejemplo, la velocidad de
 lectura, la resolución deseada, el consumo.
 
 \paragraph{}
+Normalmente, para ahorrar espacio, los bloques de polarización, o \textit{BIAS},
+se comparten entre varios canales de lectura. De esta forma, el layout de estos
+bloques puede ser más ancho que alto, con lo que conseguimos un ahorro de área en
+la dirección vertical.
 
+\subsection{PXCS Bias}
 
 \paragraph{}
+La fuente de corriente necesita de tres voltajes de polarización: $vb\_bn$ y
+$vb\_cn$, que vienen de un espejo cascode y la tensión del limitador $vb\_ln$.
+El bloque va a estar compartido por 8 canales (80$\mu m$ de anchura).
+
+\paragraph{}
+Los valores de la corriente que podrá drenar la fuente de corriente del píxel, va
+a ser configurable con 5 bits de resolución. Ésta configuración será implementada
+en este bloque de polarización mediante 5 ramas de corrientes que conduzcan,
+respectivamente, $I_0$, $2I_0$, $2I_0$, $4I_0$, $8I_0$, con
+$I_0=125\text{nA}$. De forma que podemos variar la corriente total entre $125\text{nA}$ y
+$3.875\mu \text{A}$, en pasos de $125\text{nA}$.
+
+\subsection{ADC Bias}
+
+\paragraph{}
+El ADC Bias tiene que proveer al ADC del voltaje de modo común ($vs\_adc\_cmi$) y
+de la tensión de bias de la fuente de corriente ($vb\_adc\_bx$), que espejará
+una corriente generada en el Bias.
+
+\paragraph{}
+La tensión de modo común se puede generar de dos formas, la primera mediante un
+buffer que replica una tensión generada en el bloque de Referencias, fuera del
+canal de lectura, y la segunda generando un tensión local por cada grupo de canales.
+Ésta segunda opción también usa una referencia común, pero al ser local, se adapta
+mejor a la eventual curva en las alimentaciones que podremos tener a lo largo
+del RO. Éste tema se tratará con más detalle en la correspondiente sección de layout.
 
 
 \section{Rampa digital y serialización}
+
+\paragraph{}
+Una vez la operación de comparación se ha iniciado, la rampa y la señal del píxel,
+en algún momento se cruzarán, lo que desencadenará una transición en la señal
+$adc\_take$ que es la que finalmente sale de la parte analógica del canal y se va
+a rutar hacia abajo para ser registrada por el contador digital.
+
+\paragraph{}
+Dicho contador (o rampa) digital habrá empezado la cuenta desde cero, en un tiempo y a una
+velocidad adecuados para que el valor más alto de la cuenta digital (la resolución)
+coincida con el valor final de la rampa analógica y con el valor mínimo de tensión
+de salida del píxel (máxima intensidad lumínica). En el momento en que se recibe
+el pulso en la salida $adc\_take$, se detiene la cuenta digital y tenemos un valor
+digitalizado proporcional a la intensidad lumínica captada por el píxel actual.
+
+\paragraph{}
+El bloque que genera la rampa digital DRMP se sitúa a uno de los lados del RO y
+su señal se distribuye mediante búferes digitales a lo largo del SPS, que es
+el bloque digital situado debajo del Canal de Lectura y que incluye la digitalización
+y serialización de los datos.
+
+\paragraph{}
+La serialización se efectúa para convertir la operación de digitalización, que se
+hace de forma paralela, simulatánea a todos los canales, a una salida de datos en serie.
+Éstos datos en serie se encaminan posteriormente hacia uno o varios buses de salida
+del chip mediante algún protocolo de datos serie típico para poder ser almacenados
+y/o procesados por otro dispositivo en el exterior del sensor de imágen.
