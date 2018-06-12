@@ -12,7 +12,7 @@ con cada columna del canal.
 \paragraph{}
 Idealmente podríamos un canal por columna, y meter en ese espacio todo el circuito
 para la columna. Pero, en algunos casos, debido al pequeño tamaño de los píxeles
---- suelen tener unos 5, 8, 10\(\mu m\)... --- resulta complicado o incluso imposible diseñar el
+--- suelen tener unos 5, 8, 10$\mum$... --- resulta complicado o incluso imposible diseñar el
 layout de dicha circuitería en ese reducido espacio horizontal. De ahora en adelante
 usaremos la palabra inglesa \textit{"pitch"} para referirnos al espaciado con el
 que se repite una estructura periódica como el canal de lectura o el array.
@@ -25,8 +25,8 @@ problemas a la hora de diseñar el layout.
 
 \paragraph{}
 De ahora en adelante nos centraremos en el caso de un sensor cuyos píxeles tengan
-un área de $5\mu m \times 5\mu m$, y en el que se apilan 2 canales para leer 2
-columnas de píxeles. Por tanto, el ancho de un canal será de $10\mu m$, encajando
+un área de $5\mum \times 5\mum$, y en el que se apilan 2 canales para leer 2
+columnas de píxeles. Por tanto, el ancho de un canal será de $10\mum$, encajando
 exáctamente en la anchura de 2 columnas de píxeles.
 
 \section{Estructura general}\label{cap:ro_sch_estructura}
@@ -284,15 +284,15 @@ la dirección vertical.
 \paragraph{}
 La fuente de corriente necesita de tres voltajes de polarización: $vb\_bn$ y
 $vb\_cn$, que vienen de un espejo cascode y la tensión del limitador $vb\_ln$.
-El bloque va a estar compartido por 8 canales (80$\mu m$ de anchura).
+El bloque va a estar compartido por 8 canales (80$\mum$ de anchura).
 
 \paragraph{}
 Los valores de la corriente que podrá drenar la fuente de corriente del píxel, va
 a ser configurable con 5 bits de resolución. Ésta configuración será implementada
 en este bloque de polarización mediante 5 ramas de corrientes que conduzcan,
 respectivamente, $I_0$, $2I_0$, $2I_0$, $4I_0$, $8I_0$, con
-$I_0=125\text{nA}$. De forma que podemos variar la corriente total entre $125\text{nA}$ y
-$3.875\mu \text{A}$, en pasos de $125\text{nA}$.
+$I_0=125\nA$. De forma que podemos variar la corriente total entre $125\nA$ y
+$3.875\muA$, en pasos de $125\nA$.
 
 \subsection{ADC Bias}
 
