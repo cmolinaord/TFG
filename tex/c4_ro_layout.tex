@@ -20,7 +20,41 @@ situadas una al lado de la otra.
 \paragraph{}
 Por otra parte, existen estructuras que pueden requerir diferentes periodicidades.
 Y también hay que adaptarse a la resolución del array, en este caso, al número de
-columnas.
+columnas. Cómo ya hemos visto a lo largo de la descripción del esqumático del canal
+nuestra unidad básica de un canal de lectura, a la que nos referiremos como
+$ro\_chx1$, ocupará una anchura de 2 columnas de píxeles, es decir, una anchura
+de $10\mum$. En esa anchura tiene que ser posible incluir todos los bloques que
+se repiten por canal, es decir, la fuente de corriente y el ADC de una columna de
+píxeles.
+
+\paragraph{}
+En un siguiente nivel de jerarquía, incluiremos 8 canales unitarios y sus
+correspondientes bloques de polarización (PXCS\_BIAS y ADC\_BIAS), que cómo vimos
+están compartidos por cada 8 canales. De ésta forma, el bloque $ro\_chx8$
+tendría una anchura de $10\mum \times 8 = 80\mum$, y tendríamos canales para
+leer 16 columnas de píxeles.
+
+\paragraph{}
+Desde 16 columnas hasta las columnas totales del array podemos elegir varios niveles
+de jerarquías intermedios. Considerando que nuestro array tiene la estructura
+mostrada en el capítulo \ref{cap:pxa_array}, en la figura \ref{fig:pxa_array},
+con 2560 columnas activas y 64 columnas oscuras, vamos a hacer una jerarquía que
+cubra esos 64 píxeles, es decir, 32 canales, por lo que se llamará $ro\_chx32$ e
+instanciará 4 unidades de $ro\_chx8$.
+
+\paragraph{}
+Para completar las 2560 columnas de píxeles activos, sólo hay que instanciar 40
+de los bloques de 32 canales. Y para completar el array, tan sólo hay que añadir
+2 canales (4 píxeles) a izquierda y derecha de la zona activa (píxeles dummy), y
+un bloque de 32 canales en la zona de las columnas oscuras, con sendos pares de
+canales a izquierda y derecha para hacer las columnas oscuras dummy.
+
+
+%WARNING
+%Continuar aqui
+
+
+\subsection{Redundancia}
 
 
 \section{Aproximación al layout de una columna del canal}
@@ -39,7 +73,6 @@ columnas.
 
 \section{Bloques adicionales}
 
-\subsection{Redundancia}
 
 \subsection{Binning}
 
