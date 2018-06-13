@@ -49,13 +49,61 @@ de los bloques de 32 canales. Y para completar el array, tan sólo hay que añad
 un bloque de 32 canales en la zona de las columnas oscuras, con sendos pares de
 canales a izquierda y derecha para hacer las columnas oscuras dummy.
 
+\subsection{Redundancia}
+
+\paragraph{}
+En todo diseño microelectrónico, debido a defectos en la fabricación, ciertos
+dispositivos pueden resultar completamente inutilizables o, al menos, con prestaciones
+por debajo de lo esperado en relación al resto de dispositivos equivalentes.
+Ésto se acentua en casos como un canal de lectura, en los cuales la integración
+y la congestión de rutado y dispositivos es muy alta, y además tiene un patrón
+altamente simétrico y periódico.
+
+\paragraph{}
+Con el paso del tiempo, los fabricantes de sensores de imágen han detectado que
+el canal de lectura sufre de considerablemente más fallos que el resto de circuitos
+en el sensor, y por consiguiente es uno de los principales contribuyentes a la
+disminución del "\textit{yield}" (del inglés: rendimiento), que da cuenta del
+porcentaje de sensores por oblea que no funcionan o son defectuosos, lo que va
+en contra del beneficio económico.
+
+\paragraph{}
+Para tratar de disminuir éste problema, se suele poner en práctica el uso de canales
+redundantes, ésto es, canales adicionales que podrían ser usados en el caso de que,
+una vez fabricado el chip, se detecten fallos en un canal concreto.
+
+\paragraph{}
+Para ésto se añade un canal adicional cada cierto número de canales y mediante un
+sistema de llaves a la entrada de todos los canales podemos redireccionar la
+salida todos los píxeles en el rango afectado y posteriores al canal del fallo,
+hacia el siguiente canal. Con ésto se puede ver fácilmente que podemos solucionar
+tantos fallos como canales redundantes sean incluidos, siempre y cuando no se
+produzca más de un fallo por región.
+
+\begin{figure}[h]
+	\includesvg[width=\textwidth]{svg/redundancy.svg}
+	\caption{Ejemplo del funcionamiento del sistema de redundancia}
+	\label{fig:redundancy}
+\end{figure}
+
+\paragraph{}
+En la figura \ref{fig:redundancy} vemos un ejemplo de aplicación del sistema de
+redundancia dónde tendríamos un canal redundante por cada 4. En el que caso de que
+fallen los canales 2 y 5 mostrados en la imagen, el bloque de redundancia colocado
+en la parte superior del canal de lectura podría dirigir cada columna a la siguiente,
+de la forma que muestran las líneas rojas.
+
+\paragraph{}
+Cómo ya se puede intuir, la anchura del canal de lectura, en el supuesto de usar
+redundancia se tiene que ver reducida con objeto de incluir un canal adicional
+cada cierto tiempo. En nuestro caso vamos a incluir un canal redundante por cada
+grupo de 32 canales funcionando. Con ésto, haciendo una sencilla cuenta, podemos
+establecer la nueva anchura en $9\mum$ en vez de las $10\mum$ originales. Ésto nos
+permite además tener una anchura sobrante cada 33 canales que será:
+$32\cdot 10\mum - 33\cdot 23\mum = 23\mum$ de anchura sobrante.
 
 %WARNING
 %Continuar aqui
-
-
-\subsection{Redundancia}
-
 
 \section{Aproximación al layout de una columna del canal}
 
