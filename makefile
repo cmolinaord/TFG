@@ -4,6 +4,7 @@ TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR) --shell-escape
 
 .PHONY: all tfg tfg_prev clean clean_all count_words debug_label_chapters debug_warnings
 .SILENT: all tfg_prev count_words debug_label_chapters debug_warnings debug_figures debug_figures_unused
+.SILENT: list_bibliography_available list_bibliography_used
 
 all:
 	echo "make tfg:                          Compile the TFG from latex to pdf into pdf/ dir"
@@ -52,3 +53,9 @@ debug_figures:
 
 debug_figures_unused:
 	./search_unused.sh
+
+list_bibliography_available:
+	cat doc/TFG.bib |grep ^@ |cut -d{ -f2 |cut -d, -f1
+
+list_bibliography_used:
+	grep -n "\cite" tex/*.tex
