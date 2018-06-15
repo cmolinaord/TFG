@@ -101,19 +101,72 @@ grupo de 32 canales funcionando. Con ésto, haciendo una sencilla cuenta, podemo
 establecer la nueva anchura en $9\mum$ en vez de las $10\mum$ originales. Ésto nos
 permite además tener una anchura sobrante cada 33 canales que será:
 $32\cdot 10\mum - 33\cdot 23\mum = 23\mum$ de anchura sobrante.
+%WARNING
+%Para que se usa la anchura sobrante de la redundancia.
+
+
 
 %WARNING
 %Continuar aqui
 
-\section{Aproximación al layout de una columna del canal}
+\section{Estructura de layout de una columna del canal}
+
+\paragraph{}
+Una vez establecida una jerarquía clara, y suponiendo el uso de la redundancia ya
+tenemos establecida una anchura para el layout de una columna de nuestro canal.
+En ésta anchura deberemos incluir todos los bloques descritos en el esquemático
+tratando de hacerlo lo más compacto posible para ahorrar área en la dirección vertical.
+
+\paragraph{}
+Cómo hemos introducido en el apartado anterior, el bloque de redundancia será
+el primero que nos encontraremos por la parte superior, más cerca del array de
+píxeles. Para ésto además tiene que existir un rutado que transforme las salidas
+de los píxeles, espaciadas cada $5\mum$ a las entradas de los bloques de redundancia,
+espaciadas 2 cada $9\mum$.
+
+\paragraph{}
+Lo siguiente que tenemos es la fuente de corriente, que es una por cada columna
+de píxeles, es decir, dos en cada canal unitario, y se van a colocar una encima
+de otra ocupando ambas la anchura del canal, $9\mum$.
+
+\paragraph{}
+Inmediatamente debajo colocaremos el bloque de polarización de las fuentes de
+corriente, PXCS\_BIAS, que como se comparte para 8 canales, en la unidad $ro\_chx1$,
+dejaremos un hueco de la altura necesaria, que se establecerá en función de la altura
+del BIAS.
+
+\paragraph{}
+Por debajo del PXCS\_BIAS, vamos a colocar los ADC, que tiene que haber dos por
+cada columna de píxeles si queremos usar la técnica de ping-pong. En nuestro caso
+esto significa tener que implementar 4 ADCs idénticos dispuestos en vertical ocupando
+las $9\mum$ de anchura del canal.
+
+\paragraph{}
+Por último, bajo los 4 convertidores iría el Bias del ADC, que tambíen se comparte
+por cada 8 canales, por lo que tampoco estaría incluida en columna unitaria.
 
 \section{Problemas de layout que afectan al diseño del canal de lectura}
+
+\subsection{Consumo}
+
+\paragraph{}
+El consumo de un bloque tan grande como es el canal de lectura siempre es algo a
+tener muy en cuenta a la hora de modelar las alimentaciones que debe tener y
+cómo afectan éstas al funcionamiento del propio bloque y del resto del sensor.
+
+\paragraph{}
+En muchas ocasiones no es tan importante que un bloque tenga un consumo alto,
+cómo la dinámica con la que se produzca ese consumo. Si un bloque tiene un alto
+consumo, pero lo hace de manera más contínua que otro que tiene grandes picos de
+alto, quizás afecte menos al rendimiento total del circuito. En el caso del
+canal de lectura esto es muy importante porque muchos de los procesos se producen
+de forma simultánea en todos los canales a la vez.
+
 
 \subsection{Acoplos}
 
 \subsection{Concentración de routing}
 
-\subsection{Consumo}
 
 \subsection{Distribución de señales horizontalmente}
 

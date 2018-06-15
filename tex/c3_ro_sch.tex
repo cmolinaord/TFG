@@ -128,6 +128,7 @@ es el primer bloque que se sitúa en
 en el canal de lectura y es común a todas las filas de píxeles. Básicamente
 es un transistor polarizado en saturación, de modo que drena una corriente
 constante que copia de otro transistor con el que forma un espejo de corrientes.
+Podemos ver un esquemático del circuito habitual en la figura \ref{fig:pxcs_sch}.
 
 \paragraph{}
 Normalmente, la corriente es configurable, para permitir tiempos de lectura menores
@@ -140,6 +141,18 @@ velocidad.
 	\caption{Esquemático de la fuente de corriente del pixel}
 	\label{fig:pxcs_sch}
 \end{figure}
+
+\paragraph{}
+La rama que va a tierra desde el nodo de salida del bloque se usa para la pre-carga.
+La lamada pre-carga es un sistema que se usa habitualemente para hacer que el
+establecimiento de la señal cargada por la fuente de corriente se haga más rápido
+y en las mimas condiciones siempre. Lo que se hace es dar un puslo de pre-carga
+(\textit{pch}) un poco antes de activar el \textit{sel}. Ésta rama hace bajar la
+tensión de salida del píxel a un valor cercano a cero para empezar a evolucionar
+desde ahí al valor de la \textit{floating diffusion} menos el $V_{gs}$ del seguidor
+por fuente (SF) del píxel.
+%WARNING
+%Continuar aquí y explicar mejor precarga y limitador
 
 
 \section{Convertidor de rampa}\label{cap:ro_sch_conv}
@@ -247,6 +260,14 @@ decreciente. El rango en el que la rampa varía debe ajustarse en fucnión del r
 de entrada del OTA del comparador y teniendo en cuenta el rango en el que varía
 la salida del píxel, para obtener una resolución deseada y aprovechar al máximo
 la sensibilidad del sensor.
+
+\paragraph{}
+Es muy importante una precisa generación de ésta rampa analógica, con especial
+atención a la linealidad de la misma. En la bibliografía se describe una arquitectura
+para el generador de rampa que obtiene una buena linealidad por debajo de un LSB
+para resoluciones de hasta 15 bits a frecuencias de reloj de 100MHz\cite{Sordo-Ibanez2013},
+que está en un rango adecuado para los tiempos de lectura que se suelen tratar en
+sensores de imagen CMOS.
 
 \paragraph{}
 La señal generada debe propagarse a lo largo de lo todos los canales de lectura,

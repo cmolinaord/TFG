@@ -1,4 +1,4 @@
-\chapter{Introdución}
+\chapter{Introdución}\label{cap:intro}
 
 \paragraph{}
 En este trabajo se va a estudiar el proceso de diseño de un bloque fundamental
@@ -25,7 +25,7 @@ Posteriormente se pasará a analizar en detalle los problemas y cuestiones que s
 plantean a la hora de diseñar el layout de bloques analógicos en general,
 centrándonos en última instancia en los que afectan directamente a un canal de lectura.
 
-\section{Sensores de imagen}
+\section{Sensores de imagen}\label{cap:image_sensors}
 
 \paragraph{}
 Un sensor de imagen o cámara fotográfica es, en esencia, un sistema que capta
@@ -40,7 +40,7 @@ principalmente, los CCD (\textit{Charge-Coupled Device}) y los CMOS
 (\textit{Complementary Metal-Oxide-Semiconductor}). Las diferencias entre ellos
 se basan en la tecnología empleada y en la forma de leer el array de pixeles.
 
-\subsection{Sensores de imagen CCD}
+\subsection{Sensores de imagen CCD}\label{cap:ccd_image_sensors}
 
 \paragraph{}
 El concepto fundamental de un sensor de imagen CCD se basa en el almacenamiento
@@ -55,14 +55,16 @@ se irán transmitiendo al pixel inferior, y, de la misma forma que ocurre en un
 registro de desplazamiento, la información de todos los pixeles se va transmitiendo
 de unos a otros, hasta que al final todo el array es leído.
 
-\subsection{Sensores de imagen CMOS}
+\subsection{Sensores de imagen CMOS}\label{cap:cmos_image_sensors}
 
 \paragraph{}
+%WARNING
+% Decir algo de los sensores de imagen CMOS en comparacion con los CCD
 
 
 \section{Arquitectura de sensores de imagen CMOS}
 
-\subsection{Array de píxeles}
+\subsection{Array de píxeles}\label{cap:pxa_array}
 
 \paragraph{}
 
@@ -85,6 +87,41 @@ Habitualmente, los píxeles son cuadrados con un lado de unas 5 a 10 $\mum$, y e
 array puede tener resoluciones de miles de píxeles en ambas dimensiones, lo que
 significa que el array puede unos ocupar pocos centímetros, lo que lo convierte
 habitualmente en el bloque más grande de todo el diseño.
+
+\paragraph{}
+En éste estudio vamos a trabajar con un array QSXGA de 2560 columnas por 2048 filas,
+que tiene una relación de aspecto 5:4. Además de los píxeles activos, en un sensor
+de imagen, habitualmente se incluyen algunos píxeles dummy, esto es, que no van
+a ser incluidos en la imagen leída. Su función es la de evitar que los píxeles
+en el borde tengan un entorno diferente al resto de píxeles del interior, lo que
+puede alterar sus características.
+
+\paragraph{}
+Además de los píxeles dummy, habitualmente se incluyen algunos de los llamados
+píxeles oscuros, píxeles iguales a los activos salvo porque no van a recibir luz
+por construcción. Ésto se hace tapando el fotodiodo con los metales superiores,
+sin modificar el resto de estructuras y transistores. El objetivo de estos píxeles
+oscuros es ayudar en la calibración de los sensores una vez fabricados. Si
+leemos píxeles que están tapados obtenemos el verdadero valor de negro y podemos
+cuantificar el ruido debido al píxel y al canal, mejorando el ruido
+que pudiéramos medir tomando una imágen en una habitación oscura, por ejemplo.
+
+\paragraph{}
+El sensor que estamos estudiando tiene $2560\times2048$ píxeles activos, 64 columnas
+oscuras, con 4 píxeles dummy a cada lado de los píxeles activos y oscuros.
+En cuanto a las filas, tendremos 8 filas oscuras en la parte inferior del array,
+flanqueadas por 4 filas dummy arriba y abajo, al igual que alrededor de las filas
+activas. Además se incluye una fila de test que servirá para la calibración simulando
+que la fila en cuestión ha recibido una señal concreta. En la figura
+\ref{fig:pxa_array}\footnote{Imágen obtenida del artículo de la bibliografía \cite{Jimenez-Garrido2012}},
+se esquematiza todo lo dicho.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/pixel_array.png}
+	\caption{Estructura del array de píxeles}
+	\label{fig:pxa_array}
+\end{figure}
 
 \subsection{Canal de lectura}
 \paragraph{}
