@@ -155,17 +155,96 @@ cómo la dinámica con la que se produzca ese consumo. Si un bloque tiene un alt
 consumo, pero lo hace de manera más contínua que otro que tiene grandes picos de
 alto, quizás afecte menos al rendimiento total del circuito. En el caso del
 canal de lectura esto es muy importante porque muchos de los procesos se producen
-de forma simultánea en todos los canales a la vez.
+de forma simultánea en todos los canales a la vez. Por esta razón hay que tener
+especial cuidado a cómo se programan los tiempos de lectura y comparación,
+y, lo más importante, realizar exhaustivas simulaciones usando extraído de parásitos
+y modelando muy bien las alimentaciones y los acoplos que podemos tener. Este tema
+se tratará en más detalle en el apartado \ref{cap:simulacion} sobre simulaciones.
 
+\paragraph{}
+Otro punto importante a considerar es que el canal de lectura va a ser alimentado,
+en los mejores casos, en varios puntos a lo largo de toda su anchura. En ocasiones
+tan sólo puede ser alimentado por ambos extremos. En cualquier caso sabemos que
+a lo largo todas las columnas vamos a tener una mayor o menos curvatura en los voltajes
+de alimentación que efectivamente llegan, debido a la caída de tensión a lo largo
+de las líneas metálicas.
+
+\paragraph{}
+Dicha curvatura podría afectar al rendimiento de unos canales frente a otros, lo
+que podría a llegar a manifestarse en la imágen obtenida con un gradiente.
+Ésto se puede producir porque las tensiones de polarización del los bloques, por
+ejemplo, el OTA del comparador, están referidas a una tierra que en ocasiones no
+tendrá el mismo valor que la tierra local de cada ADC, por lo que unos ADC y otros
+podrían tener diferentes tiempos de conversión para la misma señal.
+
+\paragraph{}
+Para tratar de corregir éste efecto, se suelen cortocircuitar las tensiones de polarización
+entre todos los canales del array. Pero si ésto lo hacemos con una línea metálica,
+con muy baja resistencia lo que conseguiríamos sería un valor prácticamente igual
+en todos los canales, que tampoco es lo deseado. Una solución adecuada es usar
+una línea de polisilicio para cortocircuitar estas tensiones. Así, dada la mayor
+resistividad del poly, cada ADC\_BIAS tratará de fijar la tensión de sus ADCs y los
+vecinos cercanos, con lo que logramos suavizar efectivamente la curva de dichas
+tensiones de polarización a lo largo del canal de lectura, adapatándose a la
+curvatura de la tierra local.
 
 \subsection{Acoplos}
 
-\subsection{Concentración de routing}
+\paragraph{}
+Otro tema crítico en el diseño del layout del canal de lectura es los posibles acoplos
+entre señales debidos principalmente a la apilación de canales requerida por la
+paralelización de varios píxeles y por el uso de la técnica de ping-pong. Es más,
+el uso del ping-pong hace incluso más crítico éste tema, ya que va a significar
+que en los mismos periodos de tiempo van a concurrir fases de muestreo y comparación
+en canales que se encuentran apilados.
 
+\paragraph{}
+Algunas líneas como el $adc\_take$ que saldría de un canal superior, va a tener que,
+obligatoriamente, pasar por encima de algún canal inferior que esté haciendo
+\textit{sampling}. Y, debido a que la transición del \textit{take}, se produce
+en un momento indeterminado, en función de la luz captada por el píxel leído, puede
+coincidir que dicha transición se produzca en el periodo final de una fase de
+muestreo del otro canal. Si ésta señal tiene un acoplo con uno de los nodos de
+entrada del comparador, o con los condensadores, puede ocurrir que se produzca
+un pico en la señal que se está muestreando y al ser el final del periodo de muestreo,
+no dar tiempo a que se reestablezca y haber finalmente modificado el valor leído.
+%WARNING
+%Revisar expresion de este ultimo parrafo (simplificar si se puede)
+
+\subsection{Condensadores del ADC}
+
+\paragraph{}
+Los dos condensadores que debe haber por cada ADC son otro punto a tener en
+consideración, ya que son una parte fundamental del mismo. Lo primero que
+hay que decir es que suelen ser grandes, más aún si se trata de un sensor de
+bajo ruido, ésto es, que está destinado a captar imágenes con escasa iluminación
+y se requieren altos rango dinámico y resolución, por lo que se necesitan condensadores
+mayores.
+
+\paragraph{}
+También son grandes porque habitualmente se implementan usando condensadores
+metálicos, que usan placas de metal 3 y 4 una sobre la otra. Éste tipo de condensador
+tiene una densidad de capacidad por unidad de área menor que otros como los tipo
+MOS descritos en \ref{cap:condensadores}, pero se usan por la mayor linealidad que
+éstos últimos.
+
+\paragraph{}
+Un punto a tener atención es al apantallado de éstos condensadores entre los de
+las columnas vecinas. Si entre ellos hubiera una capacidad alta, podría haber
+una transferencia de carga si el valor almacenado en uno de ellos es muy diferente
+al otro, lo que crearía un efecto de desenfoque de los bordes abruptos en la imagen.
+
+\paragraph{}
+Otro problema que introducen los condensadores, en concreto, que estén fabricados
+los metales superiores 3 y 4, es que las señales que se distribuyen verticalmente,
+cómo el $adc\_take$ y la salida del píxel, que habitualmente se rutan en los metales
+más altos para facilitar el apantallado, van a tener que bajar para pasar por debajo
+de los condensadores. Ésto va a posibilitar que se acoplen a otras señales que se ruten
+en metales inferiores.
 
 \subsection{Distribución de señales horizontalmente}
 
-\subsection{Condensadores del ADC}
+
 
 \section{Bloques adicionales}
 
