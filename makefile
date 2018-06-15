@@ -11,6 +11,14 @@ all:
 	echo "make tfg_prev:                     Show the TFG pdf result"
 	echo "make clean:                        Remove the auxiliary files and logs in the output dir"
 	echo "make clean_all:                    Remove all files in output dir, incluiding .pdf"
+	echo "count_words:                       Count number of words in the whole document"
+	echo "update_bibtex:                     Update the file of bibliography from mendeley database"
+	echo "debug_warnings:                    Review '%WARNINGS' messages during the text put by the writer"
+	echo "debug_figures:                     Show all the figures calls or references"
+	echo "debug_figures_unused:              Show all the images in the repo that are not actually used in the document"
+	echo "debug_label_chapters:              Show all the chapters that do not have a \label"
+	echo "list_bibliography_available:       List all the entries in bibliography available in database"
+	echo "list_bibliography_used:            List the actual bibliography referenced within the document"
 
 #tfg
 ##############################
