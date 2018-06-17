@@ -14,7 +14,7 @@ Idealmente podríamos un canal por columna, y meter en ese espacio todo el circu
 para la columna. Pero, en algunos casos, debido al pequeño tamaño de los píxeles
 --- suelen tener unos 5, 8, 10$\mum$... --- resulta complicado o incluso imposible diseñar el
 layout de dicha circuitería en ese reducido espacio horizontal. De ahora en adelante
-usaremos la palabra inglesa \textit{"pitch"} para referirnos al espaciado con el
+usaremos la palabra inglesa \textit{``pitch''} para referirnos al espaciado con el
 que se repite una estructura periódica como el canal de lectura o el array.
 
 \paragraph{}
@@ -41,8 +41,6 @@ significar \textit{blanco} y \textit{negro}, con una resolución definida.
 Por tanto, el canal de lectura es principalmente un ADC (en inglés, \textbf{A}nalog
 to \textbf{D}igital \textbf{C}onverter, o convertidor analógico-digital).
 Una arquitectura usada habitualmente es el convertidor de rampa.
-%WARNING
-%Ver ventajas del convertidor  de rampa
 Éste, para la conversión usa un generador de una rampa de voltaje que se usa para
 comparar contra el valor dado por el píxel. Ćuando ambos valores coinciden,
 la salida del comparador cambia de estado mediante un flanco de subida o bajada.
@@ -56,15 +54,37 @@ evolucionar a la misma velocidad que la analógica. Posteriormente, un circuito 
 detectará el flanco y parará el reloj de la cuenta digital, obteniéndose de esta forma
 un valor digital para el valor analógico leído.
 
+\paragraph{}
+Entre las ventajas de usar un convertidor de rampa frente a otras muchas posibilidades
+que existen en la literatura para convertir valores analógicos a digitales, podemos
+destacar las siguientes:
+
+\begin{enumerate}
+	\item Se trata de un circuito muy simple, que puede reducirse a un comparador
+	creado con un OTA simple de 5 transistores, más un par de condensadores y
+	algunas llaves. Cualquier otra arquitectura (convertidor SAR, sigma-delta...)
+	implican muchos más transistores y posiblemente más consumo.
+	\item Se puede obtener una buena linealidad si se diseña una buena rampa
+	y se hace operar al comparador en un punto de operación similar en todos los casos,
+	consiguiendo ecualizar los tiempos de transición del mismo.
+	\item Es fácilmente repetible en todas las columnas, ya que podemos separar
+	la generación de la rampa de los comparadores.
+\end{enumerate}
+
 \section{Operación de lectura}\label{cap:ro_sch_operacion}
 
 \paragraph{}
 Para abordar el diseño de un canal de lectura debemos entender como se realiza la
 operación de lectura de los píxeles.
 
-\begin{figure}
+\paragraph{}
+En la figura \ref{fig:pixel} podemos ver el esquemático de el pixel 5T
+que vamos a usar para este estudio. El fotodiodo (PD), es el elemento que más
+área ocupa del pixel, ya que es el area que recibe los fotones.
+
+\begin{figure}[h]
 	\centering
-	\begin{subfigure}[b]{0.5\textwidth}
+	\begin{subfigure}{0.6\textwidth}
 		\includegraphics[width=\textwidth]{img/pixel_5T.png}
 		\caption{}
 		\label{fig:pixel}
@@ -72,17 +92,13 @@ operación de lectura de los píxeles.
 
 	 %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
 	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{\textwidth}
+	\begin{subfigure}{\textwidth}
 		\includegraphics[width=\textwidth]{img/pixel_wave.png}
 		\caption{}
 		\label{fig:pixel_op}
 	\end{subfigure}
 	\caption{Esquemático y modo operación de un pixel 5T habitual}
 \end{figure}
-
-En la figura \ref{fig:pixel} podemos ver el esquemático de el pixel 5T
-que vamos a usar para este estudio. El fotodiodo (PD), es el elemento que más
-área ocupa del pixel, ya que es el area que recibe los fotones.
 
 \paragraph{}
 Mirando el modo de operación (\ref{fig:pixel_op}) vemos que antes de la exposición se hace un vaciado del
@@ -97,8 +113,8 @@ En este punto tenemos la carga con la información de la luz captada por el pixe
 almacenada en el condensador $C_{fd}$, a la espera de que queramos leer este valor
 mediante la activación del transistor SEL (Selección). Normalmente, para compensar
 errores debidos a asimetrias en los píxeles, se hace una operación de CDS, siglas de
-"\textit{Correlated Double Sampling}". Esto es, medir la señal bruta que tenemos
-en la "floating diffusion", e inmediatamente después, limpiar este condensador con
+``\textit{Correlated Double Sampling}''. Esto es, medir la señal bruta que tenemos
+en la ``floating diffusion'', e inmediatamente después, limpiar este condensador con
 un pulso de Reset y volver a leer. De esta forma, simbolizando con S, señal y N,
 ruido (\textit{noise}), si restamos ambas formas de onda, podemos obtener:
 
@@ -113,10 +129,10 @@ hacen con muy poco tiempo de diferencia y entonces los ruidos son aproximadament
 iguales.
 
 \paragraph{}
-Habitualmente existen dos formas de exponer el array: "\textit{global shutter}",
-obturación global, y "\textit{rolling shutter}", obturación consecutiva. En la
+Habitualmente existen dos formas de exponer el array: ``\textit{global shutter}'',
+obturación global, y ``\textit{rolling shutter}'', obturación consecutiva. En la
 primera, todas las filas del array se exponen simultáneamente y luego, fila por fila
-se van leyendo los valores almacenados en las "\textit{floating diffusions}". En
+se van leyendo los valores almacenados en las ``\textit{floating diffusions}''. En
 el segundo caso, la exposición se hace secuencialmente, fila por fila, antes de cada
 lectura.
 
@@ -144,9 +160,9 @@ velocidad.
 
 \paragraph{}
 La rama que va a tierra desde el nodo de salida del bloque se usa para la pre-carga.
-La lamada pre-carga es un sistema que se usa habitualemente para hacer que el
+La llamada pre-carga es un sistema que se usa habitualmente para hacer que el
 establecimiento de la señal cargada por la fuente de corriente se haga más rápido
-y en las mimas condiciones siempre. Lo que se hace es dar un puslo de pre-carga
+y en las mimas condiciones siempre. Lo que se hace es dar un pulso de pre-carga
 (\textit{pch}) un poco antes de activar el \textit{sel}. Ésta rama hace bajar la
 tensión de salida del píxel a un valor cercano a cero para empezar a evolucionar
 desde ahí al valor de la \textit{floating diffusion} menos el $V_{gs}$ del seguidor
@@ -193,7 +209,7 @@ La operación del ADC se realiza en 2 fases, lectura (\textit{read}) y comparaci
 Durante la primera de ellas, el comparador está operando en lazo cerrado, por lo
 los nodos de entrada $vp$ y $vn$ se establecen a la tensión de modo
 común, $vs\_adc\_cmi$. Al final del periodo de muestreo, las señales
-"señal + ruido" (NS) y "ruido" (N), quedan almacenadas en los condensadores $C_2$
+``señal + ruido'' (NS) y ``ruido'' (N), quedan almacenadas en los condensadores $C_2$
 y $C_1$, respectivamente.
 
 \paragraph{}
@@ -276,10 +292,6 @@ una rápida y efectiva propagación de esta señal sin distorsión y en tiempo, 
 de hacerse un cuidadoso estudio de layout, calculando las anchuras y separaciones
 entre las líneas metálicas que distribuirán la señal y posteriormente, realizando
 una precisa extracción y simulación del circuito.
-
-%WARNING
-%Comprobar con Anafocus como se hace el estudio de la propagación de fases.
-%Y que importancia tiene.
 
 \paragraph{}
 Por otro lado, se debe asegurar que las \textit{fases} se propaguen a una velocidad
