@@ -13,3 +13,7 @@
 
 - Añadir numero de nodos/transistores simulados en una sim gorda
 (preguntado a M. Alvarez y Antonio DLC )
+
+- Revisar ortografía de VOLTAJE (en español), cuidado porque voltage no está mal porque es inglés.
+
+- Contar cuantos "habitualmente" o "normalmente" he usado, y tratar de buscar un sinónimo.
