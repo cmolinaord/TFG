@@ -56,4 +56,91 @@ bloques de polarización cada 8 canales. Ésto implica que el layout de una colu
 de ADC, por ejemplo, a pesar de tener idéntico layout, puede llevar algunas señales
 verticales diferentes.
 
+\paragraph{}
+Lo que una extracción hace básicamente es calcular las capacidades que se ven
+entre líneas cercanas por layout y resistencias debidas a líneas metálicas o
+de poly. Posteriormente crea un nuevo circuito añadiendo todas las capacidades
+y resistencias que sean mayores que un cierto umbral seleccionado.
+
 \section{Simulación}\label{cap:simulacion}
+
+\paragraph{}
+La simuación, como ya hemos dicho, es un punto importante en el diseño de un circuito
+microelectrónico. Con una simulación se trata de modelar o imitar el comportamiento
+de los dispositivos cuando estén fabricados en silicio. Para lo cual, cada
+dispositivo instanciado consta de un model que define cómo son las tensiones y
+corrientes que se establezerán en sus nodos en función de las tensiones y/o
+corrientes que reciba y de las cualidades y dimensiones del dispositivo en concreto.
+
+\paragraph{}
+Tras establecer las relaciones de dependencias de unas variables con otras en la malla
+del circuito, el simulador resolverá el sistema de ecuaciones, y, si converge, dará
+una solución.
+
+\paragraph{}
+Las simulaciones pueden hacerse de varios tipos, estáticas o \textit{dc}, éstas
+sólo calculan el punto de operación de todos los dispositivos y las corrientes y
+voltajes en cada rama y nodo, las dinámicas o transitorias, que calculan las
+evoluciones temporales de los voltajes y tensiones de los nodos y ramas partiendo
+desde una condiciones iniciales. Adicionalmente hay otros tipos de simulaciones,
+cómo barridos en frecuencia (\textit{ac}), análisis de ruido en frecuencia, que
+tiene en cuenta los ruidos que generan los distintos dispositivos, análisis temporal
+de ruido, que es una simulación transitoria pero con ruidos añadidos.
+
+\paragraph{}
+Al igual que en el diseño de cualquier bloque, el diseñador debe pasar por varias
+etapas de simulado. Inicialmente, tras el diseño de los bloques pequeños, se harán
+simulaciones sencillas para comprobar que el bloque diseñado se ajusta a los valores
+calculados de punto de operación, ganancia, respuesta temporal, ruido...
+
+\paragraph{}
+En un estado más avanzado de diseño se integrarán los diferentes bloques unitarios
+para comprobar que juntos siguen actuando como se espera, sin fijarnos tanto en el
+comportamiento específico de una parte del mismo, sino en el rendimiento general del
+conjunto.
+
+\paragraph{}
+En cuanto el layout de los bloques esté diseñado, al menos una primera versión, es
+recomendable empezar a simularlo usando el extraído del mismo, ya que en según que
+casos, puede afectar considerablemente al rendimiento general. En una simulación
+post-layout lo que esperamos obtener son por ejemplo, formas de ondas más suaves
+y al mismo tiempo con pequeñas perturbaciones, al contrario de las simulaciones
+con esquemático, que suelen dar formas de ondas con bordes abruptos y sin perturbaciones.
+
+\paragraph{}
+Si por alguna circunstancia no es posible simular el circuito con el extraído, ya
+sea porque todavía no está diseñado, o porque es demasiado grande y es difícil
+la extracción, siempre es buena práctica realizar alguna simulación en la que el
+diseñador incluya ``a mano'' los parásitos que considere más importante,
+calculándolos del existente o previsto layout.
+
+\paragraph{}
+Ésta circunstancia se da muy habitualmente en el caso de las alimentaciones por ejemplo.
+Normalmente no es viable hacer un extraído de toda la línea que alimenta a un circuito
+desde los PADs de entrada al chip. Y por otro lado, sólo nos interesa la posible
+caída de tensión que se produzca por el camino, y ésta se obtiene con un cálculo
+simple. Añadiremos una resistencia estimada usando la resistividad, anchura y longitud
+de cada alimentación. Además se suele incluir un modelo experimental del PAD de entrada.
+El PAD es el área metálica cuyo aislante superior se eliminará para poder acceder
+con un hilo de oro y conectar una señal o alimentación interna con el exterior.
+El PAD consta normalmente de algunos diodos de protección ESD (descarga electrostática).
+Lo que se suele hacer habitualmente es simular usando el extraído de dicho PAD e
+incluir además un modelo eléctrico del hilo de oro, mediante una resistencia,
+capacidad e inductancia determinadas experimentalmente. La inclusión de dicho modelo
+podrá causar que en nuestra simulación veamos caídas de tensiones o efectos de
+segundo órden como rebotes o rizados en las señales, que se deberían estudiar y
+tratar de reducir.
+
+\paragraph{}
+Otro caso en el que no podríamos usar el extraído de todo el bloque sería al tratar
+de simular todo el canal de lectura, en nuestro caso, las 1320 columnas de canales
+correspondientes a las 2640 colúmnas de píxeles totales, activos, OB y dummies.
+Una simulación de el canal al completo es interesante desde el punto de vista de
+sistemas para analizar si hay problemas debidos a la propagación como el retraso
+o la degradación de las señales. Pero lo cierto es que no estamos interesados
+en obtener datos perfectos y precisos de todas y cada una de las columnas, sino que
+habitualmente sólo queremos conocer el comportamiento en algunas columnas concretas,
+como por ejemplo la primera, última y alguna de la parte central.
+
+%WARNING
+%Continuar aqui, explicar como es la simulacion de Alex
