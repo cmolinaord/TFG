@@ -1,5 +1,59 @@
 \chapter{Extracción y simulación}
 
+\paragraph{}
+Cómo se ha ido presentando durante todo el trabajo, todo el trabajo de diseño,
+tanto esquemático cómo de layout, no tiene sentido sin hablar de un proceso de
+verificación de que lo que se ha diseñado funciona cómo queremos que funcione,
+y ésto queremos comprobarlo, lógicamente, antes de que se fabrique el chip.
+
+\paragraph{}
+Las técnicas de simulación y extraído han evolucionado mucho en los últimos tiempos,
+con mejores algoritmos y procesadores más potentes ahora podemos simular circuitos
+mucho mayores que años atrás, llegando a los cientos de miles de transistores o
+%WARNING
+%Ajustar numero de transistores en simulaciones gordas
+
+\paragraph{}
+El proceso de diseño es iterativo, se diseña según unos cálculos previos, se hacen
+simulaciones, primero a nivel de bloques pequeños y luego bloques más grandes y
+en función de los resultados se pueden ajustar algunos parámetros en el esquemático.
+Para afinar aún más siempre es necesario realizar también simulaciones post-layout,
+esto es, habiendo hecho previamente un extraído de parásitos debidos al layout.
+
 \section{Extracción de parásitos}\label{cap:extraccion}
+
+\paragraph{}
+El esquemático que se diseña en los primeros pasos, habitualmente no tiene ninguna
+componente debida a aspectos físicos de layout. Las conexiones entre dispositivos
+son ideales, sin resistencia ni capacidades ni inductancias, pero éstas existirán
+una vez fabricado en el silicio.
+
+\paragraph{}
+Quizás en algunos casos como circuitos estáticos, de bajo consumo, o con amplios
+márgenes de diseño, el extraído de parásitos no es algo crítico puesto que van a
+afectar poco al comportamiento general del circuito, aunque como norma se prefiere
+realizar siempre una comprobación. En otros casos en cambio, como puede suceder
+en el caso del canal de lectura, ésta extracción es de suma importancia y hay
+que dedicarle un tiempo considerable a dicho proceso iterativo, en ocasiones
+alargándose más que el propio diseño inicial.
+
+\paragraph{}
+Los extraídos, por regla general se pueden hacer sólo capacitivos, sólo resistivos
+o ambos, y en ocasiones algunos extractores permiten extraer inductancias. El extraído
+capacitivo además se puede hacer en 2 dimensiones, entendiendo con ésto que sólo
+se consideran las capacidades inmediatas, entre 2 metales a la misma altura o
+en capas consecutivas en altura. En contraposición podemos afinar más con un
+extraído 3D que sí considera líneas más alejadas sin acoplo directo. Para nuestro
+caso es muy recomendable ésta alternativa dada la alta concentración de routing y
+la importancia de los acoplos.
+
+\paragraph{}
+El extraído es un proceso costoso computacionalmente, más aún si lo hacemos con alta
+resolución, 3D y tratándose de bloques grandes. Lo recomendable es extraer mas de una
+sóla columna de canal para ver posibles acoplos entre canales adyacentes y posibles
+asimetrías entre ellos debido a la asimetría introducida por el hecho de compartir
+bloques de polarización cada 8 canales. Ésto implica que el layout de una columna
+de ADC, por ejemplo, a pesar de tener idéntico layout, puede llevar algunas señales
+verticales diferentes.
 
 \section{Simulación}\label{cap:simulacion}
