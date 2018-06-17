@@ -63,7 +63,7 @@ altamente simétrico y periódico.
 Con el paso del tiempo, los fabricantes de sensores de imágen han detectado que
 el canal de lectura sufre de considerablemente más fallos que el resto de circuitos
 en el sensor, y por consiguiente es uno de los principales contribuyentes a la
-disminución del "\textit{yield}" (del inglés: rendimiento), que da cuenta del
+disminución del ``\textit{yield}'' (del inglés: rendimiento), que da cuenta del
 porcentaje de sensores por oblea que no funcionan o son defectuosos, lo que va
 en contra del beneficio económico.
 
@@ -244,20 +244,73 @@ en metales inferiores.
 
 \subsection{Distribución de señales horizontalmente}
 
+\paragraph{}
+Cómo ya se ha comentado en otros apartados, la distribución horizontal de las
+señales de control, o \textit{fases}, necesita especial atención, sobre todo
+si el array consta de muchas columnas.
 
+\paragraph{}
+Una de las principales señales horizontales es la rampa analógica. En el caso de
+producirse un retraso en la propagación de ésta, los valores leídos serían mayores
+de los verdaderos. Por lo tanto siempre trataremos de disminuir dicho tiempo de
+propagación, lo que se consigue con baja resistencia, esto es, mayor anchura de
+líneas, y menor capacidad, mayor espaciado con otras líneas o con el substrato.
+Por otra parte, es bueno que no se ensucie con posibles acoplos con señales verticales,
+por lo que habitualmente se elige rutar la rampa en metal Top de $10\mum$ de anchura,
+sobre una capa de Metal 3 conectado a tierra como apantallamiento.
+
+\paragraph{}
+Siempre y cuando el error producido por el retraso de la rampa quede por debajo
+de un LSB, no se vería nada en la imágen debido a éste retraso. Si no es así, y es
+inevitable un pequeño retraso, siempre se puede corregir posteriormente, ya que
+se trata de un error de patrón fijo \textit{``Fixed Pattern Noise''} o FPN, que
+en la fase de caracterización del sensor, se podría corregir mediante unos
+parámetros de ajuste por canal.
+
+\paragraph{}
+En cuanto a los retrasos en las fases, como éstos afectan a las señales de
+muestreo, debemos tener más cuidado puesto que podría darse el caso extremo de
+que las fases de muestreo se descuadren demasiado con la señal de \textit{sel} del
+píxel y que perdamos periodo de muestreo efectivo. Ésto se debe corregir tratando
+de ecualizar la constante de tiempo la señal de \textit{sel} con el resto de
+fases. Hay que recordar que normalmente la primera tiene mucha menos libertad a la
+hora del diseño. La anchura y la capacidad del \textit{sel} está muy acotada
+por el complejo diseño del layout del píxel. Por lo tanto sólo podemos actuar
+sobre el diseño de las líneas de las fases del canal. Debemos comprobar bien
+anchuras, acoplos a otras líneas y tamaño y cantidad de dispositivos que cuelgan
+de ellas, tratando de equilibrar las constantes de tiempo de todas ellas.
+
+Para ésto, una vez más, es muy importante una cuidada extracción de parásitos y
+exhaustivas simulaciones post-layout, en diferentes canales a lo largo de todo el
+array.
 
 \section{Bloques adicionales}
 
-
 \subsection{Binning}
+
+\paragraph{}
+Con el nombre de \textit{binning} nos referimos a una técnica de combinación de
+varios píxeles en uno sólo, de forma que reducimos la resolución efectiva del
+array y podemos leerlo más rápido. Normalmente se pueden combinar grupos de
+$2\times 2$ o $4\times 4$ píxeles.
+
+\paragraph{}
+El binning se puede implementar posteriormente a nivel digital o en el propio
+canal de lectura.
+%WARNING
+%Completar con algo de binning
 
 \subsection{Implementación de ROIs}
 
-\section{Aproximación a arquitecturas de canales de lectura más complejas}
+\paragraph{}
+Una ROI, del inglés \textbf{R}egion \textbf{O}f \textbf{I}nterest, es una zona
+de la imagen que el usuario puede seleccionar para leer, obviando el resto
+del array. Con ésto podríamos disminuir el tiempo de lectura, sólo si
+disminuye el numero de filas.
 
-\subsection{Aumento de la multiparalelización}
-
-\subsection{Sistemas de bajo ruido}
-
-\subsection{Arquitecturas innovadoras}
-Modo corriente
+\paragraph{}
+Otra ventaja para usar una ROI sería que podríamos desactivar los canales que no
+estén usando, con lo que disminuiría el consumo total del chip. Para ésto debemos
+tener un control por deshabilitación de los canales por columnas, o al menos, por
+grupos de columnas, por ejemplo una buena estrategia sería poder desactivar cada
+BIAS y con ellos, los correspondientes 8 canales, o 16 píxeles.
