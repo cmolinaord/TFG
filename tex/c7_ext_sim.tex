@@ -142,5 +142,39 @@ en obtener datos perfectos y precisos de todas y cada una de las columnas, sino 
 habitualmente sólo queremos conocer el comportamiento en algunas columnas concretas,
 como por ejemplo la primera, última y alguna de la parte central.
 
-%WARNING
-%Continuar aqui, explicar como es la simulacion de Alex
+\paragraph{}
+Para ésto, lo que se suele hacer es montar una siulación en la que los bloques
+de interés estén instanciados usando su circuito extraído, y el resto estarían
+agrupados en paquetes de varios de forma que la carga total de sus líneas sea
+equivalente, y éstos unidos horizontalmente por resistencias metálicas que
+emulen la resistencia total de la longitud del grupo de canales elegido. Por
+ejemplo, podríamos agrupar los canales en grupos de 128 canales, y con 10 grupos
+como éste cubrimos los 1280 canales de la parte activa. De entre ellos podríamos
+escoger los extremos y uno del centro para separarlos en $127 + 1$ y tomar medidas
+en ese. También podríamos añadir canales OB y dummies ajustando el tamaño de los
+grupos.
+
+\paragraph{}
+Con una simulacón así podríamos medir el retraso en las diferentes fases y la
+degradación que sufrirían los flancos en cuanto a \textit{slew rate}, o distorsiones
+por acoplos durante el camino. Y lo más importante, analizar si dichos efectos
+son perjudiciales al rendimiento final, o si se observan diferencias apreciables
+en los valores leídos por las diferentes columnas.
+
+\paragraph{}
+Si en esta simulación añadimos un adecuado modelo de distribución de alimentaciones
+y emulamos que el array de píxeles esté iluminado con valores blancos y negros en
+filas alternativas, podríamos ver si existe un acoplo entre canales contiguos y
+que parte de la carga se transfiera a canales cercanos.
+
+\paragraph{}
+Por último, debemos mencionar las simulaciones de funcionalidad que se llevan
+a cabo en las fases finales del proyecto, poco antes de ser enviado a fabricar.
+Éstas simulaciones consideran todo el chip, usando modelos Verilog, para las partes
+digitales y VerilogAMS para las partes analógicas. Dichos modelos simplifican
+muchísmimo el funcionamiento del circuito; en la parte digital con valores
+digitales ceros y unos, y en la parte analógica se puede tratar con números reales.
+Con ésto podemos simular la funcionalidad general del circuito con menor costo
+computancional, y así abarcar diseños mucho mayores. Con esto se pretence verificar
+que todas las señales activan correctamente el funcionamiento de los bloques, y éstos
+envían sus salidas a los siguientes bloques correctamente.
