@@ -60,7 +60,7 @@ debug_figures:
 	grep -n "fig:" $(SRC_DIR)/*.tex
 
 debug_figures_unused:
-	./search_unused.sh
+	./scripts/search_unused.sh
 
 list_bibliography_available:
 	cat doc/TFG.bib |grep ^@ |cut -d{ -f2 |cut -d, -f1
