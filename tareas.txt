@@ -1,10 +1,15 @@
-- pasar a color los svg de los dispositivos CMOS
+- pasar a color los svg de los dispositivos CMOS (hecho a falta de alguno)
 
-- Definir bien la capa ACTIVE (c2_cmos/capas de layout)
+- Definir bien la capa ACTIVE (c2_cmos/capas de layout) (hecho)
 
 - Revisión 1 con Belén (22-Mayo):
-	* Ampliar la zona central del trabajo en contra de la introducción
+	* Ampliar la zona central del trabajo en contra de la introducción (hecho 16jun)
 	* Poner referencias más actualizadas, (trabajo de investigación)
 	* Aportar cosas "nuevas"
-	* Hablar sobre las técnicas de extracción y simulación.
-	* 
+	* Hablar sobre las técnicas de extracción y simulación. (hecho a medias 16jun)
+	*
+
+- Añadir en algún lugar altura total del canal de una 1300 um
+
+- Añadir numero de nodos/transistores simulados en una sim gorda
+(preguntado a M. Alvarez y Antonio DLC )
