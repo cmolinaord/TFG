@@ -19,3 +19,5 @@
 - Contar cuantos "habitualmente" o "normalmente" he usado, y tratar de buscar un sinónimo.
 
 - Añadir LICENCIA, a ser posible CC-BY-SA
+
+- Reducir explicación sobre CAD
