@@ -40,27 +40,32 @@ principalmente, los CCD (\textit{Charge-Coupled Device}) y los CMOS
 (\textit{Complementary Metal-Oxide-Semiconductor}). Las diferencias entre ellos
 se basan en la tecnología empleada y en la forma de leer el array de pixeles.
 
-\subsection{Sensores de imagen CCD}\label{cap:ccd_image_sensors}
-
-\paragraph{}
+\paragraph{Sensores de imágen CCD}
 El concepto fundamental de un sensor de imagen CCD se basa en el almacenamiento
 y propagación de los electrones fotogenerados en cada pixel. Mediante el efecto
 fotoeléctrico, un fotón que impacte en la zona de silicio fotosensible, si tiene
 la energía adecuada, arrancará un electrón desde la banda de valencia hasta la
 banda de conducción, y podrá moverse libremente o arrastrado por campos eléctricos.
 
+\paragraph{}
 La carga almacenada en cada pixel será función lineal de la intensidad lumínica
 captada por cada pixel. Tras la exposición, las cargas almacenadas en cada pixel
 se irán transmitiendo al pixel inferior, y, de la misma forma que ocurre en un
 registro de desplazamiento, la información de todos los pixeles se va transmitiendo
-de unos a otros, hasta que al final todo el array es leído.
+de unos a otros, hasta que al final todo el array es leído.\cite{Nakamura2005:IS_and_SP_for_DSC}
 
-\subsection{Sensores de imagen CMOS}\label{cap:cmos_image_sensors}
+\paragraph{Sensores de imágen CMOS}
+La diferencia fundamental de éstos con los sensores CCD es que los CMOS usan un
+amplificador integrado en el píxel y la carga no se transfiere de unos píxeles
+a otros, sino que se lee fila a fila directamente. Ésto les da algunas ventajas
+frente a los CCD, por ejemplo, sufren de menor efecto de ``blooming'', que podría
+traducirse como deslumbramiento o destello, es decir, manchas blancas que pueden
+producir los puntos muy brillantes a su alrededor por un desbordamiento de los
+electrones fotogenerados en una zona.
 
-\paragraph{}
-%WARNING
-% Decir algo de los sensores de imagen CMOS en comparacion con los CCD
-
+Otra ventaja es que pueden llegar a ser más rápidos y más baratos, ambos debidos
+a la tecnología CMOS. Gracias a esto, hoy en día cada vez son más comunes que los
+CCD.
 
 \section{Arquitectura de sensores de imagen CMOS}
 
