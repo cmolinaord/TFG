@@ -214,64 +214,6 @@ unidad de área suele ser elevada debido al pequeño espesor del óxido de puert
 tienen la desventaja de presentar un comportamiento no lineal, ya la que la capacidad
 depende del punto de operación del transistor.
 
-\subsection{Diodos}\label{cap:diodos}
-\paragraph{}
-Una forma de crear diodos en esta tecnología es crear una zona de dopado N (difusión N+)
-junto a una zona con dopado P (difusión P+). Es habitual dibujar uno de los dos terminales
-en forma de anillo rodeando al otro terminal. Fig \ref{fig:diodo}:
-
-\begin{figure}[h]
-	\centering
-	\includesvg[width=0.4\textwidth]{svg/diodo.svg}
-	\caption{Estructura física de un diodo de unión PN}
-	\label{fig:diodo}
-\end{figure}
-
-\subsection{Transistores bipolares}\label{cap:bipolares}
-\paragraph{}
-También se pueden crear transistores de unión bipolar a partir de la creación
-de dos uniones PN enfrentadas. En el caso de tener substrato P podemos conseguir
-de forma sencilla un transistor tipo \textbf{PNP}, creando un contacto al substrato
-P para el Colector (C), un pozo N dónde se crea un contacto a N+ para la base (B), y
-una difusión positiva P+ dentro del pozo N, que funcionará como emisor (E).
-Véase la figura \ref{fig:pnp}:
-
-%WARNING
-%Vectorizar y colorear figura PNP
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{img/pnp.png}
-	\caption{Estructura física de un transistor de unión bipolar PNP}
-	\label{fig:pnp}
-\end{figure}
-
-\paragraph{}
-Crear un transistor NPN en una tecnología de substrato P es algo más complicado,
-pero afortunadamente, existe la posibilidad de crear una estructura especial, que
-va a ser muy usada en algunos casos con diferentes finalidades. Se trata del
-llamado \textit{pozo N profundo} (\textit{Deep-N-Well} en inglés), que no
-es más que un pozo N enterrado baja una capa de substrato P, que queda aislada del
-substrato P del resto del chip si las uniones PN que forma con ambos substratos P,
-están polarizadas inversamente.
-
-\paragraph{}
-De ésta forma podemos crear un transistor NPN entre el substrato profundo N,
-colector (C), el substrato P encerrado por el anterior, base (B), y una difusión
-N+ en el centro de este substrato P, que funcionará como emisor (E). Véase la
-figura \ref{fig:npn}:
-
-%WARNING
-%Vectorizar y colorear figura NPN
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{img/npn.png}
-	\caption{Estructura física de un transistor de unión bipolar NPN}
-	\label{fig:npn}
-\end{figure}
-
-%WARNING
-%Aniadir si es posible algun otro dispositivo en tecnologia CMOS
-
 \section{Diseño de layout}\label{cap:layout}
 
 \paragraph{}
