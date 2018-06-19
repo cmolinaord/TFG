@@ -102,7 +102,8 @@ referencias de tensión, bandgap).
 
 \paragraph{}
 El transistor CMOS es un dispositivo electrónico de 3 terminales que se basa
-en una estructura MOS (Metal-Óxido-Semiconductor). En esta estructura, sobre un
+en una estructura MOS (Metal-Óxido-Semiconductor)\cite{Razavi2016}\cite{Allen2002}.
+En esta estructura, sobre un
 substrato semiconductor se asienta una capa de \textit{óxido} aislante y sobre ella un
 material metálico, que en las tecnologías actuales suele tratarse del polisilicio
 que se mencionó anteriormente. La capa de óxido fino, tiene un espesor muy pequeño,
@@ -118,15 +119,6 @@ del polisilicio colocaremos el terminal llamado \textit{puerta} o \textbf{G} (\t
 En la figura \ref{fig:nmos} podemos ver la estructura física de este dispositivo.
 
 \paragraph{}
-Cuando se aplica un voltage en puerta, el óxido fino crea un
-condensador entre el polisilicio y el substrato semiconductor. De esta forma,
-electrones presentes en substrato son atraídos hacia la superficie del substrato,
-lo que facilita la creación de un canal, que permitirá la circulación de una
-corriente entre las dos difusiones fuente y drenador. Cuando la tensión en la puerta
-es menor que cierto valor, la creación del canal no se dá, y los terminales D y S
-quedan eléctricamente aislados.
-
-\paragraph{}
 La dimensión de la puerta en la dirección que une drenador y fuente se llama
 ''longitud'', notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a ésta
 se llama ''anchura'', abreviada como \textbf{W}
@@ -139,16 +131,16 @@ tipo-n. El transistor embebido en este pozo tiene, entonces, la misma estructura
 salvo que las difusiones para drenador y fuente son con dopado positivo \textbf{P+}.
 Una representación de este tipo de transistor puede verse en la figura \ref{fig:pmos}.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\includesvg[width=\textwidth]{svg/nmos.svg}
 		\caption{NMOS}
 		\label{fig:nmos}
 	\end{subfigure}
 	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
 	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\includesvg[width=\textwidth]{svg/pmos.svg}
 		\caption{PMOS}
 		\label{fig:pmos}
@@ -173,7 +165,7 @@ una de las técnicas más habituales es usar el silicio policristalino o \textbf
 
 \begin{figure}[h]
 	\centering
-	\includesvg[width=0.6\textwidth]{svg/poly_res.svg}
+	\includesvg[width=0.5\textwidth]{svg/poly_res.svg}
 	\caption{Estructura física de una resistencia de polisilicio}
 	\label{fig:poly_res}
 \end{figure}
