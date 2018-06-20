@@ -10,15 +10,14 @@ sitúa debajo del array de píxeles de forma que cada columna del canal quede al
 con cada columna del canal.
 
 \paragraph{}
-Idealmente podríamos un canal por columna, y meter en ese espacio todo el circuito
+Idealmente podríamos usar un canal por columna, y meter en ese espacio todo el circuito
 para la columna. Pero, en algunos casos, debido al pequeño tamaño de los píxeles
 --- suelen tener unos 5, 8, 10$\mum$... --- resulta complicado o incluso imposible diseñar el
-layout de dicha circuitería en ese reducido espacio horizontal. De ahora en adelante
+layout de dicha circuitería en ese reducido espacio horizontal.
+Por esta razón, es una práctica común usar el \textit{pitch}\footnote{De ahora en adelante
 usaremos la palabra inglesa \textit{``pitch''} para referirnos al espaciado con el
-que se repite una estructura periódica como el canal de lectura o el array.
-
-\paragraph{}
-Por esta razón, es una práctica común usar el \textit{pitch} de varios píxeles, por
+que se repite una estructura periódica como el canal de lectura o el array}
+de varios píxeles, por
 ejemplo 2 ó 4, y así tener más espacio para diseñar el layout del circuito. Por contra,
 debemos apilar estos 2 ó 4 canales en filas, lo que veremos que nos trae algunos
 problemas a la hora de diseñar el layout.
