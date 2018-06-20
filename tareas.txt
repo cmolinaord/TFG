@@ -21,3 +21,5 @@
 - Añadir LICENCIA, a ser posible CC-BY-SA
 
 - Reducir explicación sobre CAD
+
+- Revisar Caracteres raros en las URL en el BibTeX, retocar antes de imprimir definitivo.
