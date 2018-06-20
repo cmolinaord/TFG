@@ -279,17 +279,16 @@ Metal 1. Es el primero de los metales y se suele usar para contactar
 transistores entre sí y con otros dispositivos, o para crear anillos de contactos
 a substrato.
 
-\paragraph{M2-M3-...-(M5)}
+\paragraph{M2-M3-TOP\_M}
 Otros metales. En función de la tecnología, pueden ser
 más o menos capas de metal, por ejemplo 4 ó 6. La última capa de metal puede ser
 diferente, ser más gruesa y menos resistiva, con objeto de usarse como caminos de
-alimentación, que deben soportar corrientes mayores. Habitualmente, para seguir un órden
-y ayudar al rutado del circuito, se suele definir un criterio de direcciones
-en función de si la capa de metal es par o impar se dispondrán verticales u
-horizontales. Mientras no se diga lo contrario, en el texto se usará el criterio
+alimentación, que deben soportar corrientes mayores. Habitualmente, para
+ayudar al rutado del circuito, se suele definir un criterio de direcciones
+en función de si la capa de metal es par o impar. En el este diseño se usará el criterio
 horizontal = impar, vertical = par.
 
-\paragraph{V2-V3-...-(V5)}
+\paragraph{V2-V3-TOP\_V}
 Vías. Crean conexiones verticales entre un metal y el
 inmediato superior. Se suelen usar varios para cada conexión por evitar una
 posible rotura y para disminuir la resistencia total.
@@ -317,9 +316,7 @@ en muchos campos de la ingeniería o la arquitectura, y actualmente, debido a la
 complejidad de los diseños son de uso prácticamente obligado.
 
 \paragraph{}
-En el caso que nos ocupa, el diseño de circuitos microelectrónicos,
-tiene gran importancia el buen uso y conocimiento de las herramientas por parte de
-diseñadores. En nuestro caso, estas técnicas tienen dos finalidades fundamentales:
+En el caso de la microelectrónica, estas técnicas tienen dos finalidades fundamentales:
 el diseño y simulación eléctrica y, por otro lado, la implementación física. Entre ellas
 hay muchas diferencias, pero también existe una inevitable relación de dependencia.
 La implementación física viene definida por el diseño eléctrico, pero a su vez, como
@@ -328,14 +325,14 @@ veremos en muchos casos, éste último condiciona el diseño eléctrico.
 \paragraph{}
 Por otra parte, en microelectrónica, debemos tener presente que
 hay una división importante entre dos ámbitos que son bastante diferentes en cuanto
-al flujo de diseño, simulación e implementación física, aunque ambos se basan sobre
+al flujo de diseño, simulación e implementación física, aunque ambos se basan en
 la misma tecnología. Me refiero a la separación entre el ámbito \textbf{analógico}
 y el \textbf{digital}. En éste trabajo nos centraremos en la parte analógica
 puesto que el canal de lectura es un bloque fundamentalmente analógico.
 
 \paragraph{}
 Considerando únicamente el layout, estos dos ámbitos, analógico y
-digital son también bastante diferentes. En el caso del layout digital, el flujo
+digital, son también bastante diferentes. En el caso del layout digital, el flujo
 de trabajo, debido a la gran cantidad de dispositivos que habitualmente son necesarios
 para diseñar cualquier bloque digital, está altamente automatizado por algoritmos
 de distribución y rutado automático (\textit{place and route}). Mediante estas
@@ -344,42 +341,20 @@ digital que el diseñador de front-end ha diseñado para que tenga un funcionami
 definido.
 
 \paragraph{}
-Las herramientas de \textit{place and route} consisten en algorítmos
-de posicionamiento de los sub-bloques digitales que conforman un macro-bloque:
-inversores, buffers, puertas lógicas, flip-flops... La herramienta, considerando el
-rutado entre cada bloque, los posiciona y los interconecta de forma que los tiempos
-de propagación de las señales entre ellos estén dentro de unos márgenes aceptables.
-En ocasiones, esta implementación física da problemas por cuestiones de congestión
-de rutado, o por problemas de \textit{timing}, las señales no se propagan con la
-suficiente velocidad y ésto genera fallos en el funcionamiento general de bloque.
-Por todo esto, es muy importante la simulación post-layout de los bloques digitales.
-Éstas tienen en cuenta los tiempos de respuesta de los sub-bloques digitales, los cuales
-han sido obtenidos previamente mediante simulaciones analógicas, o vienen dados por
-el fabricante de la tecnología en unos ficheros que incluyen tiempos y capacidades de
-sus nodos. Posteriormente la herramienta considera las capacidades de las líneas de
-rutado entre los sub-bloques, mediante un extraído de parásitos. Con todo ésto
-se obtiene una simulación bastante cercana al comportamiento real del bloque una vez
-fabricado, aunque nunca se puede asegurar al cien por cien el correcto funcionamiento
-de todo el chip, lo que genera chips defectuosos en cada oblea fabricada.
-
-
-\paragraph{}
-Para el caso analógico, el editor de layout consiste en un software
-de diseño gráfico en 2 dimensiones, dónde el diseñador de layout va dibujando los
-dispositivos, y los va interconectando mediante líneas de rutado en los diferentes
-metales que tiene a su disposición. El proceso es mucho más manual que en el caso
-digital, dada la relativa simplicidad de los circuitos analógicos, frente a los
-digitales. Un bloque analógico es abordable por una persona en unos pocos días o
-semanas, ayudándose obviamente, de herramientas de replicación, jerarquizado, celdas
-prediseñadas o parametrizadas. El caso analógico también se realiza de forma más
+Para el caso analógico, el diseñador de layout debe dibujar los
+dispositivos, posicionarlos e interconectándolos de una forma mucho más manual que en el caso
+digital, debido a una relativa simplicidad de éstos circuitos respecto a los digitales.
+Un bloque analógico es abordable por una persona en unos pocos días o
+semanas, ayudándose, obviamente, de herramientas de replicación, jerarquizado, celdas
+prediseñadas y/o parametrizadas. El caso analógico también se realiza de forma más
 manual debido a la naturaleza de las señales analógicas, al ser éstas, en algunos casos,
-más susceptibles a ruidos ,interferencias o acoplos con otras señales.
+más susceptibles a ruidos, interferencias o acoplos con otras señales.
 
 \paragraph{}
 En los circuitos puramente digitales, las señales cambian de un
 valor alto (1) a un valor bajo (0), siendo menos importante el valor exácto
 mientras éste se encuentre dentro de los márgenes definidos. Por el contrario,
-en un circuito analógico, hay que tomar cuidado en diseñar un layout que preserve
+en un circuito analógico, hay que tomar especial cuidado en diseñar un layout que preserve
 los valores de las señales anlógicas y tenga un impacto mínimo en los tiempos de
 propagación o asegurar que dos dispositivos o bloques que deban comportarse idénticamente
 así lo hagan.
@@ -420,16 +395,16 @@ igual, y por problemas de fabricación u otros agentes externos se comportan lig
 diferente.
 
 \paragraph{}
-En el caso del layout el mismatch puede deberse al proceso de fabricación,
-que puede crear dispositivos de \textbf{dimensiones ligeramente mayores o menores},
-o otorgar al silicio propiedades ligeramente diferentes, como la \textbf{concentración de
-dopado}, lo que puede hacer que unas zonas sean mas o menos conductivas o que varíen
-parmámetros como la tensión umbral.
+En el caso del layout, el mismatch puede deberse al proceso de fabricación,
+que puede crear dispositivos de dimensiones ligeramente mayores o menores,
+u otorgar al silicio de propiedades ligeramente diferentes, como la concentración de
+dopado, lo que puede hacer que unas zonas sean mas o menos conductivas o que varíen
+parmámetros como la tensión umbral de un transistor.
 
 \paragraph{}
-Otra forma de que se creen diferencias entre unos dispositivos y otros
-independientemente de la fabricación, es por ejemplo por la \textbf{distribución irregular
-de la temperatura} cuando el chip esté funcionando. Debido a la ley de Joule, cualquier
+Otra forma de que se creen diferencias entre unos dispositivos
+es por ejemplo por la distribución irregular
+de la temperatura cuando el chip esté funcionando. Debido a la ley de Joule, cualquier
 corriente circulando por un material, lo calentará en función de la densidad de corriente
 que lo atraviese. Si en una zona del chip tenemos un bus de alimentación, o un circuito
 que consuma mucha corriente, calentará la zona cercana, creando gradientes de temperatura.
@@ -454,7 +429,7 @@ de forma que se pueden usar estructuras como la que se muestra en la figura \ref
 \begin{figure}[h]
 	\centering
 	\includesvg[width=0.7\textwidth]{svg/common_centroid.svg}
-	\caption{Estructura de centroide común}
+	\caption{Estructura de centroide común para eliminar un mismatch bidimensional lineal}
 	\label{fig:centroide_comun}
 \end{figure}
 
