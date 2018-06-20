@@ -1,18 +1,15 @@
-- pasar a color los svg de los dispositivos CMOS (hecho a falta de alguno)
+- pasar a color los svg de los dispositivos CMOS (hecho)
 
 - Definir bien la capa ACTIVE (c2_cmos/capas de layout) (hecho)
 
 - Revisión 1 con Belén (22-Mayo):
-	* Ampliar la zona central del trabajo en contra de la introducción (hecho 16jun)
-	* Poner referencias más actualizadas, (trabajo de investigación)
+	* Ampliar la zona central del trabajo en contra de la introducción (hecho)
+	* Poner referencias más actualizadas, (trabajo de investigación) (hecho)
 	* Aportar cosas "nuevas"
-	* Hablar sobre las técnicas de extracción y simulación. (hecho a medias 16jun)
+	* Hablar sobre las técnicas de extracción y simulación. (hecho)
 	*
 
 - Añadir en algún lugar altura total del canal de una 1300 um
-
-- Añadir numero de nodos/transistores simulados en una sim gorda
-(preguntado a M. Alvarez y Antonio DLC )
 
 - Revisar ortografía de VOLTAJE (en español), cuidado porque voltage no está mal porque es inglés.
 
@@ -23,3 +20,42 @@
 - Reducir explicación sobre CAD
 
 - Revisar Caracteres raros en las URL en el BibTeX, retocar antes de imprimir definitivo.
+
+- Poner mas bonito el encabezado con mi nombre, una linea, numero de pagina (mejor arriba)
+
+- Revisión con Belén y Juan Antonio Leñero (20-Junio):
+ 	* Corregir párrafos para que no haya espacios más grandes.
+	* Añadir algunas referencias más de las que me recomendó.
+		- Libro Moini
+		- Tesis Paco Garrido
+		- APS Fossum1993 (hecho)
+	* Añadir más imágenes.
+		- Blooming. (hecho)
+		- Píxel, de Paco Garrido.
+		- Layout de todo el sensor.
+		- Layout de un canal
+		- Diagrama de bloques.
+		- Resultados de simulaciones.
+		- Waveform ping-pong.
+		- Añadir milímetros a la imagen del pixel array
+		- Capa WB (well profundo)
+		- Diagrama de apilacion de canales. 
+	* Bibliografía:
+		- Quitar "Capitulo" en las referencias
+		- Añadir URLs a la bibliografía. (hecho)
+	* Explicar ping-pong.
+	* Concretar más los primeros apartados a lo que de verdad he hecho.
+		-
+	* Concretar binning.
+	* Mencionar herramientas concretas que he usado:
+		- En "herramientas de CAD"
+		- En "simulación" y "extracción"
+	* Quitar párrafo de Time of Flight de las Conclusiones, no relacionado.
+	* Explicar porqué serialización (LVDS)
+	* Reducir capítulo de Tecnología CMOS
+		- intro
+		- facricación
+		- transistores
+		- Diodos y BJT (hecho)
+		- Problemas habituales en el diseño de layout, especificar los del canal.
+	*
