@@ -52,16 +52,24 @@ La carga almacenada en cada pixel será función lineal de la intensidad lumíni
 captada por cada pixel. Tras la exposición, las cargas almacenadas en cada pixel
 se irán transmitiendo al pixel inferior, y, de la misma forma que ocurre en un
 registro de desplazamiento, la información de todos los pixeles se va transmitiendo
-de unos a otros, hasta que al final todo el array es leído.\cite{Nakamura2005:IS_and_SP_for_DSC}
+de unos a otros, hasta que al final todo el array es leído.\cite{Nakamura2005}
 
 \paragraph{Sensores de imágen CMOS}
 La diferencia fundamental de éstos con los sensores CCD es que los CMOS usan un
-amplificador integrado en el píxel y la carga no se transfiere de unos píxeles
-a otros, sino que se lee fila a fila directamente. Ésto les da algunas ventajas
+amplificador integrado en el píxel, a lo que nos referimos como APS (\textit{Active Pixel Sensor})
+\cite{Fossum1993}. Ésto les da algunas ventajas
 frente a los CCD, por ejemplo, sufren de menor efecto de ``blooming'', que podría
 traducirse como deslumbramiento o destello, es decir, manchas blancas que pueden
 producir los puntos muy brillantes a su alrededor por un desbordamiento de los
-electrones fotogenerados en una zona.
+electrones fotogenerados en una zona. Podemos ver un ejemplo en la
+imágen \ref{fig:blooming}\cite{Commons:Kriplozoik}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/blooming.jpg}
+	\caption{Ejemplo de imágen con efecto de blooming en los píxeles brillantes}
+	\label{fig:blooming}
+\end{figure}
 
 Otra ventaja es que pueden llegar a ser más rápidos y más baratos, ambos debidos
 a la tecnología CMOS. Gracias a esto, hoy en día cada vez son más comunes que los
