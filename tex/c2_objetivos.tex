@@ -1,1 +1,51 @@
-\chapter{Objetivos y metodología}\label{cap:objetivos}
+\chapter*{Objetivos y metodología}
+\addcontentsline{toc}{chapter}{Objetivos y metodología}\label{cap:objetivos}
+
+\paragraph{}
+Con este trabajo se pretende hacer una recopilación de los problemas y de los
+puntos claves a la hora de diseñar un canal de lectura. Se trata de una guía
+que describe los aspectos más críticos cuando se está diseñando el layout de un
+canal de lectura, haciendo una introducción en los primeros capítulos tanto a
+la tecnología CMOS usada, como a la arquitectura electrónica de un canal de lectura.
+
+\paragraph{}
+La exposición de dichos problemas y consejos se hace usando un canal de lectura
+de ejemplo, del cual se describen una serie de características concretas a lo
+largo del trabajo. Aunque también cabe decir que mucho de lo que se va a tratar
+bien podría aplicarse a canales ligeramente diferentes, con, por ejemplo,
+diferente número de columnas, pitch o número de canales apilados.
+
+\paragraph{}
+En cuanto a la tecnología usada, se ha elegido una de 180nm y de 4 metales que
+define la compañía TowerJazz\textsuperscript{\textregistered} especialmente para la fabricación de
+sensores de imagen CMOS\cite{TowerJazz}, que provee de dispositivos para los
+píxeles como microlentes, array de color CFA (\textit{Color Filter Array}) y \textit{stiching}
+(tecnología de pegado de dados del chip cuando el tamaño excede el tamaño máximo
+de dado).
+
+\begin{table}[h]
+	\centering
+	\caption{Especificaciones usadas en el diseño}
+	\label{table:specifications}
+	\begin{tabular}{l*{7}{c}r}
+		\hline
+		Especificaciones	& Mín & Valor típico & Máx \\
+		\hline
+		Tecnología		&  & TS18 & \\
+		Número de metales	&  & 4 & \\
+		VDDA			& 3.0 & 3.3 V & 3.6 V \\
+		VDDD 			& 1.6 & 1.8 V & 2.0 V \\
+		Temperatura		& -20\centigrade & 27\centigrade & 90\centigrade \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\paragraph{}
+El esquemático del bloque se ha diseñado usando \textit{Virtuoso Schematic Editor}\cite{VirtuosoSchematic},
+el layout con \textit{Virtuoso Layout XL}\cite{VirtuosoLayoutXL} y las
+simulaciones con su paquete ADE (\textit{Virtuoso Analog Design Environment}), todos
+ellos propiedad de la popular marca CADENCE\textsuperscript{\textregistered}.
+En cuanto a la extracción de parásitos y las verificaciones físicas de LVS
+(\textit{Layout versus Schematic}), DRC (\textit{Design Rules Check}), ERC
+(\textit{Electrical Rule Check}) y \textit{Antenna}, se han realizado con el entorno
+de CALIBRE\textsuperscript{\textregistered} \cite{Calibre}.
