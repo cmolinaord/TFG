@@ -4,7 +4,7 @@ TEX = latexmk -cd- -pdf -outdir=$(OUTPUT_DIR) --shell-escape
 
 .PHONY: all tfg tfg_prev clean clean_all count_words debug_label_chapters debug_warnings
 .SILENT: all tfg_prev count_words debug_label_chapters debug_warnings debug_figures debug_figures_unused
-.SILENT: list_bibliography_available list_bibliography_used
+.SILENT: list_bibliography_available list_bibliography_used update_bibtex
 
 all:
 	echo "make tfg:                          Compile the TFG from latex to pdf into pdf/ dir"
@@ -44,7 +44,11 @@ count_words:
 	pdftotext "$(OUTPUT_DIR)/tfg.pdf" - |grep -v "^[0-9]" | wc -w
 
 update_bibtex:
-	cp ~/.mendeley/TFG.bib doc/
+	# Sed command is used for unscape special characters in URL lines
+	#   For example: {\_} or {\&} will be replaced by _ and &
+	# Also lines starting with "file" are deleted
+	echo "Update BibTeX from Mendeley database"
+	sed '/url/s/{\\\(.\)}/\1/g;/^file/d' ~/.mendeley/TFG.bib > doc/TFG.bib
 
 debug_label_chapters:
 	echo "Mostrando capitulos que no tienen ningun /label"
