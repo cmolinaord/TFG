@@ -163,30 +163,26 @@ se tratará en más detalle en el apartado \ref{cap:simulacion} sobre simulacion
 
 \paragraph{}
 Otro punto importante a considerar es que el canal de lectura va a ser alimentado,
-en los mejores casos, en varios puntos a lo largo de toda su anchura. En ocasiones
-tan sólo puede ser alimentado por ambos extremos. En cualquier caso sabemos que
-a lo largo todas las columnas vamos a tener una mayor o menos curvatura en los voltajes
-de alimentación que efectivamente llegan, debido a la caída de tensión a lo largo
-de las líneas metálicas.
+tan sólo por ambos extremos. Ésto va a generar una curvatura en las alimentaciones
+que puede traer problemas, manifestándose como un gradiente en la imágen final.
+Las tensiones de polarización del los bloques de bias, están generadas localmente
+y referidas a una tierra con curvatura por lo que unos ADC y otros
+podrían tener tener diferente tiempo de conversión, por ejemplo.
 
-\paragraph{}
-Dicha curvatura podría afectar al rendimiento de unos canales frente a otros, lo
-que podría a llegar a manifestarse en la imágen obtenida con un gradiente.
-Ésto se puede producir porque las tensiones de polarización del los bloques, por
-ejemplo, el OTA del comparador, están referidas a una tierra que en ocasiones no
-tendrá el mismo valor que la tierra local de cada ADC, por lo que unos ADC y otros
-podrían tener diferentes tiempos de conversión para la misma señal.
+\begin{figure}[h]
+	\includesvg[width=\textwidth]{svg/adc_poly_short.svg}
+	\caption{Curvatura en la tensión de tierra y una tensión de polarización a lo largo del canal}
+	\label{fig:adc_poly_short}
+\end{figure}
 
 \paragraph{}
 Para tratar de corregir éste efecto, se suelen cortocircuitar las tensiones de polarización
-entre todos los canales del array. Pero si ésto lo hacemos con una línea metálica,
-con muy baja resistencia lo que conseguiríamos sería un valor prácticamente igual
-en todos los canales, que tampoco es lo deseado. Una solución adecuada es usar
-una línea de polisilicio para cortocircuitar estas tensiones. Así, dada la mayor
-resistividad del poly, cada ADC\_BIAS tratará de fijar la tensión de sus ADCs y los
-vecinos cercanos, con lo que logramos suavizar efectivamente la curva de dichas
-tensiones de polarización a lo largo del canal de lectura, adapatándose a la
-curvatura de la tierra local.
+entre todos los canales del array. En la imágen \ref{fig:adc_poly_short} podemos ver
+3 casos. El caso (a) lo que ocurriría si no cortocircuitamos los adc\_bias,
+el caso (b), si lo hacemos con una línea metálica, con baja resistividad,
+y el caso (c) si lo hacemos con una línea más resistiva, de poly.
+La solución elegida es la última porque suaviza mucho mejor los voltajes de polarización
+entre los diferentes canales, al adaptarse a la irremediable curvatura de la tierra.
 
 \subsection{Acoplos}
 
