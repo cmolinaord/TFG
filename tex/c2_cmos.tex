@@ -2,41 +2,36 @@
 
 \section{Introducción}\label{cap:intro_cmos}
 
-\paragraph{}
 La tecnología CMOS, que es ampliamente utilizada en el diseño de circuitos integrados
 en la actualidad, se basa en la posibilidad de integrar en un mismo substrato
 semiconductores con ambos dopados (\textit{n} y \textit{p}). Con ello podemos implementar transistores
-MOSFET tanto PMOS como NMOS en un mismo diseño.
+MOSFET tanto PMOS como NMOS en un mismo diseño.\\
 
-\paragraph{}
 Es una tecnología que cumple ya los
 50 años, debido a que empezó a ponerse en práctica a mediados de los años 1960.
 Inicialmente se usó principalmente en circuitos digitales, debido a que los
 transistores CMOS solo consumen potencia cuando conmutan, a diferencia de los
 transistores de unión bipolar. Por otra parte, es más sencillo disminuir su tamaño
-y tienen un menor coste de fabricación.
+y tienen un menor coste de fabricación.\\
 
-\paragraph{}
 Poco a poco se fue introduciendo la tecnología CMOS en el diseño de circuitos
 analógicos. Los bajos costes y la posibilidad de crear circuitos digitales y
 analógicos en el mismo chip hacían esta opción muy interesante. Pero aún así, los
 transistores bipolares eran mucho menos ruidosos y más rápidos que los MOSFET, por
 lo que la trancisión fue lenta. Con el desarrollo de la tecnología CMOS, la velocidad
 y el ruido de éstos, se ha visto muy mejorada, y actualmente domina el mercado,
-aunque en muchos casos se sigue usando tecnología bipolar.
+aunque en muchos casos se sigue usando tecnología bipolar.\\
 
 \section{Proceso de fabricación}\label{cap:fabricacion}
 
-\paragraph{}
 La gran mayoría de los circuitos integrados CMOS están construidos sobre silicio.
 El silicio (Si), elemento de número atómico 14, es muy abundante en la Tierra, aunque
 no se encuentra de forma pura, sino como óxidos de silicio o silicatos. Entre los
 óxidos de silicio, basados fundamentalmente en la sílice o dióxido de silicio
 (SiO\textsubscript{2}), se encuentran el cuarzo y el sílex, ambos ampliamente extendidos
 en la corteza terrestre. Los silicatos son sales basadas en el ión silicato (SiO\textsubscript{4}),
-y forman parte de minerales como los feldespatos, micas, berilio.
+y forman parte de minerales como los feldespatos, micas, berilio.\\
 
-\paragraph{}
 A pesar de estar en tan alta abundancia en la Tierra, como se dijo antes, el silicio
 puro no se dá naturalmente, debe ser refinado y cristalizado. El proceso consiste,
 tratado de manera sencilla, en extraer el óxigeno de los compuestos mencionados arriba
@@ -46,34 +41,29 @@ nos referiremos a éste como polisilicio o \textit{poly} por su abreviatura ingl
 Esta forma contiene silicio puro, pero
 cristalizado en pequeños cristales independientes con diferentes planos cristalinos
 creando efectos de borde en el interior del conglomerado, que anulan las cualidades
-semiconductoras del silicio.
+semiconductoras del silicio.\\
 
-\paragraph{}
 Para construir un único monocristal de silicio se suele usar el llamado proceso
 de Czochralski, en el cual, una varilla de silicio usada como semilla se va
 rotando en un baño de silicio puro fundido a unos 1400\centigrade C de manera que va creciendo
 en diámetro a medida que los átomos se silicio se van depositando en la capa externa.
-Esta técnica fue introducida por Jan Czochralski en 1915
+Esta técnica fue introducida por Jan Czochralski en 1915.\\
 
-\paragraph{}
 Lo que queda es un lingote de aproximadamente un metro de largo y pocas decenas
 de centímetro de diámetro de silicio monocristalino siguiendo la estructura cristalina del
-diamante.
+diamante.\\
 
-\paragraph{}
 Para ser usado en la industria de semiconductores, estos lingotes se deben laminar
 en obleas de pocos milímetros de espesor sobre las que se implementarán los
 circuitos integrados, que se suelen distribuir en una matriz ocupando toda la
-superficie de la oblea que luego será cortada para separar cada ``dado''.
+superficie de la oblea que luego será cortada para separar cada ``dado''.\\
 
-\paragraph{}
 Con estos procesos tendríamos tan solo el substrato de silicio sobre el que
 se debe construir el circuito, los transistores y otros dispositivos que se
 necesiten. Esto se hace mediante fotolitografía, una técnica que permite
 construir cada capa mediante la projección de luz ultravioleta a través de
-unas máscaras que permiten o no pasar la luz según el layout diseñado.
+unas máscaras que permiten o no pasar la luz según el layout diseñado.\\
 
-\paragraph{}
 Para empezar se recubre toda la oblea con un material fotosensible a la luz UV,
 que dependiendo de si recibe luz o no, cambia sus propiedades haciendo que donde
 ha recibido luz pueda ser eliminado posteriormente y quedar sólo donde no se recibió
@@ -81,26 +71,21 @@ luz, o viceversa. De esta forma obtenemos un recubrimiento selectivo con este
 material, haciendo que, en un paso posterior podamos hacer crecer, sobre las zonas
 sin recubrimiento, una capa de óxido de silicio si queremos un aislante, o de polisilicio,
 cuyos usos se tratarán más adelante, o de metal como conductor, habitualmente
-aluminio o cobre, o algún tipo de dopado para crear las difusiones por ejemplo.
+aluminio o cobre, o algún tipo de dopado para crear las difusiones por ejemplo.\\
 
-\paragraph{}
 Tras las creación de cada capa, en la mayoría de los casos se realiza un pulido
 fino de la superficie para que la siguiente capa asiente correctamente sobre una
-superficie plana.
-
-\paragraph{}
-Todo el proceso de fabricación se puede consultar con más detalle en la bibliografía,
-en el libro de Hastings \cite{Hastings2001}.
+superficie plana. Todo el proceso de fabricación se puede consultar con más
+detalle en la bibliografía, en el libro de Hastings \cite{Hastings2001}.\\
 
 \section{Transistores CMOS}\label{cap:transistor_cmos}
-\paragraph{}
+
 El dispositivo fundamental que usa en cualquier circuito integrado CMOS es el
 transistor CMOS, ya que es la base de funcionamiento de circuitos tanto digitales
 (puertas lógicas, inversores, flip-flops, buffers), como de circuitos analógicos
 (amplificadores operacionales y de transconductancia, convertidores analógico-digital,
-referencias de tensión, bandgap).
+referencias de tensión, bandgap).\\
 
-\paragraph{}
 El transistor CMOS es un dispositivo electrónico de 3 terminales que se basa
 en una estructura MOS (Metal-Óxido-Semiconductor)\cite{Razavi2016}\cite{Allen2002}.
 En esta estructura, sobre un
@@ -108,28 +93,25 @@ substrato semiconductor se asienta una capa de \textit{óxido} aislante y sobre 
 material metálico, que en las tecnologías actuales suele tratarse del polisilicio
 que se mencionó anteriormente. La capa de óxido fino, tiene un espesor muy pequeño,
 y debe controlarse mucho en la fabricación, ya que variaciones en su grosor, daría
-lugar a modificaciones de la capacidad de puerta.
+lugar a modificaciones de la capacidad de puerta.\\
 
-\paragraph{}
 Usando la estructura vertical \textbf{M}etal-\textbf{Ó}xido-\textbf{S}emiconductor,
 se puede construir un transistor creando a ambos lados de ella, zonas de silicio
 altamente dopado donde contactaremos dos terminales, que llamaremos \textit{fuente} o \textbf{S}
 (\textit{source}), y \textit{drenador} o \textbf{D} (\textit{drain}). En la capa superior
 del polisilicio colocaremos el terminal llamado \textit{puerta} o \textbf{G} (\textit{gate}).
-En la figura \ref{fig:nmos} podemos ver la estructura física de este dispositivo.
+En la figura \ref{fig:nmos} podemos ver la estructura física de este dispositivo.\\
 
-\paragraph{}
 La dimensión de la puerta en la dirección que une drenador y fuente se llama
 ''longitud'', notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a ésta
-se llama ''anchura'', abreviada como \textbf{W}
+se llama ''anchura'', abreviada como \textbf{W}.\\
 
-\paragraph{}
 Como mencionamos al principio, también podemos crear transistores PMOS en estas
 tecnologías. Se hace fabricándolos dentro de un pozo N, esto es, una zona
 donde el substrato tipo-p original, se ha dopado de forma que se consigue un substrato
 tipo-n. El transistor embebido en este pozo tiene, entonces, la misma estructura,
 salvo que las difusiones para drenador y fuente son con dopado positivo \textbf{P+}.
-Una representación de este tipo de transistor puede verse en la figura \ref{fig:pmos}.
+Una representación de este tipo de transistor puede verse en la figura \ref{fig:pmos}.\\
 
 \begin{figure}[h]
 	\centering
@@ -151,17 +133,15 @@ Una representación de este tipo de transistor puede verse en la figura \ref{fig
 
 \section{Otros dispositivos en tecnología CMOS}\label{cap:otros_dispositivos}
 
-\paragraph{}
 Usando la misma tecnología es posible disponer en el mismo diseño otros dispositivos
-además de los mencionados transistores.
+además de los mencionados transistores.\\
 
 \subsection{Resistencias}
-\paragraph{}
 En todo diseño microelectrónico resulta prácticamente indispensable en algún
 momento el uso de algún elemento resistor pasivo. Estos dispositivos podemos
 crearlos usando la resistividad que ofrecen algunos de los materiales que se emplean
 en el diseño. En ocasiones puede usarse el sustrato de silicio, o un pozo NWELL, pero
-una de las técnicas más habituales es usar el silicio policristalino o \textbf{polisilicio}.
+una de las técnicas más habituales es usar el silicio policristalino o \textbf{polisilicio}.\\
 
 \begin{figure}[h]
 	\centering
@@ -170,45 +150,43 @@ una de las técnicas más habituales es usar el silicio policristalino o \textbf
 	\label{fig:poly_res}
 \end{figure}
 
-\paragraph{}
 Para construir una resistencia de polisilicio (\ref{fig:poly_res}) se crea una tira de polisilicio
 que se deposita sobre una capa de oxido de campo, conectando sus dos extremos con
 un contacto a la primera capa de metal. Cómo vemos, esto se parece a la capa de
 polisilicio que se usa para construir un transistor CMOS. Pero existe una diferencia
 fundamental. El óxido sobre el que se deposita el poly, en este caso, es \textit{oxido de
-campo}, más grueso y menos preciso que el \textit{óxido fino} de los transistores.
+campo}, más grueso y menos preciso que el \textit{óxido fino} de los transistores.\\
 
 \subsection{Condensadores}\label{cap:condensadores}
-\paragraph{}
+
 Los condensadores son otro elemento fundamental en muchos diseños analógicos. Un
 condensador, como sabemos, consiste en dos placas conductoras separadas por una pequeña
 distancia, que almacena carga eléctrica en cada terminal.
+En el contexto que nos ocupa, tenemos varias opciones para fabricar un condensador:\\
 
-\paragraph{}
-En el contexto que nos ocupa, tenemos varias opciones para fabricar un condensador:
+\begin{itemize}
+	\item \textbf{Poly}
+	Llamaremos así al condensador que creamos con una lámina de polisilicio sobre una
+	capa de óxido fino, que en función de la tecnología, puede tener varios espesores
+	definidos por el fabricante. Un terminal sería el poly, y el otro el substrato.
 
-\paragraph{poly}
-Llamaremos así al condensador que creamos con una lámina de polisilicio sobre una
-capa de óxido fino, que en función de la tecnología, puede tener varios espesores
-definidos por el fabricante. Un terminal sería el poly, y el otro el substrato.
+	\item \textbf{MiM}
+	Entre las diferentes capas de metal tenemos varias posibilidades de crear un condensador
+	también. Normalmente los fabricantes definen unos cuantos tipos. Pueden tratarse de
+	dos láminas rectangulares a diferentes alturas, o, por ejemplo, dos peines que
+	entrelacen sus dedos de forma alternativa.
 
-\paragraph{metal-metal}
-Entre las diferentes capas de metal tenemos varias posibilidades de crear un condensador
-también. Normalmente los fabricantes definen unos cuantos tipos. Pueden tratarse de
-dos láminas rectangulares a diferentes alturas, o, por ejemplo, dos peines que
-entrelacen sus dedos de forma alternativa.
-
-\paragraph{mos}
-Por último, podemos usar la capacidad de puerta que siempre tiene un transistor MOS
-para crear un condensador. Un terminal sería la puerta, y el otro sería el cortocircuito
-de drenador, fuente y sustrato. La principal ventaja de éstos es que su capacidad por
-unidad de área suele ser elevada debido al pequeño espesor del óxido de puerta. Por contra,
-tienen la desventaja de presentar un comportamiento no lineal, ya la que la capacidad
-depende del punto de operación del transistor.
+	\item \textbf{MOS}
+	Por último, podemos usar la capacidad de puerta que siempre tiene un transistor MOS
+	para crear un condensador. Un terminal sería la puerta, y el otro sería el cortocircuito
+	de drenador, fuente y sustrato. La principal ventaja de éstos es que su capacidad por
+	unidad de área suele ser elevada debido al pequeño espesor del óxido de puerta. Por contra,
+	tienen la desventaja de presentar un comportamiento no lineal, ya la que la capacidad
+	depende del punto de operación del transistor.
+\end{itemize}
 
 \section{Diseño de layout}\label{cap:layout}
 
-\paragraph{}
 El término \textit{layout} hace referencia a la implementación física del circuito
 electrónico que se quiere fabricar. El layout consiste en un dibujo con toda
 la información que necesita la empresa fabricante para implementar el circuito
@@ -218,21 +196,18 @@ unas normas que cumplir. El trabajo del diseñador de layout es definir, dibujar
 verificar el layout de los diferentes bloques que componen el chip siguiendo
 las normas dadas por el fabricante, y procurando el mejor funcionamiento posible
 del circuito en el menor area que le sea posible.
-
 Como veremos más adelante, el diseño del layout de un circuito afecta o puede afectar
-mucho al funcionamiento final del mismo.
+mucho al funcionamiento final del mismo.\\
 
 \subsection{Capas de layout}\label{cap:capas_layout}
 
-\paragraph{}
 Todo diseño de layout está compuesto de una cierta cantidad de capas, de las cuales
 algunas tienen significado físico directo y otras son capas que usa el software de
-diseño para verificaciones o para cambiar propiedades de otras capas.
+diseño para verificaciones o para cambiar propiedades de otras capas.\\
 
-\paragraph{}
 Naturalmente, los nombres de estas capas están asignados por cada fabricante en
 concreto, pero los nombres que presento aquí para describirlas son los que usaré
-para identificarlas durante el resto del documento.
+para identificarlas durante el resto del documento.\\
 
 \paragraph{NWELL}
 Esta capa define el pozo N en una tecnología de substrato P. En ella se deben
@@ -303,34 +278,29 @@ dónde hay silicio (o poly), y no donde ya se ha hecho crecer la capa de óxido.
 La reacción del silicio con el metal crea el siliciuro, lo que crea una capa más
 conductiva que el silicio puro \cite{Maex:silicides}.
 
-\paragraph{}
 Por defecto todos el poly y las difusiones van silicidadas, pero usando la capa \textbf{SA},
 podemos indicar que no se deposite siliciuro sobre algunas zonas, para, por ejemplo,
-permitir que las resistencias de poly sean más resistivas.
+permitir que las resistencias de poly sean más resistivas.\\
 
 \subsection{Herramientas de CAD}
 
-\paragraph{}
 Las herramientas de CAD (\textit{Computer Assisted Design}) se usan
 en muchos campos de la ingeniería o la arquitectura, y actualmente, debido a la alta
-complejidad de los diseños son de uso prácticamente obligado.
+complejidad de los diseños son de uso prácticamente obligado.\\
 
-\paragraph{}
 En el caso de la microelectrónica, estas técnicas tienen dos finalidades fundamentales:
 el diseño y simulación eléctrica y, por otro lado, la implementación física. Entre ellas
 hay muchas diferencias, pero también existe una inevitable relación de dependencia.
 La implementación física viene definida por el diseño eléctrico, pero a su vez, como
-veremos en muchos casos, éste último condiciona el diseño eléctrico.
+veremos en muchos casos, éste último condiciona el diseño eléctrico.\\
 
-\paragraph{}
 Por otra parte, en microelectrónica, debemos tener presente que
 hay una división importante entre dos ámbitos que son bastante diferentes en cuanto
 al flujo de diseño, simulación e implementación física, aunque ambos se basan en
 la misma tecnología. Me refiero a la separación entre el ámbito \textbf{analógico}
 y el \textbf{digital}. En éste trabajo nos centraremos en la parte analógica
-puesto que el canal de lectura es un bloque fundamentalmente analógico.
+puesto que el canal de lectura es un bloque fundamentalmente analógico.\\
 
-\paragraph{}
 Considerando únicamente el layout, estos dos ámbitos, analógico y
 digital, son también bastante diferentes. En el caso del layout digital, el flujo
 de trabajo, debido a la gran cantidad de dispositivos que habitualmente son necesarios
@@ -338,9 +308,8 @@ para diseñar cualquier bloque digital, está altamente automatizado por algorit
 de distribución y rutado automático (\textit{place and route}). Mediante estas
 herramientas, el diseñador digital de back-end implementa el layout de un bloque
 digital que el diseñador de front-end ha diseñado para que tenga un funcionamiento
-definido.
+definido.\\
 
-\paragraph{}
 Para el caso analógico, el diseñador de layout debe dibujar los
 dispositivos, posicionarlos e interconectándolos de una forma mucho más manual que en el caso
 digital, debido a una relativa simplicidad de éstos circuitos respecto a los digitales.
@@ -348,60 +317,53 @@ Un bloque analógico es abordable por una persona en unos pocos días o
 semanas, ayudándose, obviamente, de herramientas de replicación, jerarquizado, celdas
 prediseñadas y/o parametrizadas. El caso analógico también se realiza de forma más
 manual debido a la naturaleza de las señales analógicas, al ser éstas, en algunos casos,
-más susceptibles a ruidos, interferencias o acoplos con otras señales.
+más susceptibles a ruidos, interferencias o acoplos con otras señales.\\
 
-\paragraph{}
 En los circuitos puramente digitales, las señales cambian de un
 valor alto (1) a un valor bajo (0), siendo menos importante el valor exácto
 mientras éste se encuentre dentro de los márgenes definidos. Por el contrario,
 en un circuito analógico, hay que tomar especial cuidado en diseñar un layout que preserve
 los valores de las señales anlógicas y tenga un impacto mínimo en los tiempos de
 propagación o asegurar que dos dispositivos o bloques que deban comportarse idénticamente
-así lo hagan.
+así lo hagan.\\
 
 \subsection{Problemas habituales en el diseño de layout}
 
-\paragraph{}
 A continuación se van a exponer y explicar algunos de los problemas habituales que
 afectan a cualquier diseño de layout y que el diseñador debe hacer frente para
 resolver o minimizar mediante su experiencia y la ayuda de las herramientas, de CAD,
-la simulación post-layout y los consejos del diseñador analógico del bloque en cuestión.
+la simulación post-layout y los consejos del diseñador analógico del bloque en cuestión.\\
 
 \subsubsection{Area}
 
-\paragraph{}
 La superficie sobre la que se diseña un chip es limitada, y además es
 un factor en contra del beneficio económico que tendrá la fabricación y venta del
 chip. A menor sea el area usada por el chip, más chips caben en cada oblea, que tiene
 un precio constante, definido por el fabricante en función de la tecnología y otros
 parámetros. Por lo tanto, como punto de partida, podemos concluir que \textbf{el área
-es siempre un parámetro a minimizar}, a cualquier nivel de jerarquía.
+es siempre un parámetro a minimizar}, a cualquier nivel de jerarquía.\\
 
-\paragraph{}
 Si bien esto es la idea general, también es verdad que no siempre es
 la prioridad, o bien el área no supone un problema porque, por ejemplo, debido a la
 distribución de los bloques, un bloque resulte disponer de area más que suficiente.
 Puede darse el caso incluso de que se prefiera distribuir un circuito de manera más
 holgada pero más uniforme, antes que arrinconar todo el circuito en una zona y dejar
 espacio libre en otras zonas. Ésto, por ejemplo, podría ayudar a mejorar la correlación
-entre dispositivos, o \textit{matching}.
+entre dispositivos, o \textit{matching}.\\
 
 \subsubsection{Mismatch}
 
-\paragraph{}
 El mismatch es un problema generalizado en muchos campos de
 la ingeniería donde se requiere la construcción de dispositivos que se comporten
 igual, y por problemas de fabricación u otros agentes externos se comportan ligeramente
-diferente.
+diferente.\\
 
-\paragraph{}
 En el caso del layout, el mismatch puede deberse al proceso de fabricación,
 que puede crear dispositivos de dimensiones ligeramente mayores o menores,
 u otorgar al silicio de propiedades ligeramente diferentes, como la concentración de
 dopado, lo que puede hacer que unas zonas sean mas o menos conductivas o que varíen
-parmámetros como la tensión umbral de un transistor.
+parmámetros como la tensión umbral de un transistor.\\
 
-\paragraph{}
 Otra forma de que se creen diferencias entre unos dispositivos
 es por ejemplo por la distribución irregular
 de la temperatura cuando el chip esté funcionando. Debido a la ley de Joule, cualquier
@@ -409,9 +371,8 @@ corriente circulando por un material, lo calentará en función de la densidad d
 que lo atraviese. Si en una zona del chip tenemos un bus de alimentación, o un circuito
 que consuma mucha corriente, calentará la zona cercana, creando gradientes de temperatura.
 Si tenemos dos circuitos o dispositivos, uno de ellos cerca y otro lejos de esta zona,
-posiblemente no se comporten igual.
+posiblemente no se comporten igual.\\
 
-\paragraph{}
 Para minimizar los efectos de los gradientes, se suelen usar estructuras
 de centroide común, que en teoría, para gradientes lineales, logran el emparejamiento
 perfecto. Por ejemplo, si tenemos un array lineal de dos tipos de dispositivos diferentes,
@@ -420,9 +381,8 @@ de AAAA$\vert $BBBB, dónde A y B representan instancias del mismo dispositivo. 
 de los casos, si existe un gradiente lineal en la dirección del array, el efecto de éste
 actuará en positivo en unos y en negativo en otros, de forma que el efecto en A se compensa
 al efecto en B. En cambio en el segundo caso, como promedio, los A sufrirán el efecto
-más o menos que los B.
+más o menos que los B.\\
 
-\paragraph{}
 Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
 de forma que se pueden usar estructuras como la que se muestra en la figura \ref{fig:centroide_comun}:
 
@@ -433,9 +393,8 @@ de forma que se pueden usar estructuras como la que se muestra en la figura \ref
 	\label{fig:centroide_comun}
 \end{figure}
 
-\paragraph{}
 Algunas de las reglas que se recomienda seguir para un buen matching entre transistores
-serían \cite{Hastings2001}:
+serían \cite{Hastings2001}:\\
 
 \begin{enumerate}
 	\item Usar dimensiones idénticas para los \textit{fingers} del transistor,
