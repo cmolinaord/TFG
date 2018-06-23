@@ -121,6 +121,22 @@ se van leyendo los valores almacenados en las ``\textit{floating diffusions}''. 
 el segundo caso, la exposición se hace secuencialmente, fila por fila, antes de cada
 lectura.\\
 
+La operación de \textit{sampling} y comparación de estas señales se realiza en el
+bloque del ADC, que se describirá más abajo en el apartado \ref{cap:ro_sch_adc}.
+Existe una interesante técnica para duplicar velocidad de lectura haciéndo
+simultáneamente el muestreo de las señales y su comparación con el valor de la rampa.
+Ésta técnica de lectura en \textit{pipeline} o también llamada \textit{ping-pong},
+requiere duplicar el bloque del ADC por cada columna de píxeles que tengamos. El
+siguiente diagrama \ref{fig:ping_pong} de fases muestra su funcionamiento.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{img/ping-pong_wave.png}
+	\caption{Diagrama de fases para la técnica ping-pong}
+	\label{fig:ping_pong}
+\end{figure}
+
+
 \section{Fuente de corriente}\label{cap:ro_sch_pxcs}
 
 La fuente de corriente, normalmente abreviada como PXCS (del inglés,
@@ -153,7 +169,7 @@ por fuente (SF) del píxel.\\
 %WARNING
 %Continuar aquí y explicar mejor precarga y limitador
 
-\section{Convertidor de rampa}\label{cap:ro_sch_conv}
+\section{ADC}\label{cap:ro_sch_adc_top}
 
 Como ya hemos comentado, la conversión del valor analógico del pixel, a un número
 digital se realiza mediante un convertidor de rampa. Para conseguir esto,
@@ -164,7 +180,7 @@ La señal de la rampa analógica se va a distribuir horizontalmente entre todas 
 columnas del canal de lectura, y está generada por un bloque externo al RO, situado
 a uno de los lados del mismo, con lo que evitamos incluirlo en area del canal.\\
 
-\section{ADC}\label{cap:ro_sch_adc}
+\section{Comparador}\label{cap:ro_sch_adc}
 
 El ADC es el bloque que muestrea y compara la señal analógica del píxel con la de la
 rampa analógica. El esquemático del circuito se muestra en la figura \ref{fig:adc_sch}.
@@ -238,7 +254,7 @@ Los transistores $M_1$ y $M_2$ forman el par diferencial, con sus correspondient
 espejo de corrientes en $M_3$ y $M_4$, y la fuente de corriente $M_5$, el resto de
 transistores sirven para deshabilitar el OTA cuando no se esté usando.\\
 
-\section{Rampa analógica}\label{cap:ro_sch_armp}
+\section{Generador de rampa analógica}\label{cap:ro_sch_armp}
 
 El bloque generador de la rampa analógica se encuentra situado fuera del Canal de
 Lectura. Se encarga de generar una señal linealmente creciente y su correspondiente
@@ -260,11 +276,6 @@ una rápida y efectiva propagación de esta señal sin distorsión y en tiempo, 
 de hacerse un cuidadoso estudio de layout, calculando las anchuras y separaciones
 entre las líneas metálicas que distribuirán la señal y posteriormente, realizando
 una precisa extracción y simulación del circuito.\\
-
-Por otro lado, se debe asegurar que las \textit{fases} se propaguen a una velocidad
-controlada e igual al resto de señales.\\
-%WARNING
-%Continuar o cerrar esto
 
 \section{Bloques de polarización}\label{cap:ro_sch_bias}
 
@@ -326,6 +337,6 @@ y serialización de los datos.\\
 
 La serialización se efectúa para convertir la operación de digitalización, que se
 hace de forma paralela, simulatánea a todos los canales, a una salida de datos en serie.
-Éstos datos en serie se encaminan posteriormente hacia uno o varios buses de salida
-del chip mediante algún protocolo de datos serie típico para poder ser almacenados
-y/o procesados por otro dispositivo en el exterior del sensor de imágen.\\
+Éstos datos en serie se encaminan posteriormente hacia uno o varios buses de salida LVDS
+(\textit{Low Voltage Differential Signal}), que harán posible la lectura de las imágenes
+desde el exterior.\\
