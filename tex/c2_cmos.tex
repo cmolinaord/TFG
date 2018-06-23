@@ -384,17 +384,17 @@ al efecto en B. En cambio en el segundo caso, como promedio, los A sufrirán el 
 más o menos que los B.\\
 
 Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
-de forma que se pueden usar estructuras como la que se muestra en la figura \ref{fig:centroide_comun}:
+de forma que se pueden usar estructuras como la que se muestra en la figura \ref{fig:centroide_comun}.
+Algunas de las reglas que se recomienda seguir para un buen matching entre transistores
+serían \cite{Hastings2001}:\\
 
 \begin{figure}[h]
 	\centering
-	\includesvg[width=0.7\textwidth]{svg/common_centroid.svg}
+	\includesvg[width=0.5\textwidth]{svg/common_centroid.svg}
 	\caption{Estructura de centroide común para eliminar un mismatch bidimensional lineal}
 	\label{fig:centroide_comun}
 \end{figure}
 
-Algunas de las reglas que se recomienda seguir para un buen matching entre transistores
-serían \cite{Hastings2001}:\\
 
 \begin{enumerate}
 	\item Usar dimensiones idénticas para los \textit{fingers} del transistor,
@@ -416,8 +416,4 @@ serían \cite{Hastings2001}:\\
 	que no tiene menos vecinos que los del interior del array.
 	\item Colocar los dispositivos lejos de dispositivos de potencia o lineas
 	de alimentación que pueden generar fuertes gradientes de temperatura.
-	\item Intentar no rutar metal sobre la zona activa de los transistores,
-	aunque esto es en muchos casos inviable. En caso de tener que hacerlo, tratar
-	distribuir el metal de la forma más simétrica posible, afectando a todos
-	los dispositivos por igual.
 \end{enumerate}
