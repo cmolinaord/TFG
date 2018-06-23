@@ -121,6 +121,10 @@ las $9\mum$ de anchura del canal.\\
 Por último, bajo los 4 convertidores iría el Bias del ADC, que tambíen se comparte
 por cada 8 canales, por lo que tampoco estaría incluida en columna unitaria.\\
 
+Toda la estructura se muestra al final de capítulo (\ref{fig:ro_chx1}) en el diagrama
+simplificado del layout de una columna de canal, mostrando los bloques más
+importantes y sus conexiones.
+
 \section{Problemas de layout que afectan al diseño del canal de lectura}
 
 \subsection{Consumo}
@@ -147,7 +151,7 @@ Las tensiones de polarización del los bloques de bias, están generadas localme
 y referidas a una tierra con curvatura por lo que unos ADC y otros
 podrían tener tener diferente tiempo de conversión, por ejemplo.\\
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includesvg[width=\textwidth]{svg/adc_poly_short.svg}
 	\caption{Curvatura en la tensión de tierra y una tensión de polarización a lo largo del canal}
 	\label{fig:adc_poly_short}
@@ -247,29 +251,25 @@ Para ésto, una vez más, es muy importante una cuidada extracción de parásito
 exhaustivas simulaciones post-layout, en diferentes canales a lo largo de todo el
 array.\\
 
-\section{Bloques adicionales}
 
-\subsection{Binning}
+\begin{figure}[b]
 
-Con el nombre de \textit{binning} nos referimos a una técnica de combinación de
-varios píxeles en uno sólo, de forma que reducimos la resolución efectiva del
-array y podemos leerlo más rápido. Normalmente se pueden combinar grupos de
-$2\times 2$ o $4\times 4$ píxeles.\\
 
-El binning se puede implementar posteriormente a nivel digital o en el propio
-canal de lectura.\\
-%WARNING
-%Completar con algo de binning
+\end{figure}
 
-\subsection{Implementación de ROIs}
-
-Una ROI, del inglés \textbf{R}egion \textbf{O}f \textbf{I}nterest, es una zona
-de la imagen que el usuario puede seleccionar para leer, obviando el resto
-del array. Con ésto podríamos disminuir el tiempo de lectura, sólo si
-disminuye el numero de filas.\\
-
-Otra ventaja para usar una ROI sería que podríamos desactivar los canales que no
-estén usando, con lo que disminuiría el consumo total del chip. Para ésto debemos
-tener un control por deshabilitación de los canales por columnas, o al menos, por
-grupos de columnas, por ejemplo una buena estrategia sería poder desactivar cada
-BIAS y con ellos, los correspondientes 8 canales, o 16 píxeles.\\
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\includesvg[width=\textwidth]{svg/ro_chx1_layout.svg}
+		\caption{Esquema simplificado del layout de una columna de nuestro canal de lectura ($ro\_chx1$)}
+		\label{fig:ro_chx1}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{img/OTA_simple_layout.png}
+		\caption{Layout del par diferencial del OTA del comparador}
+		\label{fig:ota_simple_layout}
+	\end{subfigure}
+	%\caption{Representación física de transistores MOS en tecnología CMOS}
+\end{figure}
