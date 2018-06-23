@@ -55,18 +55,21 @@ frente a los CCD, por ejemplo, sufren de menor efecto de ``blooming'', que podr�
 traducirse como deslumbramiento o destello, es decir, manchas blancas que pueden
 producir los puntos muy brillantes a su alrededor por un desbordamiento de los
 electrones fotogenerados en una zona. Podemos ver un ejemplo en la
-imágen \ref{fig:blooming}\cite{Commons:Kriplozoik}.\\
+imágen \ref{fig:blooming}.\\
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{img/blooming.jpg}
-	\caption{Ejemplo de imágen con efecto de blooming en los píxeles brillantes}
+	\includegraphics[width=0.6\textwidth]{img/blooming.jpg}
+	\caption{Ejemplo de imágen con efecto de blooming en los píxeles brillantes
+	\protect\footnotemark}
 	\label{fig:blooming}
 \end{figure}
 
 Otra ventaja es que pueden llegar a ser más rápidos y más baratos, ambos debidos
 a la tecnología CMOS. Gracias a esto, hoy en día cada vez son más comunes que los
 CCD.\\
+
+\footnotetext{Imágen de Wikimedia Commons\cite{Commons:Kriplozoik}}
 
 \section{Arquitectura de sensores de imagen CMOS}
 
@@ -107,21 +110,21 @@ leemos píxeles que están tapados obtenemos el verdadero valor de negro y podem
 cuantificar el ruido debido al píxel y al canal, mejorando el ruido
 que pudiéramos medir tomando una imágen en una habitación oscura, por ejemplo.\\
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/pixel_array.png}
+	\caption{Estructura del array de píxeles\protect\footnotemark}
+	\label{fig:pxa_array}
+\end{figure}
+\footnotetext{Imágen obtenida del artículo de la bibliografía \cite{Jimenez-Garrido2012}}
+
 El sensor que estamos estudiando tiene $2560\times2048$ píxeles activos, 64 columnas
 oscuras, con 4 píxeles dummy a cada lado de los píxeles activos y oscuros.
 En cuanto a las filas, tendremos 8 filas oscuras en la parte inferior del array,
 flanqueadas por 4 filas dummy arriba y abajo, al igual que alrededor de las filas
 activas. Además se incluye una fila de test que servirá para la calibración simulando
 que la fila en cuestión ha recibido una señal concreta. En la figura
-\ref{fig:pxa_array}\footnote{Imágen obtenida del artículo de la bibliografía \cite{Jimenez-Garrido2012}},
-se esquematiza todo lo dicho.\\
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{img/pixel_array.png}
-	\caption{Estructura del array de píxeles}
-	\label{fig:pxa_array}
-\end{figure}
+\ref{fig:pxa_array} se esquematiza todo lo dicho.\\
 
 \subsection{Canal de lectura}
 
@@ -139,7 +142,7 @@ analógica y la expresa en valores discretizados.\\
 señales que excitan en array por filas. Se sitúa a la izquierda y/o derecha del
 array.\\
 
-\paragraph{Pixel supply}. Es el bloque anaólgico que se sitúa en la parte superior
+\paragraph{vddpix (Pixel supply)}. Es el bloque anaólgico que se sitúa en la parte superior
 del array de píxeles y que provee la alimentación del array
 y en ocasiones también provee señales que se distribuyan de forma vertical.\\
 
@@ -147,10 +150,19 @@ y en ocasiones también provee señales que se distribuyan de forma vertical.\\
 de polarización para el resto de bloque de forma que sean independientes de la
 temperatura, fuente de alimentación y otros ruidos.\\
 
-\paragraph{Serializador}. En el bloque digital que se encarga de ordenar y serializar
+\paragraph{SPS}. En el bloque digital que se encarga de ordenar en frames y serializar
 los datos de salida del canal de lectura para que puedan ser enviados al exterior del
-chip por los puertos de salida serie.\\
+chip por los puertos LVDS de salida en serie.\\
 
-\paragraph{Control Main}. Es el bloque digital encargado del control de todas las
+\paragraph{SCM o Control Main}. Es el bloque digital encargado del control de todas las
 señales y procedimientos que el sensor debe realizar para tomar una imágen, digitalizarla,
 y enviarla al exterior.\\
+
+\begin{figure}[h]
+	\centering
+	\includesvg[width=0.9\textwidth]{svg/sensor_floorplan.svg}
+	\caption{Floorplan aproximado del chip completo con los bloques más importantes\protect\footnotemark }
+	\label{fig:floorplan}
+\end{figure}
+
+\footnotetext{Imagen trabajo propio}
