@@ -4,8 +4,8 @@ El diseño del layout de un canal de lectura en el contexto de un proyecto suele
 ser una tarea que ocupa gran parte del periodo de diseño, y además es recomendable
 abordar en las primeras fases del proyecto, ya que como hemos comentado, el
 layout va a influir, en mayor medida que otros bloques, en el diseño del mismo.
-Por tanto, el diseño del canal de lectura suele ser un proceso iterativo de
-diseño electrónico, layout, extracción, simulación y eventual rediseño.\\
+Por tanto, el diseño del canal de lectura suele ser un proceso iterativo:
+diseñodel esquemático, layout, extracción, simulación y eventual rediseño.\\
 
 \section{Jerarquización}
 
@@ -24,7 +24,7 @@ se repiten por canal, es decir, la fuente de corriente y el ADC de una columna d
 píxeles.\\
 
 En un siguiente nivel de jerarquía, incluiremos 8 canales unitarios y sus
-correspondientes bloques de polarización (PXCS\_BIAS y ADC\_BIAS), que cómo vimos
+correspondientes bloques de polarización (PXCS\_BIAS y ADC\_BIAS), que cómo vimos,
 están compartidos por cada 8 canales. De ésta forma, el bloque $ro\_chx8$
 tendría una anchura de $10\mum \times 8 = 80\mum$, y tendríamos canales para
 leer 16 columnas de píxeles.\\
@@ -87,11 +87,15 @@ cada cierto tiempo. En nuestro caso vamos a incluir un canal redundante por cada
 grupo de 32 canales funcionando. Con ésto, haciendo una sencilla cuenta, podemos
 establecer la nueva anchura en $9\mum$ en vez de las $10\mum$ originales. Ésto nos
 permite además tener una anchura sobrante cada 33 canales que será:
-$32\cdot 10\mum - 33\cdot 23\mum = 23\mum$ de anchura sobrante. Este espacio lo
+$32\cdot 10\mum - 33\cdot 9\mum = 23\mum$ de anchura sobrante. Este espacio lo
 podemos usar para por ejemplo subir las tensiones de polarización desde los BIAS
 a las líneas horizontales en los correspondientes bloques.\\
 
 \section{Estructura de layout de una columna del canal}
+
+La estructura completa se muestra al final de capítulo (\ref{fig:ro_chx1}) en un diagrama
+simplificado del layout de una columna de canal ($ro\_chx1$), mostrando los bloques más
+importantes, sus tamaños y sus conexiones.
 
 Una vez establecida una jerarquía clara, y suponiendo el uso de la redundancia ya
 tenemos establecida una anchura para el layout de una columna de nuestro canal.
@@ -120,10 +124,6 @@ las $9\mum$ de anchura del canal.\\
 
 Por último, bajo los 4 convertidores iría el Bias del ADC, que tambíen se comparte
 por cada 8 canales, por lo que tampoco estaría incluida en columna unitaria.\\
-
-Toda la estructura se muestra al final de capítulo (\ref{fig:ro_chx1}) en el diagrama
-simplificado del layout de una columna de canal, mostrando los bloques más
-importantes y sus conexiones.
 
 \section{Problemas de layout que afectan al diseño del canal de lectura}
 

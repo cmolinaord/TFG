@@ -28,7 +28,7 @@ exáctamente en la anchura de 2 columnas de píxeles.\\
 \section{Estructura general}\label{cap:ro_sch_estructura}
 
 El canal de lectura es un circuito analógico que va a convertir el voltaje
-dado por el pixel tras haber sido expuesto a la luz durante un tiempo y
+dado por el píxel tras haber sido expuesto a la luz durante un tiempo y
 convertirlo en un valor analógico bien definido entre unos límites que van a
 significar \textit{blanco} y \textit{negro}, con una resolución definida.\\
 
@@ -36,9 +36,9 @@ Por tanto, el canal de lectura es principalmente un ADC (en inglés, \textbf{A}n
 to \textbf{D}igital \textbf{C}onverter, o convertidor analógico-digital).
 Una arquitectura usada habitualmente es el convertidor de rampa.
 Éste, para la conversión usa un generador de una rampa de voltaje que se usa para
-comparar contra el valor dado por el píxel. Ćuando ambos valores coinciden,
+comparar contra el valor dado por el píxel. Cuando ambos valores coinciden,
 la salida del comparador cambia de estado mediante un flanco de subida o bajada.
-De ésta forma la conversión de un valor de tensión se traduce en la detección temporal
+De esta forma la conversión de un valor de tensión se traduce en la detección temporal
 de un flanco.\\
 
 De manera simultánea a la rampa analógica se lanza una rampa digital que va contando
@@ -55,7 +55,7 @@ destacar las siguientes:\\
 	\item Se trata de un circuito muy simple, que puede reducirse a un comparador
 	creado con un OTA simple de 5 transistores, más un par de condensadores y
 	algunas llaves. Cualquier otra arquitectura (convertidor SAR, sigma-delta...)
-	implican muchos más transistores y posiblemente más consumo.
+	implica muchos más transistores y posiblemente más consumo.
 	\item Se puede obtener una buena linealidad si se diseña una buena rampa
 	y se hace operar al comparador en un punto de operación similar en todos los casos,
 	consiguiendo ecualizar los tiempos de transición del mismo.
@@ -67,9 +67,9 @@ destacar las siguientes:\\
 
 Para abordar el diseño de un canal de lectura debemos entender como se realiza la
 operación de lectura de los píxeles.
-En la figura \ref{fig:pixel} podemos ver el esquemático de el pixel 5T
+En la figura \ref{fig:pixel} podemos ver el esquemático del píxel 5T
 que vamos a usar para este estudio. El fotodiodo (PD), es el elemento que más
-área ocupa del pixel, ya que es el area que recibe los fotones.
+área ocupa del píxel, ya que es el area que recibe los fotones.
 
 \begin{figure}[h]
 	\centering
@@ -86,7 +86,7 @@ que vamos a usar para este estudio. El fotodiodo (PD), es el elemento que más
 		\caption{}
 		\label{fig:pixel_op}
 	\end{subfigure}
-	\caption{Esquemático y modo operación de un pixel 5T habitual}
+	\caption{Esquemático y modo operación de un píxel 5T habitual}
 \end{figure}
 
 Mirando el modo de operación (\ref{fig:pixel_op}) vemos que antes de la exposición se hace un vaciado del
@@ -96,7 +96,7 @@ nodo. Para terminar la exposición, se hace una transferencia de esta carga haci
 el condensador $C_{fd}$ (\textit{Floating Diffusion}), no sin antes dar un pulso
 en el transistor de RST (Reset), para vaciar la posible carga que tuviera este condensador.\\
 
-En este punto tenemos la carga con la información de la luz captada por el pixel,
+En este punto tenemos la carga con la información de la luz captada por el píxel,
 almacenada en el condensador $C_{fd}$, a la espera de que queramos leer este valor
 mediante la activación del transistor SEL (Selección). Normalmente, para compensar
 errores debidos a asimetrias en los píxeles, se hace una operación de CDS, siglas de
@@ -132,7 +132,7 @@ siguiente diagrama \ref{fig:ping_pong} de fases muestra su funcionamiento.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{img/ping-pong_wave.png}
-	\caption{Diagrama de fases para la técnica ping-pong}
+	\caption{Diagrama de fases para la técnica ping-pong con \textit{global-shutter}}
 	\label{fig:ping_pong}
 \end{figure}
 
@@ -154,7 +154,7 @@ velocidad.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{svg/pxcs_sch.pdf}
-	\caption{Esquemático de la fuente de corriente del pixel}
+	\caption{Esquemático de la fuente de corriente del píxel}
 	\label{fig:pxcs_sch}
 \end{figure}
 
@@ -169,9 +169,9 @@ por fuente (SF) del píxel.\\
 %WARNING
 %Continuar aquí y explicar mejor precarga y limitador
 
-\section{ADC}\label{cap:ro_sch_adc_top}
+\section{ADC}\label{cap:ro_sch_adc}
 
-Como ya hemos comentado, la conversión del valor analógico del pixel, a un número
+Como ya hemos comentado, la conversión del valor analógico del píxel, a un número
 digital se realiza mediante un convertidor de rampa. Para conseguir esto,
 en cada canal de lectura se implementa un sencillo ADC comparador y unos condensadores
 dónde almacenar temporalmente las señales.\\
@@ -180,9 +180,7 @@ La señal de la rampa analógica se va a distribuir horizontalmente entre todas 
 columnas del canal de lectura, y está generada por un bloque externo al RO, situado
 a uno de los lados del mismo, con lo que evitamos incluirlo en area del canal.\\
 
-\section{Comparador}\label{cap:ro_sch_adc}
-
-El ADC es el bloque que muestrea y compara la señal analógica del píxel con la de la
+El ADC es el bloque que \textbf{muestrea} y \textbf{compara} la señal analógica del píxel con la de la
 rampa analógica. El esquemático del circuito se muestra en la figura \ref{fig:adc_sch}.
 La operación del ADC se realiza en 2 fases, lectura (\textit{read}) y comparación
 (\textit{comp}), y se puede seguir mediante las formas de onda mostradas en \ref{fig:adc_wave}.\\
@@ -233,7 +231,7 @@ linealmente creciente. Por tanto, la salida del comparador debe ser inicialmente
 un valor alto y cambiar a valor bajo en el instante en que ambas señales sea crucen.
 Por lo que la información en el píxel puede codificarse con el tiempo registrado
 por un contador digital, siendo mayor el número digital a mayor la luz recibida
-por el pixel leído.
+por el píxel leído.
 
 La salida del comparador se hace pasar por una puerta NOR para evitar que pueda
 registrarse una transición sin estar activa la señal de $adc\_start$\\
@@ -293,7 +291,7 @@ la dirección vertical.\\
 \subsection{PXCS Bias}
 
 La fuente de corriente necesita de tres voltajes de polarización: $vb\_bn$ y
-$vb\_cn$, que vienen de un espejo cascode y la tensión del limitador $vb\_ln$.
+$vb\_cn$, que vienen de un espejo cascodado y la tensión del limitador $vb\_ln$.
 El bloque va a estar compartido por 8 canales (80$\mum$ de anchura).\\
 
 Los valores de la corriente que podrá drenar la fuente de corriente del píxel, va
@@ -306,7 +304,7 @@ $3.875\muA$, en pasos de $125\nA$.\\
 \subsection{ADC Bias}
 
 El ADC Bias tiene que proveer al ADC del voltaje de modo común ($vs\_adc\_cmi$) y
-de la tensión de bias de la fuente de corriente ($vb\_adc\_bx$), que espejará
+de la tensión de bias de la fuente de corriente del OTA ($vb\_adc\_bx$), que espejará
 una corriente generada en el Bias.\\
 
 La tensión de modo común se puede generar de dos formas, la primera mediante un
@@ -332,7 +330,7 @@ digitalizado proporcional a la intensidad lumínica captada por el píxel actual
 
 El bloque que genera la rampa digital DRMP se sitúa a uno de los lados del RO y
 su señal se distribuye mediante búferes digitales a lo largo del SPS, que es
-el bloque digital situado debajo del Canal de Lectura y que incluye la digitalización
+el bloque digital situado justo debajo del Canal de Lectura y que incluye la digitalización
 y serialización de los datos.\\
 
 La serialización se efectúa para convertir la operación de digitalización, que se

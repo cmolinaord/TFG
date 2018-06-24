@@ -12,7 +12,7 @@ Es una tecnología que cumple ya los
 Inicialmente se usó principalmente en circuitos digitales, debido a que los
 transistores CMOS solo consumen potencia cuando conmutan, a diferencia de los
 transistores de unión bipolar. Por otra parte, es más sencillo disminuir su tamaño
-y tienen un menor coste de fabricación.\\
+y tienen un menor coste de fabricación.\cite{Razavi2016}\\
 
 Poco a poco se fue introduciendo la tecnología CMOS en el diseño de circuitos
 analógicos. Los bajos costes y la posibilidad de crear circuitos digitales y
@@ -65,10 +65,10 @@ construir cada capa mediante la projección de luz ultravioleta a través de
 unas máscaras que permiten o no pasar la luz según el layout diseñado.\\
 
 Para empezar se recubre toda la oblea con un material fotosensible a la luz UV,
-que dependiendo de si recibe luz o no, cambia sus propiedades haciendo que donde
+que dependiendo de si recibe luz o no, cambia sus propiedades haciendo que, donde
 ha recibido luz pueda ser eliminado posteriormente y quedar sólo donde no se recibió
 luz, o viceversa. De esta forma obtenemos un recubrimiento selectivo con este
-material, haciendo que, en un paso posterior podamos hacer crecer, sobre las zonas
+material, haciendo que, en un paso posterior, podamos hacer crecer, sobre las zonas
 sin recubrimiento, una capa de óxido de silicio si queremos un aislante, o de polisilicio,
 cuyos usos se tratarán más adelante, o de metal como conductor, habitualmente
 aluminio o cobre, o algún tipo de dopado para crear las difusiones por ejemplo.\\
@@ -246,8 +246,8 @@ de poly.
 
 \paragraph{CS}
 Contacto. Normalmente son cuadrados que definen contactos entre el Metal 1 y el
-polisilicio (si están, respectivamente, sobre M1 ó GC), o al substrato, teniendo que
-usar la capa ACTIVE para poder bajar al substrato.
+polisilicio o el substrato, teniendo que usar en éste caso, la capa ACTIVE para
+poder contactar al substrato.
 
 \paragraph{M1}
 Metal 1. Es el primero de los metales y se suele usar para contactar
@@ -306,8 +306,8 @@ digital, son también bastante diferentes. En el caso del layout digital, el flu
 de trabajo, debido a la gran cantidad de dispositivos que habitualmente son necesarios
 para diseñar cualquier bloque digital, está altamente automatizado por algoritmos
 de distribución y rutado automático (\textit{place and route}). Mediante estas
-herramientas, el diseñador digital de back-end implementa el layout de un bloque
-digital que el diseñador de front-end ha diseñado para que tenga un funcionamiento
+herramientas, el diseñador digital de \textit{back-end} implementa el layout de un bloque
+digital que el diseñador de \textit{front-end} ha diseñado para que tenga un funcionamiento
 definido.\\
 
 Para el caso analógico, el diseñador de layout debe dibujar los
