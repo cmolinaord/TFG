@@ -2,19 +2,19 @@
 
 Tras todos los puntos expuestos en el trabajo, podemos concluir que el canal de
 lectura es un bloque que requiere de una cuidadosa planificación dentro del
-contexto del proyecto de diseño de un sensor de imágen. Los responsables del
+contexto del proyecto de diseño de un sensor de imagen. Los responsables del
 proyecto deben dedicar un tiempo amplio al estudio, diseño, layout, simulaciones
 y verificaciones del bloque.\\
 
 Los canales de lectura son un tema muy presente en la literatura actual por parte
 de grupos de investigación y empresas de todo el mundo. El expuesto aquí es un
-canal estándar dónde podemos apreciar bastantes puntos de la dificultad de su
+canal estándar donde podemos apreciar bastantes puntos de la dificultad de su
 diseño, pero existen muchas vías de investigación abiertas a otras arquitecturas,
 nuevas funcionalidades, mayores resoluciones o menor ruido.\\
 
 Por ejemplo existen arquitecturas innovadoras para convertidores de mayor resolución
 ideados para poder alcanzar menores niveles de ruido y poder captar imágenes en
-condiciones de baja iluminación. Un ejemplo de como conseguir esta mayor resolución
+condiciones de baja iluminación. Un ejemplo de cómo conseguir esta mayor resolución
 puede ser dividiendo el ADC en dos etapas, como se expone en el artículo de la
 bibliografía\cite{Gonzalez-Charlet2015:Low_noise} sobre un sensor de bajo ruido
 llamado LoNIS (\textit{Low Noise Image Sensor}), desarrollado en AnaFocus\cite{anafocus}.\\
@@ -26,20 +26,20 @@ imposibilidad en el layout, podría hacernos replantearnos el funcionamiento
 del bloque, o imponer una serie de restricciones a la hora de usarlo.\\
 
 Todo esto nos lleva a otro punto de especial importancia, que es la necesidad de
-realizar un exhaustivo y detallado estudio de viabilidad. Éste se debe hacer
+realizar un exhaustivo y detallado estudio de viabilidad. Este se debe hacer
 previo al inicio del proyecto y debe tomar las especificaciones requeridas por el
 producto final y realizar los estudios pertinentes para saber si será posible la
 realización del diseño en tiempo, sin grandes costes y tratando de prevenir problemas
 y/o dificultades durante su puesta en práctica. Y, por supuesto, dicho estudio debe
-incluir el layout, y los problemas mencionados durante éste trabajo.\\
+incluir el layout, y los problemas mencionados durante este trabajo.\\
 
-Por otra parte, en el ámbito de los sensores de imágen, existen innovaciones en
-cuanto a los píxeles. Éste es un tema en el que hay mucho por investigar aún, ya
+Por otra parte, en el ámbito de los sensores de imagen, existen innovaciones en
+cuanto a los píxeles. Este es un tema en el que hay mucho por investigar aún, ya
 que en busca de nuevas mejoras se están investigando píxeles muy interesantes para
 aplicaciones 3D, usando la técnica de ``ToF'' (\textit{Time of Flight},
 tiempo de vuelo)\cite{Portaluppi2018}\cite{Payne2014}.
-Éstos píxeles deben ser capaces de captar un pulso de luz emitido desde el sensor
+Estos píxeles deben ser capaces de captar un pulso de luz emitido desde el sensor
 y calcular el tiempo que tarda en recibirse tras haber rebotado en algún objeto,
-para calcular la distancia al mismo. Para ésto es necesario, además de píxeles
+para calcular la distancia al mismo. Para esto es necesario, además de píxeles
 que puedan transferir su carga mucho más rápido, mejoras en el canal de lectura
 que permitan esa integración de la señal recibida.\\

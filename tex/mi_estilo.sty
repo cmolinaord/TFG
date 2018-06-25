@@ -1,3 +1,6 @@
+\usepackage[latin1,utf8]{inputenc}
+\usepackage[spanish]{babel}
+
 % AMS Packages
 \usepackage{amsmath,amssymb}
 
@@ -27,13 +30,17 @@
 	linktoc=all,     %set to all if you want both sections and subsections linked
 	linkcolor=blue,  %choose some color if you want links to stand out
 	urlcolor=blue,
-	citecolor=red
+	citecolor=red,
+	pdftex,          % PDF metadata
+	pdfauthor={Carlos Molina Ordóñez},
+	pdftitle={Layout de canales de lectura por columna para sensores de imagen CMOS: técnicas, extracción y simulación},
+	pdfsubject={Layout de canal de lectura para sensores de imagen CMOS},
+	pdfkeywords={TFG sensor imagen cmos layout canal lectura read-out channel image semiconductor},
+	pdfproducer={Latex with hyperref},
+	pdfcreator={pdflatex with latexmk in Arch Linux written using Atom}
 }
 
 \usepackage[nottoc]{tocbibind}
-%\usepackage{etoolbox}
-%\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
-
 
 % BibTeX
 \bibliographystyle{doc/myIEEEtran}

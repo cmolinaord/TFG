@@ -14,7 +14,7 @@ diseño de layout está sujeto a una serie de normas y problemas que iremos trat
 con mayor detenimiento a lo largo de la exposición.\\
 
 Para introducir al lector en la materia será necesario describir, aunque sea
-brevemente, conceptos sobre sensores de imágen, tecnología CMOS y explicar de manera
+brevemente, conceptos sobre sensores de imagen, tecnología CMOS y explicar de manera
 sencilla la arquitectura de un canal de lectura habitual.\\
 
 Posteriormente se pasará a analizar en detalle los problemas y cuestiones que se
@@ -35,7 +35,7 @@ principalmente, los CCD (\textit{Charge-Coupled Device}) y los CMOS
 se basan en la tecnología empleada y en la forma de leer el array de píxeles.
 \cite{Moini2010}\cite{Nakamura2005}\\
 
-\paragraph{Sensores de imágen CCD}
+\paragraph{Sensores de imagen CCD}
 El concepto fundamental de un sensor de imagen CCD se basa en el almacenamiento
 y propagación de los electrones fotogenerados en cada píxel. Mediante el efecto
 fotoeléctrico, un fotón que impacte en la zona de silicio fotosensible, si tiene
@@ -48,27 +48,26 @@ se irán transmitiendo al píxel inferior, y, de la misma forma que ocurre en un
 registro de desplazamiento, la información de todos los píxeles se va transmitiendo
 de unos a otros, hasta que al final todo el array es leído.\cite{Nakamura2005}\\
 
-\paragraph{Sensores de imágen CMOS}
-La diferencia fundamental de éstos con los sensores CCD es que los CMOS usan un
+\paragraph{Sensores de imagen CMOS}
+La diferencia fundamental de estos con los sensores CCD es que los CMOS usan un
 amplificador integrado en el píxel, a lo que nos referimos como APS (\textit{Active Pixel Sensor})
-\cite{Fossum1993}. Ésto les da algunas ventajas
+\cite{Fossum1993}. Esto les da algunas ventajas
 frente a los CCD, por ejemplo, sufren de menor efecto de ``blooming'', que podría
 traducirse como deslumbramiento o destello, es decir, manchas blancas que pueden
 producir los puntos muy brillantes a su alrededor por un desbordamiento de los
 electrones fotogenerados en una zona. Podemos ver un ejemplo en la
-imágen \ref{fig:blooming}.\\
+imagen \ref{fig:blooming}.
+Otra ventaja es que pueden llegar a ser más rápidos y más baratos, ambas debidas
+al uso de la tecnología CMOS. Gracias a esto, hoy en día cada vez son más comunes que los
+CCD.\\
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/blooming.jpg}
-	\caption{Ejemplo de imágen con efecto de \textit{blooming} en los píxeles brillantes
+	\caption{Ejemplo de imagen con efecto de \textit{blooming} en los píxeles brillantes
 	\protect\footnotemark}
 	\label{fig:blooming}
 \end{figure}
-
-Otra ventaja es que pueden llegar a ser más rápidos y más baratos, ambas debidas
-al uso de la tecnología CMOS. Gracias a esto, hoy en día cada vez son más comunes que los
-CCD.\\
 
 \footnotetext{Imágen de Wikimedia Commons\cite{Commons:Kriplozoik}}
 
@@ -89,13 +88,13 @@ del tiempo de exposición y de la intensidad lumínica recibida por el píxel, e
 se cargará con mayor o menor número de electrones.\\
 
 El array de píxeles es la matriz compuesta de todos los píxeles organizados en filas
-y columnas dónde la imagen formada por el sistema de lentes focalizará la imagen.
+y columnas donde la imagen formada por el sistema de lentes focalizará la imagen.
 Habitualmente, los píxeles son cuadrados con un lado de unas 5 a 10 $\mum$, y el
 array puede tener resoluciones de miles de píxeles en ambas dimensiones, lo que
 significa que el array puede unos ocupar pocos centímetros, lo que lo convierte
 habitualmente en el bloque más grande de todo el diseño.\\
 
-En éste estudio vamos a trabajar con un array QSXGA de 2560 columnas por 2048 filas,
+En este estudio vamos a trabajar con un array QSXGA de 2560 columnas por 2048 filas,
 que tiene una relación de aspecto 5:4. Además de los píxeles activos, en un sensor
 de imagen, habitualmente se incluyen algunos píxeles dummy, esto es, que no van
 a ser incluidos en la imagen leída. Su función es la de evitar que los píxeles
@@ -104,7 +103,7 @@ puede alterar sus características.\\
 
 Además de los píxeles dummy, habitualmente se incluyen algunos de los llamados
 píxeles oscuros, píxeles iguales a los activos salvo que, por construcción no
-reciben luz. Ésto se hace tapando el fotodiodo con los metales superiores,
+reciben luz. Esto se hace tapando el fotodiodo con los metales superiores,
 sin modificar el resto de estructuras y transistores. El objetivo de estos píxeles
 oscuros es ayudar en la calibración de los sensores una vez fabricados. Si
 leemos píxeles que están tapados obtenemos el verdadero valor de negro y podemos
@@ -157,7 +156,7 @@ los datos de salida del canal de lectura para que puedan ser enviados al exterio
 chip por los puertos LVDS de salida en serie.
 
 \paragraph{SCM o Control Main} Es el bloque digital encargado del control de todas las
-señales y procedimientos que el sensor debe realizar para tomar una imágen, digitalizarla,
+señales y procedimientos que el sensor debe realizar para tomar una imagen, digitalizarla,
 y enviarla al exterior.
 
 \paragraph{SCB} Es el bloque digital de registros donde se guardan las configuraciones

@@ -16,10 +16,10 @@ y tienen un menor coste de fabricación.\cite{Razavi2016}\\
 
 Poco a poco se fue introduciendo la tecnología CMOS en el diseño de circuitos
 analógicos. Los bajos costes y la posibilidad de crear circuitos digitales y
-analógicos en el mismo chip hacían esta opción muy interesante. Pero aún así, los
+analógicos en el mismo chip hacían esta opción muy interesante. Pero aun así, los
 transistores bipolares eran mucho menos ruidosos y más rápidos que los MOSFET, por
 lo que la trancisión fue lenta. Con el desarrollo de la tecnología CMOS, la velocidad
-y el ruido de éstos, se ha visto muy mejorada, y actualmente domina el mercado,
+y el ruido de estos, se ha visto muy mejorada, y actualmente domina el mercado,
 aunque en muchos casos se sigue usando tecnología bipolar.\\
 
 \section{Proceso de fabricación}\label{cap:fabricacion}
@@ -35,9 +35,9 @@ y forman parte de minerales como los feldespatos, micas, berilio.\\
 A pesar de estar en tan alta abundancia en la Tierra, como se dijo antes, el silicio
 puro no se dá naturalmente, debe ser refinado y cristalizado. El proceso consiste,
 tratado de manera sencilla, en extraer el óxigeno de los compuestos mencionados arriba
-a base de añadir carbono y fundir la mezcla en un horno. Tras éste y otros procesos
+a base de añadir carbono y fundir la mezcla en un horno. Tras este y otros procesos
 obtendríamos silicio relativamente puro, pero en forma policristalina (habitualmente
-nos referiremos a éste como polisilicio o \textit{poly} por su abreviatura inglesa).
+nos referiremos a este como polisilicio o \textit{poly} por su abreviatura inglesa).
 Esta forma contiene silicio puro, pero
 cristalizado en pequeños cristales independientes con diferentes planos cristalinos
 creando efectos de borde en el interior del conglomerado, que anulan las cualidades
@@ -66,7 +66,7 @@ unas máscaras que permiten o no pasar la luz según el layout diseñado.\\
 
 Para empezar se recubre toda la oblea con un material fotosensible a la luz UV,
 que dependiendo de si recibe luz o no, cambia sus propiedades haciendo que, donde
-ha recibido luz pueda ser eliminado posteriormente y quedar sólo donde no se recibió
+ha recibido luz pueda ser eliminado posteriormente y quedar solo donde no se recibió
 luz, o viceversa. De esta forma obtenemos un recubrimiento selectivo con este
 material, haciendo que, en un paso posterior, podamos hacer crecer, sobre las zonas
 sin recubrimiento, una capa de óxido de silicio si queremos un aislante, o de polisilicio,
@@ -103,7 +103,7 @@ del polisilicio colocaremos el terminal llamado \textit{puerta} o \textbf{G} (\t
 En la figura \ref{fig:nmos} podemos ver la estructura física de este dispositivo.\\
 
 La dimensión de la puerta en la dirección que une drenador y fuente se llama
-''longitud'', notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a ésta
+''longitud'', notada como \textbf{L}. La otra dimensión de la puerta, perpendicular a esta
 se llama ''anchura'', abreviada como \textbf{W}.\\
 
 Como mencionamos al principio, también podemos crear transistores PMOS en estas
@@ -152,7 +152,7 @@ una de las técnicas más habituales es usar el silicio policristalino o \textbf
 
 Para construir una resistencia de polisilicio (\ref{fig:poly_res}) se crea una tira de polisilicio
 que se deposita sobre una capa de oxido de campo, conectando sus dos extremos con
-un contacto a la primera capa de metal. Cómo vemos, esto se parece a la capa de
+un contacto a la primera capa de metal. Como vemos, esto se parece a la capa de
 polisilicio que se usa para construir un transistor CMOS. Pero existe una diferencia
 fundamental. El óxido sobre el que se deposita el poly, en este caso, es \textit{oxido de
 campo}, más grueso y menos preciso que el \textit{óxido fino} de los transistores.\\
@@ -179,7 +179,7 @@ En el contexto que nos ocupa, tenemos varias opciones para fabricar un condensad
 	\item \textbf{MOS}
 	Por último, podemos usar la capacidad de puerta que siempre tiene un transistor MOS
 	para crear un condensador. Un terminal sería la puerta, y el otro sería el cortocircuito
-	de drenador, fuente y sustrato. La principal ventaja de éstos es que su capacidad por
+	de drenador, fuente y sustrato. La principal ventaja de estos es que su capacidad por
 	unidad de área suele ser elevada debido al pequeño espesor del óxido de puerta. Por contra,
 	tienen la desventaja de presentar un comportamiento no lineal, ya la que la capacidad
 	depende del punto de operación del transistor.
@@ -195,7 +195,7 @@ que se distribuyen en un espacio bidimensional. Cada capa tiene un significado y
 unas normas que cumplir. El trabajo del diseñador de layout es definir, dibujar y
 verificar el layout de los diferentes bloques que componen el chip siguiendo
 las normas dadas por el fabricante, y procurando el mejor funcionamiento posible
-del circuito en el menor area que le sea posible.
+del circuito en el menor área que le sea posible.
 Como veremos más adelante, el diseño del layout de un circuito afecta o puede afectar
 mucho al funcionamiento final del mismo.\\
 
@@ -216,7 +216,7 @@ a la tensión más alta del circuito (VDD o similar).
 
 \paragraph{WB}
 Esta capa define el pozo enterrado (del inglés \textit{Well Buried}), o también
-llamado pozo profundo (\textit{Deep-N-Well}). Ésta estructura
+llamado pozo profundo (\textit{Deep-N-Well}). Esta estructura
 puede ser usada para crear zonas de substrato P aisladas del substrato
 P del resto del chip. Dentro de esta zona se pueden disponer, por ejemplo, circuitos
 CMOS digitales, con objeto de aislar el ruido que puedan generar a circuitos analógicos
@@ -233,20 +233,20 @@ de los transistores PMOS y para los contactos al substrato P.
 
 \paragraph{ACTIVE}
 La capa activa indica al fabricante las zonas en las que se debe eliminar el óxido grueso (óxido
-de campo). Ésto lo haremos siempre que haya que contactar una zona de difusión N o P,
+de campo). Esto lo haremos siempre que haya que contactar una zona de difusión N o P,
 o queramos crear la puerta de un transistor como se explica en el siguiente párrafo.
 
 \paragraph{GC}
 Zona donde se creará una capa de polisilicio o (\textit{poly}). Si coincide con capa activa,
 se crearán puertas de transistores sobre una fina capa de óxido de silicio,
 al cual llamaremos \textit{óxido de puerta}.
-En los lugares donde no coincida con area activa se construirá sobre oxido grueso,
+En los lugares donde no coincida con área activa se construirá sobre oxido grueso,
 de espesor no tan controlado, y se usará para rutar líneas o para crear resistencias
 de poly.
 
 \paragraph{CS}
 Contacto. Normalmente son cuadrados que definen contactos entre el Metal 1 y el
-polisilicio o el substrato, teniendo que usar en éste caso, la capa ACTIVE para
+polisilicio o el substrato, teniendo que usar en este caso, la capa ACTIVE para
 poder contactar al substrato.
 
 \paragraph{M1}
@@ -270,11 +270,11 @@ posible rotura y para disminuir la resistencia total.
 
 \paragraph{SA}
 Del vocablo inglés \textbf{salicide}, que es una contracción de ``\textbf{s}elf-\textbf{a}ligned si\textbf{licide}'',
-ésto es, siliciuro auto-alineado. Siliciuro es cualquier compuesto binario de
+esto es, siliciuro auto-alineado. Siliciuro es cualquier compuesto binario de
 Silicio con otro elemento, generalmente metal; por ejemplo: CoSi\textsubscript{2}
 ó TiSi\textsubscript{2}. Este siliciuro se dice auto-alineado porque el metal que
-se deposita sobre el chip durante el proceso de fabricación se adhiere sólo sobre
-dónde hay silicio (o poly), y no donde ya se ha hecho crecer la capa de óxido.
+se deposita sobre el chip durante el proceso de fabricación se adhiere solo sobre
+donde hay silicio (o poly), y no donde ya se ha hecho crecer la capa de óxido.
 La reacción del silicio con el metal crea el siliciuro, lo que crea una capa más
 conductiva que el silicio puro \cite{Maex:silicides}.
 
@@ -292,13 +292,13 @@ En el caso de la microelectrónica, estas técnicas tienen dos finalidades funda
 el diseño y simulación eléctrica y, por otro lado, la implementación física. Entre ellas
 hay muchas diferencias, pero también existe una inevitable relación de dependencia.
 La implementación física viene definida por el diseño eléctrico, pero a su vez, como
-veremos en muchos casos, éste último condiciona el diseño eléctrico.\\
+veremos en muchos casos, este último condiciona el diseño eléctrico.\\
 
 Por otra parte, en microelectrónica, debemos tener presente que
 hay una división importante entre dos ámbitos que son bastante diferentes en cuanto
 al flujo de diseño, simulación e implementación física, aunque ambos se basan en
 la misma tecnología. Me refiero a la separación entre el ámbito \textbf{analógico}
-y el \textbf{digital}. En éste trabajo nos centraremos en la parte analógica
+y el \textbf{digital}. En este trabajo nos centraremos en la parte analógica
 puesto que el canal de lectura es un bloque fundamentalmente analógico.\\
 
 Considerando únicamente el layout, estos dos ámbitos, analógico y
@@ -312,16 +312,16 @@ definido.\\
 
 Para el caso analógico, el diseñador de layout debe dibujar los
 dispositivos, posicionarlos e interconectándolos de una forma mucho más manual que en el caso
-digital, debido a una relativa simplicidad de éstos circuitos respecto a los digitales.
+digital, debido a una relativa simplicidad de estos circuitos respecto a los digitales.
 Un bloque analógico es abordable por una persona en unos pocos días o
 semanas, ayudándose, obviamente, de herramientas de replicación, jerarquizado, celdas
 prediseñadas y/o parametrizadas. El caso analógico también se realiza de forma más
-manual debido a la naturaleza de las señales analógicas, al ser éstas, en algunos casos,
+manual debido a la naturaleza de las señales analógicas, al ser estas, en algunos casos,
 más susceptibles a ruidos, interferencias o acoplos con otras señales.\\
 
 En los circuitos puramente digitales, las señales cambian de un
 valor alto (1) a un valor bajo (0), siendo menos importante el valor exácto
-mientras éste se encuentre dentro de los márgenes definidos. Por el contrario,
+mientras este se encuentre dentro de los márgenes definidos. Por el contrario,
 en un circuito analógico, hay que tomar especial cuidado en diseñar un layout que preserve
 los valores de las señales anlógicas y tenga un impacto mínimo en los tiempos de
 propagación o asegurar que dos dispositivos o bloques que deban comportarse idénticamente
@@ -334,21 +334,21 @@ afectan a cualquier diseño de layout y que el diseñador debe hacer frente para
 resolver o minimizar mediante su experiencia y la ayuda de las herramientas, de CAD,
 la simulación post-layout y los consejos del diseñador analógico del bloque en cuestión.\\
 
-\subsubsection{Area}
+\subsubsection{Área}
 
 La superficie sobre la que se diseña un chip es limitada, y además es
 un factor en contra del beneficio económico que tendrá la fabricación y venta del
-chip. A menor sea el area usada por el chip, más chips caben en cada oblea, que tiene
+chip. A menor sea el área usada por el chip, más chips caben en cada oblea, que tiene
 un precio constante, definido por el fabricante en función de la tecnología y otros
 parámetros. Por lo tanto, como punto de partida, podemos concluir que \textbf{el área
 es siempre un parámetro a minimizar}, a cualquier nivel de jerarquía.\\
 
 Si bien esto es la idea general, también es verdad que no siempre es
 la prioridad, o bien el área no supone un problema porque, por ejemplo, debido a la
-distribución de los bloques, un bloque resulte disponer de area más que suficiente.
+distribución de los bloques, un bloque resulte disponer de área más que suficiente.
 Puede darse el caso incluso de que se prefiera distribuir un circuito de manera más
 holgada pero más uniforme, antes que arrinconar todo el circuito en una zona y dejar
-espacio libre en otras zonas. Ésto, por ejemplo, podría ayudar a mejorar la correlación
+espacio libre en otras zonas. Esto, por ejemplo, podría ayudar a mejorar la correlación
 entre dispositivos, o \textit{matching}.\\
 
 \subsubsection{Mismatch}
@@ -361,7 +361,7 @@ diferente.\\
 En el caso del layout, el mismatch puede deberse al proceso de fabricación,
 que puede crear dispositivos de dimensiones ligeramente mayores o menores,
 u otorgar al silicio de propiedades ligeramente diferentes, como la concentración de
-dopado, lo que puede hacer que unas zonas sean mas o menos conductivas o que varíen
+dopado, lo que puede hacer que unas zonas sean más o menos conductivas o que varíen
 parmámetros como la tensión umbral de un transistor.\\
 
 Otra forma de que se creen diferencias entre unos dispositivos
@@ -377,13 +377,13 @@ Para minimizar los efectos de los gradientes, se suelen usar estructuras
 de centroide común, que en teoría, para gradientes lineales, logran el emparejamiento
 perfecto. Por ejemplo, si tenemos un array lineal de dos tipos de dispositivos diferentes,
 cada uno con una multiplicidad de 4, deberíamos usar una estructura ABBA$\vert $ABBA, en vez
-de AAAA$\vert $BBBB, dónde A y B representan instancias del mismo dispositivo. En el primero
-de los casos, si existe un gradiente lineal en la dirección del array, el efecto de éste
+de AAAA$\vert $BBBB, donde A y B representan instancias del mismo dispositivo. En el primero
+de los casos, si existe un gradiente lineal en la dirección del array, el efecto de este
 actuará en positivo en unos y en negativo en otros, de forma que el efecto en A se compensa
 al efecto en B. En cambio en el segundo caso, como promedio, los A sufrirán el efecto
 más o menos que los B.\\
 
-Ésto se puede aplicar también para arrays bidimensionales de dispositivos,
+Esto se puede aplicar también para arrays bidimensionales de dispositivos,
 de forma que se pueden usar estructuras como la que se muestra en la figura \ref{fig:centroide_comun}.
 Algunas de las reglas que se recomienda seguir para un buen matching entre transistores
 serían \cite{Hastings2001}:\\

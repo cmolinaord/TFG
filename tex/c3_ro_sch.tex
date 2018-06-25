@@ -35,7 +35,7 @@ significar \textit{blanco} y \textit{negro}, con una resolución definida.\\
 Por tanto, el canal de lectura es principalmente un ADC (en inglés, \textbf{A}nalog
 to \textbf{D}igital \textbf{C}onverter, o convertidor analógico-digital).
 Una arquitectura usada habitualmente es el convertidor de rampa.
-Éste, para la conversión usa un generador de una rampa de voltaje que se usa para
+Este, para la conversión usa un generador de una rampa de voltaje que se usa para
 comparar contra el valor dado por el píxel. Cuando ambos valores coinciden,
 la salida del comparador cambia de estado mediante un flanco de subida o bajada.
 De esta forma la conversión de un valor de tensión se traduce en la detección temporal
@@ -65,11 +65,11 @@ destacar las siguientes:\\
 
 \section{Operación de lectura}\label{cap:ro_sch_operacion}
 
-Para abordar el diseño de un canal de lectura debemos entender como se realiza la
+Para abordar el diseño de un canal de lectura debemos entender cómo se realiza la
 operación de lectura de los píxeles.
 En la figura \ref{fig:pixel} podemos ver el esquemático del píxel 5T
 que vamos a usar para este estudio. El fotodiodo (PD), es el elemento que más
-área ocupa del píxel, ya que es el area que recibe los fotones.
+área ocupa del píxel, ya que es el área que recibe los fotones.
 
 \begin{figure}[h]
 	\centering
@@ -125,7 +125,7 @@ La operación de \textit{sampling} y comparación de estas señales se realiza e
 bloque del ADC, que se describirá más abajo en el apartado \ref{cap:ro_sch_adc}.
 Existe una interesante técnica para duplicar velocidad de lectura haciéndo
 simultáneamente el muestreo de las señales y su comparación con el valor de la rampa.
-Ésta técnica de lectura en \textit{pipeline} o también llamada \textit{ping-pong},
+Esta técnica de lectura en \textit{pipeline} o también llamada \textit{ping-pong},
 requiere duplicar el bloque del ADC por cada columna de píxeles que tengamos. El
 siguiente diagrama \ref{fig:ping_pong} de fases muestra su funcionamiento.\\
 
@@ -162,7 +162,7 @@ La rama que va a tierra desde el nodo de salida del bloque se usa para la pre-ca
 La llamada pre-carga es un sistema que se usa habitualmente para hacer que el
 establecimiento de la señal cargada por la fuente de corriente se haga más rápido
 y en las mimas condiciones siempre. Lo que se hace es dar un pulso de pre-carga
-(\textit{pch}) un poco antes de activar el \textit{sel}. Ésta rama hace bajar la
+(\textit{pch}) un poco antes de activar el \textit{sel}. Esta rama hace bajar la
 tensión de salida del píxel a un valor cercano a cero para empezar a evolucionar
 desde ahí al valor de la \textit{floating diffusion} menos el $V_{gs}$ del seguidor
 por fuente (SF) del píxel.\\
@@ -174,11 +174,11 @@ por fuente (SF) del píxel.\\
 Como ya hemos comentado, la conversión del valor analógico del píxel, a un número
 digital se realiza mediante un convertidor de rampa. Para conseguir esto,
 en cada canal de lectura se implementa un sencillo ADC comparador y unos condensadores
-dónde almacenar temporalmente las señales.\\
+donde almacenar temporalmente las señales.\\
 
 La señal de la rampa analógica se va a distribuir horizontalmente entre todas las
 columnas del canal de lectura, y está generada por un bloque externo al RO, situado
-a uno de los lados del mismo, con lo que evitamos incluirlo en area del canal.\\
+a uno de los lados del mismo, con lo que evitamos incluirlo en área del canal.\\
 
 El ADC es el bloque que \textbf{muestrea} y \textbf{compara} la señal analógica del píxel con la de la
 rampa analógica. El esquemático del circuito se muestra en la figura \ref{fig:adc_sch}.
@@ -206,26 +206,26 @@ y $C_1$, respectivamente.\\
 En la segunda fase, el comparador se establece en lazo abierto, por lo que la carga
 almacenada en los condensadores se mantiene. En ese momento se conecta la
 rampa diferencial ($ramp_P$ y $ramp_N$), y aplicando la conservación de carga en los
-nudos $vp$ y $vn$, se puede deducir que el voltage será:\\
+nudos $vp$ y $vn$, se puede deducir que el voltaje será:
 
 \begin{align}
 	v_n &= \dfrac{v_{cmi} + v_{off}}{1+\frac{1}{A_0}} + \alpha_1 (v_{ramp_p}-v_{pixN})\\
 	v_p &= v_{cmi} + \alpha_2 (v_{ramp_n}-v_{pixNS})
 \end{align}
-, dónde los coeficientes $\alpha_1$ y $\alpha_2$ son:\\
+, donde los coeficientes $\alpha_1$ y $\alpha_2$ son:\\
 
 \begin{equation}
 	\alpha_1 = \dfrac{C_1}{C_1+C_p},~
 	\alpha_2 = \dfrac{C_2}{C_2+C_p}
 \end{equation}
 
-Asumiendo un comparador ideal, el voltage diferencial a la entrada de este, se
+Asumiendo un comparador ideal, el voltaje diferencial a la entrada de este, se
 puede expresar como:\\
 
 \begin{equation}
 	\Delta V= v_p - v_n = (v_{pixN}-v_{pixNS}) - (v_{ramp_p}-v_{ramp_n})
 \end{equation}
-, dónde la diferencia $(v_{pixN}-v_{pixNS})$ es siempre positiva y se relaciona
+, donde la diferencia $(v_{pixN}-v_{pixNS})$ es siempre positiva y se relaciona
 con la información almacenada en el píxel, y la señal $(v_{ramp_p}-v_{ramp_n})$ es
 linealmente creciente. Por tanto, la salida del comparador debe ser inicialmente
 un valor alto y cambiar a valor bajo en el instante en que ambas señales sea crucen.
@@ -239,7 +239,7 @@ registrarse una transición sin estar activa la señal de $adc\_start$\\
 \subsection{OTA}\label{cap:ro_sch_ota}
 
 El OTA (\textit{Operational Transconductance Amplifier}) es el bloque que actúa
-cómo comparador y tiene la estructura de un amplificador diferencial simple, que
+como comparador y tiene la estructura de un amplificador diferencial simple, que
 se muestra en el esquemático de la figura \ref{fig:ota_sch}.\\
 
 \begin{figure}[h]
@@ -261,7 +261,7 @@ de entrada del OTA del comparador y teniendo en cuenta el rango en el que varía
 la salida del píxel, para obtener una resolución deseada y aprovechar al máximo
 la sensibilidad del sensor.\\
 
-Es muy importante una precisa generación de ésta rampa analógica, con especial
+Es muy importante una precisa generación de esta rampa analógica, con especial
 atención a la linealidad de la misma. En la bibliografía se describe una arquitectura
 para el generador de rampa que obtiene una buena linealidad por debajo de un LSB
 para resoluciones de hasta 15 bits a frecuencias de reloj de 100MHz\cite{Sordo-Ibanez2013},
@@ -280,7 +280,7 @@ una precisa extracción y simulación del circuito.\\
 Los bloques del canal descritos anteriormente, la fuente de corriente y el ADC
 requieren de varias señales de polarización, que habitualmente, además, suelen
 ser programables, esto es, que permiten diferentes valores de configuración
-establecidos por el usuario del dispositivo sobre pr ejemplo, la velocidad de
+establecidos por el usuario del dispositivo sobre, por ejemplo, la velocidad de
 lectura, la resolución deseada, el consumo.\\
 
 Normalmente, para ahorrar espacio, los bloques de polarización, o \textit{BIAS},
@@ -295,7 +295,7 @@ $vb\_cn$, que vienen de un espejo cascodado y la tensión del limitador $vb\_ln$
 El bloque va a estar compartido por 8 canales (80$\mum$ de anchura).\\
 
 Los valores de la corriente que podrá drenar la fuente de corriente del píxel, va
-a ser configurable con 5 bits de resolución. Ésta configuración será implementada
+a ser configurable con 5 bits de resolución. Esta configuración será implementada
 en este bloque de polarización mediante 5 ramas de corrientes que conduzcan,
 respectivamente, $I_0$, $2I_0$, $2I_0$, $4I_0$, $8I_0$, con
 $I_0=125\nA$. De forma que podemos variar la corriente total entre $125\nA$ y
@@ -310,9 +310,9 @@ una corriente generada en el Bias.\\
 La tensión de modo común se puede generar de dos formas, la primera mediante un
 buffer que replica una tensión generada en el bloque de Referencias, fuera del
 canal de lectura, y la segunda generando un tensión local por cada grupo de canales.
-Ésta segunda opción también usa una referencia común, pero al ser local, se adapta
+Esta segunda opción también usa una referencia común, pero al ser local, se adapta
 mejor a la eventual curva en las alimentaciones que podremos tener a lo largo
-del RO. Éste tema se tratará con más detalle en la correspondiente sección de layout.\\
+del RO. Este tema se tratará con más detalle en la correspondiente sección de layout.\\
 
 \section{Rampa digital y serialización}
 
@@ -335,6 +335,6 @@ y serialización de los datos.\\
 
 La serialización se efectúa para convertir la operación de digitalización, que se
 hace de forma paralela, simulatánea a todos los canales, a una salida de datos en serie.
-Éstos datos en serie se encaminan posteriormente hacia uno o varios buses de salida LVDS
+Estos datos en serie se encaminan posteriormente hacia uno o varios buses de salida LVDS
 (\textit{Low Voltage Differential Signal}), que harán posible la lectura de las imágenes
 desde el exterior.\\

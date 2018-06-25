@@ -9,7 +9,7 @@ cap 2: Tecnología CMOS
 	* Diseño de layout
 		* Entorno CAD (breve)
 		* Breve repaso de capas (metales, vías, poly, activa, NWell, capas lógicas)
-		* Problemas habituales en el diseño de layout: (area, electromigración, caída DC, Latch-up, acoplos, mismatch)
+		* Problemas habituales en el diseño de layout: (área, electromigración, caída DC, Latch-up, acoplos, mismatch)
 cap 3: Diseño electrónico del canal de lectura.
 	* Comparador de rampa (explicación del funcionamiento)
 	* Arquitectura del ADC
@@ -42,7 +42,7 @@ cap 6: Conclusiones.
 	* Dificultad creciente de los canales de lectura
 	* Condicionamiento de la arquitectura y las especificaciones por el diseño de layout
 	* Necesidad de estudios de viabilidad exhaustivos previos al diseño
-	* Nuevas tecnologías (menor area, menor consumo)
+	* Nuevas tecnologías (menor área, menor consumo)
 	* Innovaciones en la tecnología de los pixeles (más rápidos o efectivos)
 cap 7: Referencias
 cap 8: Agradecimientos
