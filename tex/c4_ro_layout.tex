@@ -153,7 +153,10 @@ podrían tener tener diferente tiempo de conversión, por ejemplo.\\
 
 \begin{figure}[ht]
 	\includesvg[width=\textwidth]{svg/adc_poly_short.svg}
-	\caption{Curvatura en la tensión de tierra y una tensión de polarización a lo largo del canal}
+	\caption[Consecuencias de la curvatura en la alimentación del canal]
+	{Curvatura en la tensión de tierra y una tensión de polarización a lo largo del canal,
+	donde se diferencian 3 posibles estrategias a la hora de cortocircuitar las
+	tensiones de polarización.}
 	\label{fig:adc_poly_short}
 \end{figure}
 
@@ -250,23 +253,24 @@ exhaustivas simulaciones post-layout, en diferentes canales a lo largo de todo e
 array.\\
 
 \begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.45\textwidth}
-		\includesvg[width=\textwidth]{svg/ro_chx1_layout.svg}
-		\caption{Esquema simplificado del layout de una columna de nuestro canal de lectura ($ro\_chx1$)}
-		\label{fig:ro_chx1}
-	\end{subfigure}
-	\qquad
-	%add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}{0.45\textwidth}
-		\includegraphics[width=\textwidth]{img/OTA_simple_layout.png}
-		\caption{Layout del par diferencial del OTA del comparador, donde se ve
-		la estructura de centroide común usada para maximizar el mismatch.
-		A y B son los dos transistores del par diferencial $M_1$ y $M_2$ y ``comun'' es
-		el nodo que viene de la fuente de corriente $M_5$ del OTA. Véase
-		esquemático en \ref{fig:ota_sch}}
-		\label{fig:ota_simple_layout}
-	\end{subfigure}
-	\caption{Floorplan y layout del par diferencial del OTA}
+\centering
+\begin{minipage}{0.48\textwidth}
+	\includesvg[width=\textwidth]{svg/ro_chx1_layout.svg}
+	\caption[Floorplan de una columna de canal de lectura]
+	{Floorplan del layout de una columna del canal de lectura ($ro\_chx1$),
+	donde se puede ver la disposición de los bloques principales y sus conexiones
+	más importantes}
+	\label{fig:ro_chx1}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+	\includegraphics[width=\textwidth]{img/OTA_simple_layout.png}
+	\caption[Layout del par diferencial del OTA del comparador]
+	{Layout del par diferencial del OTA del comparador, donde se ve
+	la estructura de centroide común usada para minimizar el mismatch.
+	A y B son los dos transistores del par diferencial $M_1$ y $M_2$ y ``comun'' es
+	el nodo que viene de la fuente de corriente $M_5$ del OTA. Véase
+	esquemático en \ref{fig:ota_sch}}
+	\label{fig:ota_simple_layout}
+\end{minipage}
 \end{figure}
