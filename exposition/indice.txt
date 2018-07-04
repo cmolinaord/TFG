@@ -1,0 +1,39 @@
+====================================
+20 + 20 min
+
+Tribunal:
+	Alberto Pérez Izquierdo
+	Gloria Huertas Sánchez
+	Miguel Ángel Sanchez Quintanilla
+====================================
+
+Título trabajo (t<10s) / 10s
+
+Intro. 1min / 1
+	- Diagrama de bloques de un sensor
+	- Que es un sensor de imagen, CMOS, partes más importantes, funcionamiento
+	general.
+	- Me voy a centrar en el layout. (que es layout), del canal (donde esta el canal),
+	usando un ejemplo que iré detallando poco a poco.
+
+	- Para introducir el funcionamiento del canal, hay que hablar del...
+Pixel. 1.5min / 2.5
+	- Esquemático y layout del píxel. (5um)
+	- Imagen operación de lectura.
+
+	- La salida del pixel se lee por columnas en el...
+Canal de lectura. 2min / 4.5
+	- Imagen (1): diagrama de bloques de un comparador de rampa.
+		- Explicación funcionamiento del comparador. (Imagen waveform típica)
+	- Imagen (2) de los bloques del canal. (distribución layout)
+	- Explicación breve de los bloques.
+	- Empezamos con el...
+PXCS: 1min / 5.5
+	- Imágen esquemático (más pixel en la esquina pequeñito)
+	- Funcionamiento.
+	- Explicación del BIAS
+		- Tensiones, configuración.
+
+ADC:
+	-Imágen esquemático
+	(hacer un GIF de la waveform?)
